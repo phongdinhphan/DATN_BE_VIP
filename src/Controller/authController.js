@@ -57,8 +57,10 @@ router.post('/register', async (req, res) => {
         }
 })
 
-
-
+// nhánh này được clone từ main: nghĩa là hiện tại code ở đây giống nhánh main và là mới nhất
+// Oke:sơ sơ :() mà ổn nha anh vip quá
+// save
+// bên kia là data mình clone bên đây là data mình change file nào change thì nó hiện 1 thay đổi
 
  ///{POST} http://localhost:5000/auth/login
  router.post('/login', async (req, res) => {
