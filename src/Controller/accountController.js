@@ -21,6 +21,8 @@ const showDetails = (req, res, next) =>{
         )
         .catch(next)
 }
+
+
 const createAccount = async(req,res, next) => {
      // get info user 
         const {username, password,confpassword , email, phonenumber, role} = req.body;
@@ -63,14 +65,28 @@ const createAccount = async(req,res, next) => {
         return res.json({
             success: true,
             message: "create user success",
-            user
+            user: user
         })
      
      
+}
+
+const update = (req, res, next) =>{
+    userModel.updateOne({_id: req.params.accId }, req.body)
+      .then(() => res.redirect('/admin/account'))
+      .catch(next)
+  }
+  
+const Delete = (req, res, next) =>{ 
+    userModel.findByIdAndDelete({_id: req.params.accId })
+        .then(() => res.redirect('back'))
+        .catch(next)
 }
   
 module.exports = {
     listUser: listUser,
     showDetails: showDetails,
-    createAccount: createAccount
+    createAccount: createAccount,
+    update: update,
+    Delete: Delete,
 }

@@ -5,11 +5,13 @@ const companytModel = require('../Models/companyModel')
 const majortModel = require('../Models/majorModel')
 const schooltModel = require('../Models/schoolModel')
 
+const verifyToken = require('../Middleware/auth')
+
 
 
 
 //Route show list
-router.get('/account',accountController.listUser)
+router.get('/account',verifyToken,accountController.listUser)
 // router.get('/school',schoolController.listSchool)
 // router.get('/major',majorController.listMajor)
 // router.get('/company',companyController.listCompany)
@@ -29,7 +31,7 @@ router.get('/account',accountController.listUser)
 
 
 // //Route create
-router.get('/account/create',accountController.createAccount)
+router.post('/account/create',accountController.createAccount)
 // router.get('/school/create',schoolController.createUser)
 // router.get('/major/create',majorController.createUser)
 // router.get('/company/create',companyController.createUser)
