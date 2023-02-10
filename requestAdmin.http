@@ -1,0 +1,35 @@
+
+///request Account
+GET http://localhost:5000/admin/account
+
+###
+
+POST http://localhost:5000/admin/account/create
+Content-Type: application/json
+
+{
+    "username": "thao10",
+    "email": "tt1007@gmail.com",
+    "password": "123",
+    "confpassword": "123",
+    "phonenumber": "1221199",
+    "role": "Admin"
+}
+
+
+///Request School
+GET http://localhost:5000/admin/school
+
+###
+
+
+///Request Company
+GET http://localhost:5000/admin/company
+
+###
+
+
+///Request Major
+GET http://localhost:5000/admin/major
+
+###

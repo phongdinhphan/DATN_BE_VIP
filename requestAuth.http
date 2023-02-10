@@ -1,0 +1,25 @@
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username": "thao1",
+    "email": "ph1007@gmail.com",
+    "password": "123",
+    "confpassword": "123",
+    "phonenumber": "1221112"
+}
+
+####
+
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email": "phg6@gmail.com",
+    "password": "123"
+
+}
+/// đúng như anh muốn k 
+
+####
+# 
