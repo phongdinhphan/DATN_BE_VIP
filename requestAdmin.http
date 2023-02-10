@@ -1,32 +1,79 @@
 
-///request Account
+# ///request Account
 GET http://localhost:5000/admin/account
-
+Content-Type: application/json
 ###
-
 POST http://localhost:5000/admin/account/create
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZWE1NGViZWE5NzMyNmI1ZjBmYyIsInVzZXJuYW1lIjoidGhhbzEiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3NjAxNzA2MSwiZXhwIjoxNjc2MDE3NjYxfQ.x-gC_YuFFoMtH8drvORwcJO8IWpjrFuaZgeKmTelg0w
 
 {
     "username": "thao10",
+    "email": "tt2007@gmail.com",
+    "password": "123",
+    "confpassword": "123",
+    "phonenumber": "221199",
+    "role": "Admin"
+}
+###
+GET http://localhost:5000/admin/account/details/63e4c0149a3377e7a27b6e58
+Content-Type: application/json
+####
+PUT http://localhost:5000/admin/account/details/63e5efd55eb9672311ca3f38
+Content-Type: application/json
+
+{
+    "username": "thao12131201111",
     "email": "tt1007@gmail.com",
     "password": "123",
     "confpassword": "123",
     "phonenumber": "1221199",
     "role": "Admin"
 }
+###
+DELETE  http://localhost:5000/admin/account/63e4c81aa487f672585430ba
+Content-Type: application/json
+
 
 ####
+
+
+
 ///Request School
 GET http://localhost:5000/admin/school
-
 ###
+
+
 
 
 ///Request Company
 GET http://localhost:5000/admin/company
 
 ###
+
+
+POST http://localhost:5000/admin/company/create
+Content-Type: application/json
+
+{
+    "namecompany": "abc",
+    "emailcompany": "abc@gmail.com",
+    "websitecompany": "abc.com.vn",
+    "phonecompany": "99999"
+}
+####
+
+PUT http://localhost:5000/admin/company/details/63e60421fe5acf127d621092
+Content-Type: application/json
+
+{
+    "namecompany": "abc",
+    "emailcompany": "abcd@gmail.com",
+    "websitecompany": "abcd.com.vn",
+    "phonecompany": "999992"
+}
+###
+
 
 
 ///Request Major

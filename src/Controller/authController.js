@@ -46,7 +46,7 @@ router.post('/register', async (req, res) => {
             phonenumber:phonenumber,
             role: 'Student',
         })
-        return res.json({
+        return res.status(200).json({
             success: true,
             message: "register success",
             user

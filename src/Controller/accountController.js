@@ -14,15 +14,16 @@ const listUser = async (req, res, next) =>{
   
   }
 
+  /// [GET] http://localhost:5000/admin/account/details/:id
 const showDetails = (req, res, next) =>{
-    userModel.findOne({_id: req.params.accId})
+    accountModel.findOne({_id: req.params.accId})
         .then(account => 
-        res.json(account)
+            res.json(account)
         )
         .catch(next)
 }
 
-
+/// [POST] http://localhost:5000/admin/account/create
 const createAccount = async(req,res, next) => {
      // get info user 
         const {username, password,confpassword , email, phonenumber, role} = req.body;
@@ -71,15 +72,19 @@ const createAccount = async(req,res, next) => {
      
 }
 
+  /// [PUT] http://localhost:5000/admin/account/details/:id
 const update = (req, res, next) =>{
-    userModel.updateOne({_id: req.params.accId }, req.body)
-      .then(() => res.redirect('/admin/account'))
+    accountModel.updateOne({_id: req.params.accId }, req.body)
+      .then(() => res.json(req.body))
       .catch(next)
   }
-  
+  /// [DELETE]  http://localhost:5000/admin/account/:id
 const Delete = (req, res, next) =>{ 
-    userModel.findByIdAndDelete({_id: req.params.accId })
-        .then(() => res.redirect('back'))
+    accountModel.findByIdAndDelete({_id: req.params.accId }, req.body)
+        .then(() => res.json({
+            success: true,
+            userDetele: req.body
+        }))
         .catch(next)
 }
   
