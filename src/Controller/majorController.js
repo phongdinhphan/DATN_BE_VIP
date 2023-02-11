@@ -22,7 +22,7 @@ const showDetails = (req, res, next) =>{
 }
 
 /// [POST] http://localhost:5000/admin/Major/create
-const createMajor = async(req,res, next) => {
+const createMajor = async(req,res) => {
      // get info user 
         const {nameMajor} = req.body;
         if(!nameMajor){

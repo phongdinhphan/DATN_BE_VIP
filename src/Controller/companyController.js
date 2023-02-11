@@ -23,7 +23,7 @@ const showDetails = (req, res, next) =>{
 }
 
 /// [POST] http://localhost:5000/admin/Company/create
-const createCompany = async(req,res, next) => {
+const createCompany = async(req,res) => {
      // get info user 
         const {namecompany, emailcompany,websitecompany  ,  phonecompany} = req.body;
         if(!namecompany || !emailcompany || !websitecompany || !phonecompany){

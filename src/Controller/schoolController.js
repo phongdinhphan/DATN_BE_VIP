@@ -23,7 +23,7 @@ const showDetails = (req, res, next) =>{
 }
 
 /// [POST] http://localhost:5000/admin/school/create
-const createschool = async(req,res, next) => {
+const createschool = async(req,res) => {
      // get info user 
         const {nameschool, emailschool,websiteschool ,location ,  phoneschool} = req.body;
         if(!nameschool || !emailschool || !websiteschool || !phoneschool || !location){
