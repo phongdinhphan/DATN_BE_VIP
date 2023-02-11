@@ -5,14 +5,14 @@ Content-Type: application/json
 ###
 POST http://localhost:5000/admin/account/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZWE1NGViZWE5NzMyNmI1ZjBmYyIsInVzZXJuYW1lIjoidGhhbzEiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3NjAxNzA2MSwiZXhwIjoxNjc2MDE3NjYxfQ.x-gC_YuFFoMtH8drvORwcJO8IWpjrFuaZgeKmTelg0w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZWE1NGViZWE5NzMyNmI1ZjBmYyIsInVzZXJuYW1lIjoidGhhbzEiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3NjExOTM4NiwiZXhwIjoxNjc2MTE5OTg2fQ.wV1iIGABhLsMWvBmA-W-f2Up7QAEs8SEH1snoXoTS1Q
 
 {
-    "username": "thao10",
-    "email": "tt2007@gmail.com",
+    "username": "thao1011111",
+    "email": "tt2007777@gmail.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "221199",
+    "phonenumber": "221199777",
     "role": "Admin"
 }
 ###
@@ -42,19 +42,32 @@ Content-Type: application/json
 ///Request School
 GET http://localhost:5000/admin/school
 ###
+POST http://localhost:5000/admin/school/create
+Content-Type: application/json
 
+{
+    "nameschool": "abc",
+    "emailschool": "abzyxz@gmail.com",
+    "websiteschool": "abcxzx.com.vn",
+    "phoneschool": "999991111",
+    "location": "tphcm"
+}
+###
+PUT http://localhost:5000/admin/company/details/63ba3fab13cdb53bcaea292c
+Content-Type: application/json
+
+###
+DELETE  http://localhost:5000/admin/company/63ba3fab13cdb53bcaea292c
+Content-Type: application/json
+###
 
 
 
 ///Request Company
 GET http://localhost:5000/admin/company
-
 ###
-
-
 POST http://localhost:5000/admin/company/create
 Content-Type: application/json
-
 {
     "namecompany": "abc",
     "emailcompany": "abc@gmail.com",
@@ -62,10 +75,11 @@ Content-Type: application/json
     "phonecompany": "99999"
 }
 ####
-
 PUT http://localhost:5000/admin/company/details/63e60421fe5acf127d621092
 Content-Type: application/json
-
+####
+DELETE  http://localhost:5000/admin/company/63e60421fe5acf127d621092
+Content-Type: application/json
 {
     "namecompany": "abc",
     "emailcompany": "abcd@gmail.com",
@@ -75,8 +89,23 @@ Content-Type: application/json
 ###
 
 
-
 ///Request Major
 GET http://localhost:5000/admin/major
+###
+POST http://localhost:5000/admin/major/create
+Content-Type: application/json
+{
+    "namemajor": "tâm lý học",
+}
+###
 
+PUT http://localhost:5000/admin/company/details/63bd1d2cc383b2c7ba242bf9
+Content-Type: application/json
+{
+    "namemajor": "tâm lý học",
+}
+###
+
+DELETE  http://localhost:5000/admin/company/details/63bd1d2cc383b2c7ba242bf9
+Content-Type: application/json
 ###

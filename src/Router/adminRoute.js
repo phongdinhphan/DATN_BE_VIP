@@ -11,7 +11,7 @@ const verify = require('../Middleware/auth')
 
 
 //Route show list
-router.get('/account',verify,accountController.listUser)
+router.get('/account',accountController.listUser)
 router.get('/school',schoolController.listSchool)
 router.get('/major',majorController.listMajor)
 router.get('/company',companytController.listCompany)
@@ -32,8 +32,8 @@ router.put('/company/details/:accId',companytController.update)
 
 // //Route create
 router.post('/account/create',verify,accountController.createAccount)
-router.get('/school/create',schoolController.createUser)
-router.get('/major/create',majorController.createUser)
+router.post('/school/create',schoolController.createschool)
+router.post('/major/create',majorController.createMajor)
 router.post('/company/create',companytController.createCompany)
 
 
