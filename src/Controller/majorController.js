@@ -33,7 +33,7 @@ const createMajor = async(req,res) => {
         } 
        
         const Major =   await  majorModel.create({
-            nameMajor: nameMajor,
+            namemajor: nameMajor,
         })
         return res.json({
             success: true,

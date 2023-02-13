@@ -56,6 +56,13 @@ Content-Type: application/json
 PUT http://localhost:5000/admin/company/details/63ba3fab13cdb53bcaea292c
 Content-Type: application/json
 
+{
+    "nameschool": "abc",
+    "emailschool": "bachkhoa@gmail.com",
+    "websiteschool": "bachkhoa.com.vn",
+    "phoneschool": "912991111",
+    "location": "tphcm"
+}
 ###
 DELETE  http://localhost:5000/admin/company/63ba3fab13cdb53bcaea292c
 Content-Type: application/json
@@ -80,12 +87,7 @@ Content-Type: application/json
 ####
 DELETE  http://localhost:5000/admin/company/63e60421fe5acf127d621092
 Content-Type: application/json
-{
-    "namecompany": "abc",
-    "emailcompany": "abcd@gmail.com",
-    "websitecompany": "abcd.com.vn",
-    "phonecompany": "999992"
-}
+
 ###
 
 
@@ -94,18 +96,18 @@ GET http://localhost:5000/admin/major
 ###
 POST http://localhost:5000/admin/major/create
 Content-Type: application/json
+
 {
-    "namemajor": "tâm lý học",
+    "nameMajor": "abc"
 }
 ###
-
-PUT http://localhost:5000/admin/company/details/63bd1d2cc383b2c7ba242bf9
+PUT http://localhost:5000/admin/company/details/63e9a2c881f9d64ac1b5eef3
 Content-Type: application/json
+
 {
-    "namemajor": "tâm lý học",
+    "namemajor": "tâm lý học"
 }
 ###
-
-DELETE  http://localhost:5000/admin/company/details/63bd1d2cc383b2c7ba242bf9
+DELETE  http://localhost:5000/admin/company/63e9a2c881f9d64ac1b5eef3
 Content-Type: application/json
 ###
