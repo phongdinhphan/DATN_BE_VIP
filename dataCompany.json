@@ -1,0 +1,24 @@
+[
+    {
+      "_id": "63bd21c1c383b2c7ba242c06",
+      "namecompany": "hpt new",
+      "emailcompany": "hpt@gmail.com",
+      "websitecompany": "hpt.com.vn",
+      "phonecompany": "041241242"
+    },
+    {
+      "_id": "63bd2242c383b2c7ba242c07",
+      "namecompany": "aitech",
+      "emailcompany": "aitech@gmail.com",
+      "websitecompany": "aitech.com.vn",
+      "phonecompany": "1342412412"
+    },
+    {
+      "_id": "63e60421fe5acf127d621092",
+      "namecompany": "abc",
+      "emailcompany": "abcd@gmail.com",
+      "websitecompany": "abcd.com.vn",
+      "phonecompany": "999992",
+      "__v": 0
+    }
+  ]

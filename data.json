@@ -1,0 +1,38 @@
+
+[
+    {
+      "_id": "63e4be71844ea261a211fbb5",
+      "username": "thao1",
+      "email": "phong6@gmail.com",
+      "password": "123",
+      "phonenumber": "2112",
+      "role": "Student",
+      "__v": 0
+    },
+    {
+      "_id": "63e9ab3335480b49e5a0be0b",
+      "username": "hutech",
+      "email": "ccc@gmail.com",
+      "password": "123",
+      "phonenumber": "123411",
+      "role": "School"
+    },
+    {
+      "_id": "63eb4d8102044966c8ead7d8",
+      "username": "thao1",
+      "email": "ph1007@gmail.com",
+      "password": "123",
+      "phonenumber": "1221112",
+      "role": "Student",
+      "__v": 0
+    },
+    {
+      "_id": "63eb4e0202044966c8ead7e0",
+      "username": "thao112312",
+      "email": "thao112312@gmail.com",
+      "password": "123",
+      "phonenumber": "12111111",
+      "role": "Student",
+      "__v": 0
+    }
+  ]

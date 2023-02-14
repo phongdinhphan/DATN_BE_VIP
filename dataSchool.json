@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "63ba3fab13cdb53bcaea292c",
+    "nameschool": "Tôn Đức Thắng",
+    "location": "tphcm",
+    "emailschool": "tdt@gmail.com",
+    "phoneschool": "1234567",
+    "websiteschool": "https://www.tdtu.edu.vn/"
+  },
+  {
+    "_id": "63bd1790c383b2c7ba242bf7",
+    "nameschool": "hutech ",
+    "location": "tphcm",
+    "emailschool": "hutech@gmail.com",
+    "phoneschool": "2332212",
+    "websiteschool": "https://www.hutech.edu.vn/"
+  },
+  {
+    "_id": "63dccbb143d52774fe87adcd",
+    "nameschool": "bách khoa",
+    "emailschool": "bvk@gmail.com",
+    "websiteschool": "https://www.bachkhoa.edu.vn/",
+    "phoneschool": "123456",
+    "__v": 0
+  },
+  {
+    "_id": "63e78ddab48558f1ab50198a",
+    "nameschool": "abc",
+    "emailschool": "abzyxz@gmail.com",
+    "websiteschool": "https://abcxzx.com.vn",
+    "phoneschool": "999991111",
+    "__v": 0
+  }
+]

@@ -1,0 +1,39 @@
+[
+    {
+      "_id": "63e9a7f035480b49e5a0be08",
+      "studentname": "phong",
+      "studentemail": "phong@gmail.com",
+      "studentphone": "123456",
+      "academicyear": "2019",
+      "address": "tphcm",
+      "code": 1911062238,
+      "gender": "nam",
+      "major": "cntt",
+      "school": "hutech",
+      "verify": false
+    },
+    {
+      "_id": "63eb4d8102044966c8ead7da",
+      "studentemail": "ph1007@gmail.com",
+      "studentphone": "1221112",
+      "academicyear": "2019",
+      "address": "tphcm",
+      "code": 123123123,
+      "gender": "nam",
+      "major": "cntt",
+      "school": "hutech",
+      "verify": false
+    },
+    {
+      "_id": "63eb4e0202044966c8ead7e2",
+      "studentemail": "thao112312@gmail.com",
+      "studentphone": "12111111",
+      "academicyear": "2019",
+      "address": "tphcm",
+      "code": 123123123,
+      "gender": "nam",
+      "major": "cntt",
+      "school": "hutech",
+      "verify": false
+    }
+  ]

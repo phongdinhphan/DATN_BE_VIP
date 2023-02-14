@@ -4,16 +4,14 @@ const universitytModel = require('../Models/studentModel')
 const jwt = require('jsonwebtoken');
 
 const listStudent = async (req, res, next) =>{
-
     universitytModel.find()
         .then(listuser => {
             // console.log(req.role)
             const a =  listuser?.filter((student) =>student?.school === req.username).map((item)=>item)
-            console.log(a)
+           res.json(a)
 
         })
         .catch(next) 
-
 }
 
 
