@@ -1,13 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const accountModel = require('../Models/accountModel')
+const studentModel = require('../Models/studentModel')
 const jwt = require('jsonwebtoken');
 
 ///{POST} http://localhost:5000/auth/register
 router.post('/register', async (req, res) => {
 
     // get info user 
-    const { username, password, confpassword, email, phonenumber } = req.body;
+    const { username, password, confpassword, email, phonenumber, academicyear, address, code, gender, major, school } = req.body;
     if (!email || !password || !username || !phonenumber) {
         return res.status(400).json({
             success: false,
@@ -46,10 +47,23 @@ router.post('/register', async (req, res) => {
             phonenumber: phonenumber,
             role: 'Student',
         })
+        const student = await studentModel.create({
+            studentModel: username,
+            studentemail: email,
+            studentphone: phonenumber,
+            academicyear: academicyear,
+            address: address,
+            code: code,
+            gender: gender,
+            major: major,
+            school: school,
+            verify: false
+        })
         return res.status(200).json({
             success: true,
             message: "register success",
-            user
+            user: user,
+            student: student
         })
 
     } catch (error) {
@@ -95,7 +109,7 @@ router.post('/login', async (req, res) => {
                 username: check.username,
                 role: check.role
             }, process.env.SecretJwt, {
-                expiresIn: "10m"
+                expiresIn: "1d"
             })
 
             const refeshToken = jwt.sign({

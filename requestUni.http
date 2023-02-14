@@ -1,0 +1,23 @@
+GET http://localhost:5000/uni/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjMwMzQxMiwiZXhwIjoxNjc2Mzg5ODEyfQ.Acr9Fjw_G9kP1ME3Nn-9FtAps90soRxQU1fqfWzRVyU
+
+####
+get http://localhost:5000/uni/details/63e9a7f035480b49e5a0be08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjMwMzQxMiwiZXhwIjoxNjc2Mzg5ODEyfQ.Acr9Fjw_G9kP1ME3Nn-9FtAps90soRxQU1fqfWzRVyU
+####
+
+PUT http://localhost:5000/uni/details/63e9a7f035480b49e5a0be08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjMwMzQxMiwiZXhwIjoxNjc2Mzg5ODEyfQ.Acr9Fjw_G9kP1ME3Nn-9FtAps90soRxQU1fqfWzRVyU
+
+{
+  "studentname": "phong123123",
+  "studentemail": "phong123123@gmail.com",
+  "studentphone": "123123",
+  "academicyear": "2018",
+  "address": "tphcm",
+  "code": 1911062238,
+  "gender": "nu",
+  "major": "cntt",
+  "school": "hutech",
+  "verify": true
+}

@@ -2,11 +2,18 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-    "username": "thao1",
-    "email": "ph1007@gmail.com",
+    "username": "thao112312",
+    "email": "thao112312@gmail.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "1221112"
+    "phonenumber": "12111111",
+    "academicyear": "2019",
+    "address": "tphcm",
+    "code": "123123123",
+    "gender": "nam",
+    "major": "cntt",
+    "school": "hutech"
+    
 }
 
 ####
@@ -16,7 +23,7 @@ Content-Type: application/json
 
 
 {
-    "email": "phg6@gmail.com",
+    "email": "ccc@gmail.com",
     "password": "123"
 
 }
