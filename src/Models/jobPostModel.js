@@ -35,8 +35,8 @@ const JobPostSchema = new mongoose.Schema({
         require: true,
     },
     logo:{
-        type: String,
-        require: true,
+        data: Buffer,
+        contentType: String
     },
 });
 

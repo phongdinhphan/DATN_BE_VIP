@@ -4,14 +4,14 @@ const universitytModel = require('../Models/studentModel')
 const jwt = require('jsonwebtoken');
 
 const listStudent = async (req, res, next) =>{
-    universitytModel.find()
-        .then(listuser => {
-            // console.log(req.role)
-            const a =  listuser?.filter((student) =>student?.school === req.username).map((item)=>item)
-           res.json(a)
+    universitytModel.find({})
+    .then(liststudent => {
+        // console.log(listpost)
+        const a =  liststudent?.filter((student) =>student?.school === req.username) 
+        res.json(a)
 
-        })
-        .catch(next) 
+    })
+    .catch(next) 
 }
 
 
@@ -23,15 +23,11 @@ const detailsStudent = async (req, res, next) =>{
         .catch(next)
 }
 
-const updateStudent = async (req, res, next) =>{
+const updateStudent = (req, res, next) =>{
     universitytModel.updateOne({_id: req.params.accId }, req.body)
-    console.log(req.body)
-    //   .then(() => res.status(200).json({
-    //     success: true,
-    //     body: req.body
-    //   }))
-    //   .catch(next)
-}
+      .then(() => res.json(req.body))
+      .catch(next)
+  }
 
 module.exports = {
     listStudent: listStudent,

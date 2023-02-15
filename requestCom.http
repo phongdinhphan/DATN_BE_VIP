@@ -1,0 +1,27 @@
+GET http://localhost:5000/company
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZTcxODQ0ZWEyNjFhMjExZmJiNSIsInVzZXJuYW1lIjoiZnB0Iiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzY0NTgwMDksImV4cCI6MTY3NjU0NDQwOX0.klN8wUERDGZZ_mNCvSFOK7o1NNPtzU_mZaQCMbWhKP8
+###
+ 
+GET http://localhost:5000/company/details/63eb615d91d27de2f55b033b
+Content-Type: application/json
+###
+
+PUT http://localhost:5000/company/details/63eb615d91d27de2f55b033b
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZTcxODQ0ZWEyNjFhMjExZmJiNSIsInVzZXJuYW1lIjoiZnB0Iiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzY0NTgwMDksImV4cCI6MTY3NjU0NDQwOX0.klN8wUERDGZZ_mNCvSFOK7o1NNPtzU_mZaQCMbWhKP8
+
+{
+  "logo": "null",
+  "benifit": "không yêu cầu",
+  "expdate": "2023-10-09T17:00:00.000Z",
+  "gender": "Không yêu cầu",
+  "location": "hà nội",
+  "namecompany": "fpt",
+  "title": "nodejs",
+  "required": "không có",
+  "salary": "100 - 107tr"
+}
+###
+DELETE  http://localhost:5000/company/63eb5bbdd055caba8c9ff0c6
+Content-Type: application/json

@@ -5,6 +5,7 @@ const path = require('path')
 const adminRouter = require('./src/Router/adminRoute')
 const authRouter = require('./src/Router/authRoute')
 const universityRouter = require('./src/Router/universityRoute')
+const companyRouter = require('./src/Router/companyRoute')
 
 const connectDB =require("./src/Services/ConnectDB")
 require('dotenv').config()
@@ -26,6 +27,7 @@ app.get('/', function (req, res) {
 app.use('/admin', adminRouter)
 app.use('/auth', authRouter)
 app.use('/uni', universityRouter)
+app.use('/company', companyRouter)
 
 app.listen(process.env.Port,function(){
     console.log(`server is running in localhost:${process.env.Port}`)

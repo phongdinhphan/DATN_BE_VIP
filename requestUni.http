@@ -1,12 +1,14 @@
 GET http://localhost:5000/uni/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjM2NjExNSwiZXhwIjoxNjc2NDUyNTE1fQ.Ay7K9jR1_tzwygH285HermhhlP1XyWKl5plvc3jAreU
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjQ1ODgzNSwiZXhwIjoxNjc2NTQ1MjM1fQ.fjSNET1mrI5klp2hmwyIw9RB_-A-Qbz9-04HXJ19I_Q
 ####
-get http://localhost:5000/uni/details/63e9a7f035480b49e5a0be08
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjMwMzQxMiwiZXhwIjoxNjc2Mzg5ODEyfQ.Acr9Fjw_G9kP1ME3Nn-9FtAps90soRxQU1fqfWzRVyU
+get http://localhost:5000/uni/details/63eb4d8102044966c8ead7da
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjQ1ODgzNSwiZXhwIjoxNjc2NTQ1MjM1fQ.fjSNET1mrI5klp2hmwyIw9RB_-A-Qbz9-04HXJ19I_Q
+
 ####
 
-PUT http://localhost:5000/uni/details/63e9a7f035480b49e5a0be08
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjMwMzQxMiwiZXhwIjoxNjc2Mzg5ODEyfQ.Acr9Fjw_G9kP1ME3Nn-9FtAps90soRxQU1fqfWzRVyU
+PUT http://localhost:5000/uni/details/63eb4d8102044966c8ead7da
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjQ1ODgzNSwiZXhwIjoxNjc2NTQ1MjM1fQ.fjSNET1mrI5klp2hmwyIw9RB_-A-Qbz9-04HXJ19I_Q
 
 {
   "studentname": "phong123123",
@@ -14,7 +16,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzM
   "studentphone": "123123",
   "academicyear": "2018",
   "address": "tphcm",
-  "code": 1911062238,
+  "code": 1911062239,
   "gender": "nu",
   "major": "cntt",
   "school": "hutech",
