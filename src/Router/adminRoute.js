@@ -7,7 +7,18 @@ const schoolController = require('../Controller/schoolController')
 
 const verify = require('../Middleware/auth')
 
-
+/**
+ * @swagger
+ *  components:
+        schemas:
+            Account:
+                type: object
+                 properties:
+                    id:
+                        type: integer
+                    name:
+                        type: string
+ */
 
 
 //Route show list
@@ -17,7 +28,7 @@ router.get('/major',majorController.listMajor)
 router.get('/company',companytController.listCompany)
 
 // //Route details
-router.get('/account/details/:accId',verify,accountController.showDetails)
+router.get('/account/details/:accId',accountController.showDetails)
 router.get('/school/details/:accId',schoolController.showDetails)
 router.get('/major/details/:accId',majorController.showDetails)
 router.get('/company/details/:accId',companytController.showDetails)
