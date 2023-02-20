@@ -135,5 +135,44 @@ router.post('/login', async (req, res) => {
     }
 })
 
+
+router.post('/reset-password', async (req, res) =>{
+    const { newpassword, confpassword,email } = req.body;
+    if (!email || !newpassword || !confpassword) {
+        return res.status(400).json({
+            success: false,
+            message: "missing"
+        })
+    }
+    try {
+        const check = await accountModel.findOneAndUpdate({ email: email }, {password: newpassword})
+
+        if (!check) {
+            return res.status(400).json({
+                success: false,
+                message: "email encorrect"
+            })
+        }
+
+        if (confpassword != newpassword) {
+            return res.status(400).json({
+                success: false,
+                message: "confirm password incorrect"
+            })
+        }
+
+
+        return res.status(200).json({
+            success: true,
+            User: check,
+            
+        })
+    } catch (error) {
+        console.log("error", error)
+    }
+
+
+
+})
 module.exports = router
 
