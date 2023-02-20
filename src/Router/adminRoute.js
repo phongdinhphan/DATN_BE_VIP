@@ -7,18 +7,7 @@ const schoolController = require('../Controller/schoolController')
 
 const verify = require('../Middleware/auth')
 
-/**
- * @swagger
- *  components:
-        schemas:
-            Account:
-                type: object
-                 properties:
-                    id:
-                        type: integer
-                    name:
-                        type: string
- */
+
 
 
 //Route show list
