@@ -1,18 +1,16 @@
 GET http://localhost:5000/company
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZTcxODQ0ZWEyNjFhMjExZmJiNSIsInVzZXJuYW1lIjoiZnB0Iiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzY0NTgwMDksImV4cCI6MTY3NjU0NDQwOX0.klN8wUERDGZZ_mNCvSFOK7o1NNPtzU_mZaQCMbWhKP8
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZTcxODQ0ZWEyNjFhMjExZmJiNSIsInVzZXJuYW1lIjoiZnB0IiwiZW1haWwiOiJwaG9uZzZAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzY4ODY1OTUsImV4cCI6MTY3Njk3Mjk5NX0.hQj1Og9LA-h56DPv3hcB91p9kl3FtohLC0FIWGL80kg
 ###
  
 GET http://localhost:5000/company/details/63eb615d91d27de2f55b033b
 Content-Type: application/json
 ###
 
-PUT http://localhost:5000/company/details/63eb615d91d27de2f55b033b
+POST http://localhost:5000/company/create
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZTcxODQ0ZWEyNjFhMjExZmJiNSIsInVzZXJuYW1lIjoiZnB0Iiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzY0NTgwMDksImV4cCI6MTY3NjU0NDQwOX0.klN8wUERDGZZ_mNCvSFOK7o1NNPtzU_mZaQCMbWhKP8
 
 {
-  "logo": "null",
   "benifit": "không yêu cầu",
   "expdate": "2023-10-09T17:00:00.000Z",
   "gender": "Không yêu cầu",

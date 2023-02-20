@@ -9,11 +9,15 @@ const jobAppSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    nameapp: {
+    name: {
         type: String,
         require: true,
     },
-    nameappli: {
+    email: {
+        type: String,
+        require: true,
+    },
+    nameschool: {
         type: String,
         require: true,
     },

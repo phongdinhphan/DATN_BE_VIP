@@ -1,0 +1,32 @@
+GET http://localhost:5000/
+Content-Type: application/json
+###
+ 
+GET http://localhost:5000/details/63f341e117a9540b9ff75a60
+Content-Type: application/json
+###
+
+GET http://localhost:5000/cv/details/63f33c80a2af566a3ee58cd1
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZWI0ZDgxMDIwNDQ5NjZjOGVhZDdkOCIsInVzZXJuYW1lIjoidGhhbzEiLCJlbWFpbCI6InBoMTAwN0BnbWFpbC5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3Njg4Njc0MSwiZXhwIjoxNjc2OTczMTQxfQ.eDMQDAoMDGcEWlAeeU55mNhPW_L_eGpKH78ZwjaeDqQ
+
+###
+
+POST http://localhost:5000/create
+Content-Type: application/json
+
+{
+   "date": "12/1/2023",
+   "major": "CNTT",
+   "name":"phong",
+   "email": "phong1007@gmail.com",
+   "nameschool": "hutech",
+   "namecompany": "FPT",
+   "url": "abc"
+}
+###
+
+GET http://localhost:5000/cv
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZWI0ZDgxMDIwNDQ5NjZjOGVhZDdkOCIsInVzZXJuYW1lIjoidGhhbzEiLCJlbWFpbCI6InBoMTAwN0BnbWFpbC5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3Njg4Njc0MSwiZXhwIjoxNjc2OTczMTQxfQ.eDMQDAoMDGcEWlAeeU55mNhPW_L_eGpKH78ZwjaeDqQ
+###

@@ -1,28 +1,27 @@
 const express = require('express')
 const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
-const jobApplicationModel = require('../Models/jobApplicationModel')
+const jobApplicationModel = require('../Models/jobApplication')
 
 
 ///[GET] http://localhost:5000/company
 const listPost = async (req, res, next) =>{
-    jobPostModel.find({})
+    jobApplicationModel.find({})
     .then(listpost => {
         // console.log(listpost)
-        const a =  listpost?.filter((post) =>post?.namecompany === req.username) 
-        res.json(a)
+        const a =  listpost?.filter((post) =>post?.email === req.email) 
+        console.log(a)
 
     })
     .catch(next) 
-  
   }
 
 const listCV = async (req, res, next) =>{
     jobApplicationModel.find({})
-    .then(listpost => {
-        // console.log(listpost)
-        const a =  listpost?.filter((post) =>post?.namecompany === req.username) 
-        res.json(a)
+    .then(listapp => {
+        //console.log(listapp)
+        const a =  listapp?.filter((app) =>app?.email === req.email) 
+        console.log(a)
 
     })
     .catch(next) 
@@ -49,30 +48,30 @@ const detailsCV = (req, res, next) =>{
 /// [POST] http://localhost:5000/company/create
 const createCV = async(req,res, next) => {
      // get info user 
-        const {benefit, expdate, gender, location, namecompany, title, required, salary, logo} = req.body;
-        if(!benefit || !expdate || !gender || !location || !namecompany
-            || !title || !required  || !salary){
+        const {date, name, major, email, namecompany, nameschool, status, url, verify} = req.body;
+        if(!date || !name || !major || !email || !namecompany
+            || !nameschool || !url ){
             return res.status(400).json({
                 success: false,
                 message: "missing"
             })
         } 
 
-        const jobpost =   await  jobPostModel.create({
-            benefit:benefit, 
-            expdate:expdate, 
-            gender:gender, 
-            location:location, 
-            namecompany:namecompany, 
-            title:title, 
-            required:required, 
-            salary:salary, 
-            logo: logo
+        const jobaplli =   await  jobApplicationModel.create({
+            date: date, 
+            name:  name, 
+            major:  major,
+            email: email, 
+            namecompany: namecompany, 
+            nameschool: nameschool, 
+            status: "Đang chờ xác nhận", 
+            url: url, 
+            verify: false
         })
         return res.json({
             success: true,
             message: "create jobpost success",
-            jobpost: jobpost
+            jobaplli: jobaplli
         })
      
      

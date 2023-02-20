@@ -27,8 +27,8 @@ const showDetails = (req, res, next) =>{
 /// [POST] http://localhost:5000/company/create
 const createPost = async(req,res, next) => {
      // get info user 
-        const {benefit, expdate, gender, location, namecompany, title, required, salary, logo} = req.body;
-        if(!benefit || !expdate || !gender || !location || !namecompany
+        const {benifit, expdate, gender, location, namecompany, title, required, salary, logo} = req.body;
+        if(!benifit || !expdate || !gender || !location || !namecompany
             || !title || !required  || !salary){
             return res.status(400).json({
                 success: false,
@@ -37,7 +37,7 @@ const createPost = async(req,res, next) => {
         } 
 
         const jobpost =   await  jobPostModel.create({
-            benefit:benefit, 
+            benifit:benifit, 
             expdate:expdate, 
             gender:gender, 
             location:location, 
@@ -45,7 +45,7 @@ const createPost = async(req,res, next) => {
             title:title, 
             required:required, 
             salary:salary, 
-            logo: logo
+            logo: "null"
         })
         return res.json({
             success: true,
