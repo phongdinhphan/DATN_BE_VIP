@@ -26,7 +26,7 @@ const showDetails = (req, res, next) =>{
 /// [POST] http://localhost:5000/admin/account/create
 const createAccount = async(req,res, next) => {
      // get info user 
-        const {username, password,confpassword , email, phonenumber, role} = req.body;
+        const {username, password , email, phonenumber, role} = req.body;
         if(!email || !password || !username || !phonenumber || !role){
             return res.status(400).json({
                 success: false,
@@ -49,12 +49,6 @@ const createAccount = async(req,res, next) => {
         })
         }  
 
-        if(confpassword !=password){
-            return res.status(400).json({
-                success: false,
-                message: "confirm password incorrect"
-            })
-        }
 
         const user =   await  accountModel.create({
             username: username,

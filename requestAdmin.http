@@ -11,7 +11,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZWE1N
     "username": "thao1011111",
     "email": "tt2007777@gmail.com",
     "password": "123",
-    "confpassword": "123",
     "phonenumber": "221199777",
     "role": "Admin"
 }
@@ -46,22 +45,26 @@ POST http://localhost:5000/admin/school/create
 Content-Type: application/json
 
 {
-    "nameschool": "abc",
-    "emailschool": "abzyxz@gmail.com",
-    "websiteschool": "abcxzx.com.vn",
-    "phoneschool": "999991111",
+    "nameschool": "taaad",
+    "emailschool": "aaaad@gmail.com",
+    "websiteschool": "dabcxzx.com.vn",
+    "phoneschool": "1231",
     "location": "tphcm"
 }
 ###
-PUT http://localhost:5000/admin/company/details/63ba3fab13cdb53bcaea292c
+GET http://localhost:5000/admin/school/details/63ba3fab13cdb53bcaea292c
+Content-Type: application/json
+###
+PUT http://localhost:5000/admin/school/details/63ba3fab13cdb53bcaea292c
 Content-Type: application/json
 
 {
-    "nameschool": "abc",
-    "emailschool": "bachkhoa@gmail.com",
-    "websiteschool": "bachkhoa.com.vn",
-    "phoneschool": "912991111",
-    "location": "tphcm"
+  "_id": "63ba3fab13cdb53bcaea292c",
+  "nameschool": "Tôn Đức Thắng",
+  "location": "tphcm",
+  "emailschool": "tdt@gmail.com",
+  "phoneschool": "11111",
+  "websiteschool": "https://www.tdtu.edu.vn/"
 }
 ###
 DELETE  http://localhost:5000/admin/company/63ba3fab13cdb53bcaea292c
@@ -75,15 +78,29 @@ GET http://localhost:5000/admin/company
 ###
 POST http://localhost:5000/admin/company/create
 Content-Type: application/json
+
 {
-    "namecompany": "abc",
-    "emailcompany": "abc@gmail.com",
-    "websitecompany": "abc.com.vn",
-    "phonecompany": "99999"
+    "namecompany": "abcd",
+    "emailcompany": "abcde@gmail.com",
+    "websitecompany": "abcd.com.vn",
+    "phonecompany": "999991"
 }
 ####
+
+GET http://localhost:5000/admin/company/details/63e60421fe5acf127d621092
+Content-Type: application/json
+###
 PUT http://localhost:5000/admin/company/details/63e60421fe5acf127d621092
 Content-Type: application/json
+
+{
+  "_id": "63e60421fe5acf127d621092",
+  "namecompany": "abc",
+  "emailcompany": "abcd@gmail.com",
+  "websitecompany": "abcd.com.vn",
+  "phonecompany": "999992999",
+  "__v": 0
+}
 ####
 DELETE  http://localhost:5000/admin/company/63e60421fe5acf127d621092
 Content-Type: application/json
@@ -98,16 +115,21 @@ POST http://localhost:5000/admin/major/create
 Content-Type: application/json
 
 {
-    "nameMajor": "abc"
+    "nameMajor": "abcdef"
 }
 ###
-PUT http://localhost:5000/admin/company/details/63e9a2c881f9d64ac1b5eef3
+
+
+GET http://localhost:5000/admin/major/details/63e9a2c881f9d64ac1b5eef3
+Content-Type: application/json
+###
+PUT http://localhost:5000/admin/major/details/63e9a2c881f9d64ac1b5eef3
 Content-Type: application/json
 
 {
     "namemajor": "tâm lý học"
 }
 ###
-DELETE  http://localhost:5000/admin/company/63e9a2c881f9d64ac1b5eef3
+DELETE  http://localhost:5000/admin/major/63f47bb69fcbe201f7e8dee7
 Content-Type: application/json
 ###

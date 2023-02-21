@@ -53,7 +53,7 @@ const createschool = async(req,res) => {
             emailschool:emailschool,
             websiteschool: (websiteschool.startsWith('https://')? websiteschool : `https://${websiteschool}`) || '',  
             phoneschool: phoneschool,
-            location: location
+            location: location,
         })
         return res.json({
             success: true,

@@ -14,7 +14,7 @@ const schoolSchema = new mongoose.Schema({
         type:  String,
         unique: true,
     },
-    loction: String,
+    location: String,
 });
 
 const schoolModel = mongoose.model('school',schoolSchema)

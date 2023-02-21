@@ -2,11 +2,11 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-    "username": "thao112312",
-    "email": "thao112312@gmail.com",
+    "username": "aitech",
+    "email": "phong7@gmail.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "12111111",
+    "phonenumber": "722111111",
     "academicyear": "2019",
     "address": "tphcm",
     "code": "123123123",
