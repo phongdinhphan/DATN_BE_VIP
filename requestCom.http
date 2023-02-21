@@ -3,6 +3,11 @@ Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZTcxODQ0ZWEyNjFhMjExZmJiNSIsInVzZXJuYW1lIjoiZnB0IiwiZW1haWwiOiJwaG9uZzZAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzY4ODY1OTUsImV4cCI6MTY3Njk3Mjk5NX0.hQj1Og9LA-h56DPv3hcB91p9kl3FtohLC0FIWGL80kg
 ###
  
+GET http://localhost:5000/company/list-cv
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZTcxODQ0ZWEyNjFhMjExZmJiNSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZzZAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzY5NDk4MjcsImV4cCI6MTY3NzAzNjIyN30.11lDZALn0vPXDTqGYfY5Uq7teW4a1Hizo5GY0ZizQYY
+ 
+#### 
 GET http://localhost:5000/company/details/63eb615d91d27de2f55b033b
 Content-Type: application/json
 ###

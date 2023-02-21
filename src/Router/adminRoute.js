@@ -44,7 +44,7 @@ router.post('/company/create',companytController.createCompany)
 // router.post('/company/save',companytController.save)
 
 // //Route delete
-router.delete('/account/:accId',verify,accountController.Delete)
+router.delete('/account/:accId',accountController.Delete)
 router.delete('/school/:accId',schoolController.Delete)
 router.delete('/major/:accId',majorController.Delete)
 router.delete('/company/:accId',companytController.Delete)

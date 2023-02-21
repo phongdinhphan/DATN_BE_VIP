@@ -1,10 +1,23 @@
 const express = require('express')
 const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
+const jobApplicationModel = require('../Models/jobApplication')
 
 ///[GET] http://localhost:5000/company
 const listPost = async (req, res, next) =>{
     jobPostModel.find({})
+    .then(listpost => {
+        // console.log(listpost)
+        const a =  listpost?.filter((post) =>post?.namecompany === req.username) 
+        res.json(a)
+
+    })
+    .catch(next) 
+  
+  }
+
+const listCV = async (req, res, next) =>{
+    jobApplicationModel.find({})
     .then(listpost => {
         // console.log(listpost)
         const a =  listpost?.filter((post) =>post?.namecompany === req.username) 
@@ -74,6 +87,7 @@ const Delete = (req, res, next) =>{
   
 module.exports = {
     listPost: listPost,
+    listCV: listCV,
     showDetails: showDetails,
     createPost: createPost,
     update: update,

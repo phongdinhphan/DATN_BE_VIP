@@ -6,6 +6,7 @@ const companyManagerController = require('../Controller/companyManagerController
 const verify = require('../Middleware/auth')
 
 router.get('/',verify,companyManagerController.listPost)
+router.get('/list-cv',verify,companyManagerController.listCV)
 router.get('/details/:accId',companyManagerController.showDetails)
 router.put('/details/:accId',companyManagerController.update)
 router.post('/create',companyManagerController.createPost)
