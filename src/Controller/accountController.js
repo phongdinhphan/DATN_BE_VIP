@@ -6,26 +6,34 @@ const jwt = require('jsonwebtoken');
 
 ///[GET] http://localhost:5000/admin/account
 const listUser = async (req, res, next) =>{
-    accountModel.find({})
-      .then(listuser => {
-       res.json(listuser)
-      })
-      .catch(next)
-  
+    try {
+        accountModel.find({})
+        .then(listuser => {
+         res.json(listuser)
+        })
+        .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
   }
-
   /// [GET] http://localhost:5000/admin/account/details/:id
 const showDetails = (req, res, next) =>{
-    accountModel.findOne({_id: req.params.accId})
-        .then(account => 
-            res.json(account)
-        )
-        .catch(next)
+    try {
+        accountModel.findOne({_id: req.params.accId})
+            .then(account => 
+                res.json(account)
+            )
+            .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
 
 /// [POST] http://localhost:5000/admin/account/create
 const createAccount = async(req,res, next) => {
      // get info user 
+     try {
         const {username, password , email, phonenumber, role} = req.body;
         if(!email || !password || !username || !phonenumber || !role){
             return res.status(400).json({
@@ -63,23 +71,37 @@ const createAccount = async(req,res, next) => {
             user: user
         })
      
+     } catch (error) {
+         console.log(error)
+     }
+       
      
 }
 
   /// [PUT] http://localhost:5000/admin/account/details/:id
 const update = (req, res, next) =>{
-    accountModel.updateOne({_id: req.params.accId }, req.body)
-      .then(() => res.json(req.body))
-      .catch(next)
+    try {
+        accountModel.updateOne({_id: req.params.accId }, req.body)
+            .then(() => res.json(req.body))
+            .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
+   
   }
   /// [DELETE]  http://localhost:5000/admin/account/:id
 const Delete = (req, res, next) =>{ 
-    accountModel.findByIdAndDelete({_id: req.params.accId }, req.body)
-        .then(() => res.json({
-            success: true,
-            userDetele: req.body
-        }))
-        .catch(next)
+    try {
+        accountModel.findByIdAndDelete({_id: req.params.accId }, req.body)
+            .then(() => res.json({
+                success: true,
+                userDetele: req.body
+            }))
+            .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
+   
 }
   
 module.exports = {

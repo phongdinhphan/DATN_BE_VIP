@@ -4,60 +4,78 @@ const majorModel = require('../Models/majorModel')
 
 
 const listMajor = async (req, res, next) =>{
-    majorModel.find({})
-      .then(listMajor => {
-       res.json(listMajor)
-      })
-      .catch(next)
-  
+    try {
+        majorModel.find({})
+            .then(listMajor => {
+            res.json(listMajor)
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   /// [GET] http://localhost:5000/admin/Major/details/:id
 const showDetails = (req, res, next) =>{
-    majorModel.findOne({_id: req.params.accId})
-        .then(Major => 
-            res.json(Major)
-        )
-        .catch(next)
+
+    try {
+        majorModel.findOne({_id: req.params.accId})
+            .then(Major => 
+                res.json(Major)
+            )
+            .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
 /// [POST] http://localhost:5000/admin/Major/create
 const createMajor = async(req,res) => {
-     // get info user 
-        const {nameMajor} = req.body;
-        if(!nameMajor){
-            return res.status(400).json({
-                success: false,
-                message: "missing"
-            })
-        } 
-       
-        const Major =   await  majorModel.create({
-            namemajor: nameMajor,
-        })
-        return res.json({
-            success: true,
-            message: "create major success",
-            Major: Major
-        })
-     
-     
+    try {
+           // get info user 
+           const {nameMajor} = req.body;
+           if(!nameMajor){
+               return res.status(400).json({
+                   success: false,
+                   message: "missing"
+               })
+           }     
+           const Major =   await  majorModel.create({
+               namemajor: nameMajor,
+           })
+           return res.json({
+               success: true,
+               message: "create major success",
+               Major: Major
+           })
+    } catch (error) {
+        console.log(error)
+    }   
 }
-
   /// [PUT] http://localhost:5000/admin/Company/details/:id
 const update = (req, res, next) =>{
-    majorModel.updateOne({_id: req.params.accId }, req.body)
-      .then(() => res.json(req.body))
-      .catch(next)
-  }
+    try {
+        majorModel.updateOne({_id: req.params.accId }, req.body)
+        .then(() => res.json(req.body))
+        .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
+}
   /// [DELETE]  http://localhost:5000/admin/Company/:id
 const Delete = (req, res, next) =>{ 
-    majorModel.findByIdAndDelete({_id: req.params.accId }, req.body)
+    try {
+        majorModel.findByIdAndDelete({_id: req.params.accId }, req.body)
         .then(() => res.json({
             success: true,
             majorDetele: req.body
         }))
         .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
+
 }
   
 module.exports = {
