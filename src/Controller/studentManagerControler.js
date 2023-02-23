@@ -101,6 +101,26 @@ const createCV = async(req,res, next) => {
     }   
 }
 
+const upload = async (req, res) => {
+    try {
+        if(!req.url){
+            res.send({
+                status: false,
+                message: "no files"
+            })
+        }
+        else{
+            const{url} = req.body.url
+            url.mv("./uploads" + url.name)
+            res.send({
+                status: true,
+                message: "Files is uploaded"
+            })
+        }
+    } catch (error) {
+        res.status(500).send(error)
+    }
+}
 
   
 module.exports = {
@@ -109,5 +129,6 @@ module.exports = {
     createCV: createCV,
     detailsCV: detailsCV,
     detailsPost:detailsPost,
+    upload: upload
 }
 

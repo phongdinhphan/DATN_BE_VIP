@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors')
 const path = require('path')
-
+const fileupload = require('express-fileupload')
 
 const adminRouter = require('./src/Router/adminRoute')
 const authRouter = require('./src/Router/authRoute')
@@ -22,9 +22,12 @@ app.use(express.json())
 //connect db
 connectDB()
 
+//fileup load
+app.use(fileupload({
+    createParentPath:true
+}))
 
-
-//
+// config route
 app.use('/', studentRouter)
 app.use('/admin', adminRouter)
 app.use('/auth', authRouter)

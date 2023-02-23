@@ -11,9 +11,9 @@ Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjQ1ODgzNSwiZXhwIjoxNjc2NTQ1MjM1fQ.fjSNET1mrI5klp2hmwyIw9RB_-A-Qbz9-04HXJ19I_Q
 
 {
-  "studentname": "phong123123",
-  "studentemail": "phong123123@gmail.com",
-  "studentphone": "123123",
+  "studentname": "thaoabc",
+  "studentemail": "thaoabc@gmail.com",
+  "studentphone": "111",
   "academicyear": "2018",
   "address": "tphcm",
   "code": 1911062239,

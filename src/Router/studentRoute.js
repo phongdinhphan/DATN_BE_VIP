@@ -10,5 +10,5 @@ router.get('/details/:accId',studentManagerController.detailsPost)
 router.get('/cv',verify,studentManagerController.listCV)
 router.get('/cv/details/:accId',verify,studentManagerController.detailsCV)
 router.post('/create',studentManagerController.createCV)
-
+router.post('/upload',studentManagerController.upload)
 module.exports = router;
