@@ -9,7 +9,10 @@ const listPost = async (req, res, next) =>{
         jobPostModel.find({})
         .then(listpost => {
             // console.log(listpost)
-            const a =  listpost?.filter((post) =>post?.namecompany === req.username) 
+            const a = listpost?.filter((post) => {
+                const regex = new RegExp(req.username, 'i');
+                return post?.namecompany && regex.test(post.namecompany);
+              });
             res.json(a)
     
         })
