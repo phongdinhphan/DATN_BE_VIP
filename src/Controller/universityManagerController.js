@@ -8,7 +8,10 @@ const listStudent = async (req, res, next) =>{
         universitytModel.find({})
         .then(liststudent => {
             // console.log(listpost)
-            const a =  liststudent?.filter((student) =>student?.school === req.username) 
+            const a = liststudent?.filter((student) => {
+                const regex = new RegExp(req.username, 'i');
+                return student?.school && regex.test(student.school);
+              });
             res.json(a)
     
         })

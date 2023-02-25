@@ -10,7 +10,10 @@ const listPost = async (req, res, next) =>{
         jobApplicationModel.find({})
         .then(listpost => {
             // console.log(listpost)
-            const a =  listpost?.filter((post) =>post?.email === req.email) 
+            const a = listpost?.filter((post) => {
+                const regex = new RegExp(req.email, 'i');
+                return post?.email && regex.test(post.email);
+              });
             console.log(a)
     
         })
@@ -26,7 +29,10 @@ const listCV = async (req, res, next) =>{
         jobApplicationModel.find({})
         .then(listapp => {
             //console.log(listapp)
-            const a =  listapp?.filter((app) =>app?.email === req.email) 
+            const a = listapp?.filter((app) => {
+                const regex = new RegExp(req.email, 'i');
+                return app?.email && regex.test(app.email);
+              });
             console.log(a)
     
         })

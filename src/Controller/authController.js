@@ -3,6 +3,43 @@ const router = express.Router()
 const accountModel = require('../Models/accountModel')
 const studentModel = require('../Models/studentModel')
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer')
+const { v4: uuidv4 }= require ('uuid');
+const crypto = require('crypto');
+require("dotenv").config()
+
+//handle send email
+// const token = crypto.randomBytes(20).toString('hex');
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'your_email_address@gmail.com',
+//       pass: 'your_email_password'
+//     }
+//   });
+
+// transporter.verify((error,succcess)=>{
+//     if(error){
+//         console.log(error)
+//     }
+//     else{
+//         console.log("success")
+//         console.log(succcess)
+
+//     }
+// })
+
+// const sendVerificationEmail = ({_id, email}, res) => {
+//     // const currentURL = "http://localhost:5000/"
+//     // const  uniqueString = uuidv4() + _id
+//     const mailOption ={
+//         form: process.env.AUTH_EmailSend,
+//         to: email,
+//         subject: 'Email Verification',
+//         html: `Click <a href="http://localhost:3000/verify/${token}">here</a> to verify your email.`
+//     }
+// }
+
 
 ///{POST} http://localhost:5000/auth/register
 router.post('/register', async (req, res) => {
@@ -46,6 +83,7 @@ router.post('/register', async (req, res) => {
             email: email,
             phonenumber: phonenumber,
             role: 'Student',
+            verified: false
         })
         const student = await studentModel.create({
             studentModel: username,
@@ -71,10 +109,7 @@ router.post('/register', async (req, res) => {
     }
 })
 
-// nhánh này được clone từ main: nghĩa là hiện tại code ở đây giống nhánh main và là mới nhất
-// Oke:sơ sơ :() mà ổn nha anh vip quá
-// save
-// bên kia là data mình clone bên đây là data mình change file nào change thì nó hiện 1 thay đổi
+
 
 ///{POST} http://localhost:5000/auth/login
 router.post('/login', async (req, res) => {

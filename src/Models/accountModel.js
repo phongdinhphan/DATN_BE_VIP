@@ -13,6 +13,7 @@ const UserSchema = new mongoose.Schema({
         unique: true
     },
     role: String,
+    verified: Boolean,
 });
 
 const userModel = mongoose.model('Account',UserSchema)
