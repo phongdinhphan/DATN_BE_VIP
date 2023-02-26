@@ -2,6 +2,10 @@ const express = require('express')
 const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
 const jobApplicationModel = require('../Models/jobApplication')
+const { format } = require('date-fns');
+
+// const date = new Date();
+// const formattedDate = format(date, 'dd/MM/yyyy');
 
 ///[GET] http://localhost:5000/company
 const listPost = async (req, res, next) =>{

@@ -30,7 +30,7 @@ const jobAppSchema = new mongoose.Schema({
         require: true,
     },
     url: {
-        type: Buffer,
+        type: String,
         require: true,
     },
     verify: {
