@@ -45,7 +45,7 @@ require("dotenv").config()
 router.post('/register', async (req, res) => {
 
     // get info user 
-    const { username, password, confpassword, email, phonenumber, academicyear, address, code, gender, major, school } = req.body;
+    const { username, password, confpassword, email, phonenumber, academicyear, school } = req.body;
     if (!email || !password || !username || !phonenumber) {
         return res.status(400).json({
             success: false,
@@ -90,10 +90,6 @@ router.post('/register', async (req, res) => {
             studentemail: email,
             studentphone: phonenumber,
             academicyear: academicyear,
-            address: address,
-            code: code,
-            gender: gender,
-            major: major,
             school: school,
             verify: false
         })

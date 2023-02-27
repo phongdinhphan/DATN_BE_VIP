@@ -2,6 +2,12 @@ const express = require('express')
 const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
 const jobApplicationModel = require('../Models/jobApplication')
+const fileUpload = require("express-fileupload")
+const app = express()
+
+app.use(fileUpload({
+  createParentPath: true
+}))
 const { format } = require('date-fns');
 
 // const date = new Date();
@@ -61,14 +67,20 @@ const showDetails = (req, res, next) =>{
 const createPost = async(req,res, next) => {
     try {
             // get info user 
-            const {benifit, expdate, gender, location, namecompany, title, required, salary, logo} = req.body;
+            const {benifit, expdate, gender, location, namecompany, title, required, salary} = req.body;
+            const logo = req.files
             if(!benifit || !expdate || !gender || !location || !namecompany
-                || !title || !required  || !salary){
+                || !title || !required  || !salary ){
                 return res.status(400).json({
                     success: false,
                     message: "missing"
                 })
             }  
+
+            console.log(logo)
+
+            logo.mv("./uploads/" + logo.name)
+
             const jobpost =   await  jobPostModel.create({
                 benifit:benifit, 
                 expdate:expdate, 
@@ -78,7 +90,7 @@ const createPost = async(req,res, next) => {
                 title:title, 
                 required:required, 
                 salary:salary, 
-                logo: "null"
+                logo: logo.name,
             })
             return res.json({
                 success: true,

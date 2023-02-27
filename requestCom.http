@@ -22,7 +22,8 @@ Content-Type: application/json
   "namecompany": "fpt",
   "title": "nodejs",
   "required": "không có",
-  "salary": "100 - 107tr"
+  "salary": "100 - 107tr",
+  "logo:" : "js.png"
 }
 ###
 DELETE  http://localhost:5000/company/63eb5bbdd055caba8c9ff0c6
