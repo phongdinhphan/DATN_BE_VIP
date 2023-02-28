@@ -38,6 +38,14 @@ const JobPostSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    skill:{
+        type: String,
+        require: true,
+    },
+    mission:{
+        type: String,
+        require: true,
+    },
 });
 
 const jobpostModel = mongoose.model('jobpost',JobPostSchema)

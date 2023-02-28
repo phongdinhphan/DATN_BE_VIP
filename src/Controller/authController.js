@@ -4,105 +4,107 @@ const accountModel = require('../Models/accountModel')
 const studentModel = require('../Models/studentModel')
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer')
-const { v4: uuidv4 }= require ('uuid');
+const { v4: uuidv4 } = require('uuid');
 const crypto = require('crypto');
 require("dotenv").config()
 
-//handle send email
-// const token = crypto.randomBytes(20).toString('hex');
-// const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//       user: 'your_email_address@gmail.com',
-//       pass: 'your_email_password'
-//     }
-//   });
 
-// transporter.verify((error,succcess)=>{
-//     if(error){
-//         console.log(error)
-//     }
-//     else{
-//         console.log("success")
-//         console.log(succcess)
-
-//     }
-// })
-
-// const sendVerificationEmail = ({_id, email}, res) => {
-//     // const currentURL = "http://localhost:5000/"
-//     // const  uniqueString = uuidv4() + _id
-//     const mailOption ={
-//         form: process.env.AUTH_EmailSend,
-//         to: email,
-//         subject: 'Email Verification',
-//         html: `Click <a href="http://localhost:3000/verify/${token}">here</a> to verify your email.`
-//     }
-// }
 
 
 ///{POST} http://localhost:5000/auth/register
 router.post('/register', async (req, res) => {
 
+    let testAccount = await nodemailer.createTestAccount();
+
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: testAccount.user, // generated ethereal user
+            pass: testAccount.pass, // generated ethereal password
+        },
+    });
+
+    let message = {
+        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        to: "bar@example.com, baz@example.com", // list of receivers
+        subject: "Hello ✔", // Subject line
+        text: "Success register with Us", // plain text body
+        html: "<b>Success register with Us</b>", // html body
+    }
+
+    transporter.sendMail(message)
+        .then((info) => {
+            return res.status(201).json({
+                message: "success",
+                info: info.messageId,
+                preview: nodemailer.getTestMessageUrl(info)
+            })
+        })
+        .catch((error)=> {
+            console.log(error);
+        })
     // get info user 
-    const { username, password, confpassword, email, phonenumber, academicyear, school } = req.body;
-    if (!email || !password || !username || !phonenumber) {
-        return res.status(400).json({
-            success: false,
-            message: "missing"
-        })
-    }
-    try {
-        const checkEmail = await accountModel.findOne({ email })
-        if (checkEmail) {
-            return res.status(400).json({
-                success: false,
-                message: "email already"
-            })
-        }
+    // const { username, password, confpassword, email, phonenumber, academicyear, school } = req.body;
+    // if (!email || !password || !username || !phonenumber) {
+    //     return res.status(400).json({
+    //         success: false,
+    //         message: "missing"
+    //     })
+    // }
+    // try {
+    //     const checkEmail = await accountModel.findOne({ email })
+    //     if (checkEmail) {
+    //         return res.status(400).json({
+    //             success: false,
+    //             message: "email already"
+    //         })
+    //     }
 
-        const checkPhoneNumber = await accountModel.findOne({ phonenumber })
-        if (checkPhoneNumber) {
-            return res.status(400).json({
-                success: false,
-                message: "phone number already"
-            })
-        }
+    //     const checkPhoneNumber = await accountModel.findOne({ phonenumber })
+    //     if (checkPhoneNumber) {
+    //         return res.status(400).json({
+    //             success: false,
+    //             message: "phone number already"
+    //         })
+    //     }
 
-        if (confpassword != password) {
-            return res.status(400).json({
-                success: false,
-                message: "confirm password incorrect"
-            })
-        }
-        // create collection
-        //const hashPassword = bscrypt.hashSync(password, SALT_ROUNDS);
-        const user = await accountModel.create({
-            username: username,
-            password: password,
-            email: email,
-            phonenumber: phonenumber,
-            role: 'Student',
-            verified: false
-        })
-        const student = await studentModel.create({
-            studentModel: username,
-            studentemail: email,
-            studentphone: phonenumber,
-            academicyear: academicyear,
-            school: school,
-            verify: false
-        })
-        return res.status(200).json({
-            success: true,
-            message: "register success",
-            user: user,
-            student: student
-        })
+    //     if (confpassword != password) {
+    //         return res.status(400).json({
+    //             success: false,
+    //             message: "confirm password incorrect"
+    //         })
+    //     }
+    //     // create collection
+    //     //const hashPassword = bscrypt.hashSync(password, SALT_ROUNDS);
+    //     const user = await accountModel.create({
+    //         username: username,
+    //         password: password,
+    //         email: email,
+    //         phonenumber: phonenumber,
+    //         role: 'Student',
+    //         verified: false
+    //     })
+    //     const student = await studentModel.create({
+    //         studentModel: username,
+    //         studentemail: email,
+    //         studentphone: phonenumber,
+    //         academicyear: academicyear,
+    //         school: school,
+    //         verify: false
+    //     })
+    //     return res.status(200).json({
+    //         success: true,
+    //         message: "register success",
+    //         user: user,
+    //         student: student
+    //     })
 
-    } catch (error) {
-        console.log("error", error)
-    }
+    // } catch (error) {
+    //     console.log("error", error)
+    // }
 })
 
 
@@ -167,8 +169,8 @@ router.post('/login', async (req, res) => {
 })
 
 
-router.post('/reset-password', async (req, res) =>{
-    const { newpassword, confpassword,email } = req.body;
+router.post('/reset-password', async (req, res) => {
+    const { newpassword, confpassword, email } = req.body;
     if (!email || !newpassword || !confpassword) {
         return res.status(400).json({
             success: false,
@@ -176,7 +178,7 @@ router.post('/reset-password', async (req, res) =>{
         })
     }
     try {
-        const check = await accountModel.findOneAndUpdate({ email: email }, {password: newpassword})
+        const check = await accountModel.findOneAndUpdate({ email: email }, { password: newpassword })
 
         if (!check) {
             return res.status(400).json({
@@ -196,7 +198,7 @@ router.post('/reset-password', async (req, res) =>{
         return res.status(200).json({
             success: true,
             User: check,
-            
+
         })
     } catch (error) {
         console.log("error", error)
