@@ -1,6 +1,6 @@
 GET http://localhost:5000/company
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGYyODAyZGFlM2VjYTcwYzQ5NSIsInVzZXJuYW1lIjoiZnB0IiwiZW1haWwiOiJwaG9uZzFAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzcyMzU1MjgsImV4cCI6MTY3NzMyMTkyOH0.vmL5Fedel7MOcLBJZQ88FBMLwWGTcyr3lZkCM_Z2YoA
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGYyODAyZGFlM2VjYTcwYzQ5NSIsInVzZXJuYW1lIjoiaHV0ZWNoIiwiZW1haWwiOiJwaG9uZzFAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2Nzc1NjI2MzQsImV4cCI6MTY3NzY0OTAzNH0.lgK8O3himb98Ia66fN1UCagFVtLDAQN1LfgqO6bLLf0
 ###
  
 GET http://localhost:5000/company/list-cv
@@ -15,16 +15,16 @@ POST http://localhost:5000/company/create
 Content-Type: application/json
 
 {
-  "benifit": "không yêu cầu",
-  "expdate": "2023-10-09T17:00:00.000Z",
-  "gender": "Không yêu cầu",
-  "location": "hà nội",
   "namecompany": "fpt",
-  "title": "nodejs",
-  "required": "không có",
-  "salary": "100 - 107tr",
-  "logo:" : "js.png"
+  "benifit": "không có"
 }
 ###
 DELETE  http://localhost:5000/company/63eb5bbdd055caba8c9ff0c6
 Content-Type: application/json
+
+# ###
+# POST http://localhost:5000/company/upload_files
+# Content-Type: application/json
+# {
+
+# }

@@ -2,13 +2,12 @@ const express = require('express')
 const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
 const jobApplicationModel = require('../Models/jobApplication')
-const fileUpload = require("express-fileupload")
-const app = express()
+const multer = require('multer');
+const upload = multer();
 
-app.use(fileUpload({
-  createParentPath: true
-}))
+
 const { format } = require('date-fns');
+const { log } = require('console');
 
 // const date = new Date();
 // const formattedDate = format(date, 'dd/MM/yyyy');
@@ -68,7 +67,6 @@ const createPost = async(req,res, next) => {
     try {
             // get info user 
             const {benifit, expdate, gender, location, namecompany, title, required, salary} = req.body;
-            const logo = req.files
             if(!benifit || !expdate || !gender || !location || !namecompany
                 || !title || !required  || !salary ){
                 return res.status(400).json({
@@ -76,11 +74,14 @@ const createPost = async(req,res, next) => {
                     message: "missing"
                 })
             }  
-
-            console.log(logo)
-
-            logo.mv("./uploads/" + logo.name)
-
+            if(!req.file){
+                res.send({
+                status: false,
+                message: "No files"
+                })
+            } 
+            console.log(req.file);
+            //const {logo} = req.file
             const jobpost =   await  jobPostModel.create({
                 benifit:benifit, 
                 expdate:expdate, 
@@ -90,7 +91,8 @@ const createPost = async(req,res, next) => {
                 title:title, 
                 required:required, 
                 salary:salary, 
-                logo: logo.name,
+                logo: req.file.path
+                
             })
             return res.json({
                 success: true,
@@ -127,7 +129,29 @@ const Delete = (req, res, next) =>{
     }
 
 }
-  
+
+
+// const Upload = async (req, res, next) =>{
+//     try {
+//         if(!req.files){
+//           res.send({
+//             status: false,
+//             message: "No files"
+//           })
+//         } else {
+//           const {picture} = req.files
+    
+//             picture.mv("./uploads/" + picture.name)
+    
+//           res.send({
+//             status: true,
+//             message: "File is uploaded"
+//           })
+//         }
+//       } catch (e) {
+//         res.status(500).send(e)
+//       }
+//   }
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -135,5 +159,6 @@ module.exports = {
     createPost: createPost,
     update: update,
     Delete: Delete,
+    // Upload: Upload
 }
 
