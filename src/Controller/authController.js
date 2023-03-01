@@ -7,104 +7,136 @@ const nodemailer = require('nodemailer')
 const { v4: uuidv4 } = require('uuid');
 const crypto = require('crypto');
 require("dotenv").config()
-
+const mailgen = require('mailgen')
 
 
 
 ///{POST} http://localhost:5000/auth/register
 router.post('/register', async (req, res) => {
+    try {
+        const { username, password, confpassword, email, phonenumber, academicyear, school } = req.body;
 
-    let testAccount = await nodemailer.createTestAccount();
+        const config = {
+            service: 'gmail',
+            auth: {
+                user: process.env.AUTH_EmailSend,
+                pass: process.env.AUTH_Pass,
+            }
+        }
+        let transporter = nodemailer.createTransport(config)
 
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-            user: testAccount.user, // generated ethereal user
-            pass: testAccount.pass, // generated ethereal password
-        },
-    });
+        let mailGenarator = new mailgen({
+            theme: "default",
+            product: {
+                name: "Mailgen",
+                link: "http://mailgen.js/"
+            }
+        })
+        const otp = `${Math.floor(1000 + Math.random() * 9000)}`
+        let response = {
+            body: {
+                name: "verify your email",
+                intro: " verify your email",
+                table: {
+                    data: {
+                        item:`<h2> ${username}! Thanks for register on our site </h2>
+                            <h4>Please verify your email to contine wiht ${otp}</h4>
+                             `
+                    }
+                },
+                outro: " Check your mail"
+            }
+        }
 
-    let message = {
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
-        to: "bar@example.com, baz@example.com", // list of receivers
-        subject: "Hello ✔", // Subject line
-        text: "Success register with Us", // plain text body
-        html: "<b>Success register with Us</b>", // html body
-    }
+       
 
-    transporter.sendMail(message)
-        .then((info) => {
-            return res.status(201).json({
-                message: "success",
-                info: info.messageId,
-                preview: nodemailer.getTestMessageUrl(info)
+
+        if (!email || !password || !username || !phonenumber) {
+            return res.status(400).json({
+                success: false,
+                message: "missing"
             })
+        }
+
+        const checkEmail = await accountModel.findOne({ email })
+        if (checkEmail) {
+            return res.status(400).json({
+                success: false,
+                message: "email already"
+            })
+        }
+
+        let mail = mailGenarator.generate(response)
+
+        let messageSend = {
+            from: process.env.AUTH_EmailSend,
+            to: email,
+            subject: "Mail from ICN verify register",
+            html: mail
+        }
+
+
+            
+        const checkPhoneNumber = await accountModel.findOne({ phonenumber })
+        if (checkPhoneNumber) {
+            return res.status(400).json({
+                success: false,
+                message: "phone number already"
+            })
+        }
+
+        if (confpassword != password) {
+            return res.status(400).json({
+                success: false,
+                message: "confirm password incorrect"
+            })
+        }
+        // create collection
+        //const hashPassword = bscrypt.hashSync(password, SALT_ROUNDS);
+        const user = await accountModel.create({
+            username: username,
+            password: password,
+            email: email,
+            phonenumber: phonenumber,
+            role: 'Student',
+            verified: false
         })
-        .catch((error)=> {
-            console.log(error);
+        const student = await studentModel.create({
+            studentModel: username,
+            studentemail: email,
+            studentphone: phonenumber,
+            academicyear: academicyear,
+            school: school,
+            verify: false
         })
-    // get info user 
-    // const { username, password, confpassword, email, phonenumber, academicyear, school } = req.body;
-    // if (!email || !password || !username || !phonenumber) {
-    //     return res.status(400).json({
-    //         success: false,
-    //         message: "missing"
-    //     })
-    // }
-    // try {
-    //     const checkEmail = await accountModel.findOne({ email })
-    //     if (checkEmail) {
-    //         return res.status(400).json({
-    //             success: false,
-    //             message: "email already"
-    //         })
-    //     }
 
-    //     const checkPhoneNumber = await accountModel.findOne({ phonenumber })
-    //     if (checkPhoneNumber) {
-    //         return res.status(400).json({
-    //             success: false,
-    //             message: "phone number already"
-    //         })
-    //     }
+        transporter.sendMail((messageSend),(req,res)=>{
+            try {
+                then(() => {
+                    return res.status(201).json({
+                        success: true,
+                        message: "you verified email"
+                    })
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+            } catch (error) {
+                
+            }
+        })
 
-    //     if (confpassword != password) {
-    //         return res.status(400).json({
-    //             success: false,
-    //             message: "confirm password incorrect"
-    //         })
-    //     }
-    //     // create collection
-    //     //const hashPassword = bscrypt.hashSync(password, SALT_ROUNDS);
-    //     const user = await accountModel.create({
-    //         username: username,
-    //         password: password,
-    //         email: email,
-    //         phonenumber: phonenumber,
-    //         role: 'Student',
-    //         verified: false
-    //     })
-    //     const student = await studentModel.create({
-    //         studentModel: username,
-    //         studentemail: email,
-    //         studentphone: phonenumber,
-    //         academicyear: academicyear,
-    //         school: school,
-    //         verify: false
-    //     })
-    //     return res.status(200).json({
-    //         success: true,
-    //         message: "register success",
-    //         user: user,
-    //         student: student
-    //     })
+        return res.status(200).json({
+            success: true,
+            message: "register success",
+            user: user,
+            student: student
+        })
+        
 
-    // } catch (error) {
-    //     console.log("error", error)
-    // }
+    } catch (error) {
+        console.log("error", error)
+    }
 })
 
 
