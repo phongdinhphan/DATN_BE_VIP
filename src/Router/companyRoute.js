@@ -13,27 +13,10 @@ router.get('/details/:accId',companyManagerController.showDetails)
 router.put('/details/:accId',companyManagerController.update)
 router.post('/create',upload.single("file"),companyManagerController.createPost)
 router.delete('/:accId',companyManagerController.Delete)
-// router.post("/upload", async (req, res) => {
-//     try {
-//       if(!req.files){
-//         res.send({
-//           status: false,
-//           message: "No files"
-//         })
-//       } else {
-//         const {picture} = req.files
-  
-//           picture.mv("./uploads/" + picture.name)
-  
-//         res.send({
-//           status: true,
-//           message: "File is uploaded"
-//         })
-//       }
-//     } catch (e) {
-//       res.status(500).send(e)
-//     }
-//   })
+
+router.get('/list-cv/details/:accId',companyManagerController.showDetails_cv)
+router.post('/list-cv/details/:accId/send-email',companyManagerController.send_email)
+
 
 
 
