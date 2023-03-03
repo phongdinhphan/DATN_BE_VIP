@@ -5,7 +5,7 @@ const jobApplicationModel = require('../Models/jobApplication')
 const multer = require('multer');
 const upload = multer();
 const nodemailer = require('nodemailer')
-
+const moment = require('moment');
 const { format } = require('date-fns');
 const { log } = require('console');
 
@@ -93,11 +93,13 @@ const createPost = async(req,res, next) => {
                 message: "No files"
                 })
             } 
+            const date = new Date(); 
+            const formattedDate = moment(date).format('DD/MM/YYYY');
             console.log(req.file);
             //const {logo} = req.file
             const jobpost =   await  jobPostModel.create({
                 benefit:benefit, 
-                expdate:expdate, 
+                expdate:formattedDate, 
                 gender:gender, 
                 location:location, 
                 namecompany:namecompany, 

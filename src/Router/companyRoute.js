@@ -11,7 +11,7 @@ router.get('/',verify,companyManagerController.listPost)
 router.get('/list-cv',verify,companyManagerController.listCV)
 router.get('/details/:accId',companyManagerController.showDetails)
 router.put('/details/:accId',companyManagerController.update)
-router.post('/create',upload.single("file"),companyManagerController.createPost)
+router.post('/create',upload.single("logo"),companyManagerController.createPost)
 router.delete('/:accId',companyManagerController.Delete)
 
 router.get('/list-cv/details/:accId',companyManagerController.showDetails_cv)
