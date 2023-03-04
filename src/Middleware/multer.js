@@ -17,5 +17,5 @@ var storageEngine = multer.diskStorage({
       cb(new Error('Only PNG files are allowed'), false);
     }
   };
-  const upload = multer({ storage: storageEngine, fileFilter: fileFilter })
+  const upload = multer({ storage: storageEngine, fileFilter: fileFilter,   limits: { fileSize: 1000000 } })
 module.exports = upload

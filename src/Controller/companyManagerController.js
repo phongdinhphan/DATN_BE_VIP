@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
 const jobApplicationModel = require('../Models/jobApplication')
+const emailModel = require('../Models/emailModel')
+const skillModel = require('../Models/skillModel')
 const multer = require('multer');
 const upload = multer();
 const nodemailer = require('nodemailer')
@@ -33,10 +35,10 @@ const listPost = async (req, res, next) =>{
 
 const listCV = async (req, res, next) =>{
     try {
-        jobApplicationModel.find({})
+        jobApplicationModel.find({verify: true})
         .then(listpost => {
             // console.log(listpost)
-            const a =  listpost?.filter((post) =>post?.namecompany === req.username) 
+            const a =  listpost?.filter((post) =>post?.namecompany === req.username ) 
             res.json(a)
     
         })
@@ -79,9 +81,9 @@ const showDetails_cv = (req, res, next) =>{
 const createPost = async(req,res, next) => {
     try {
             // get info user 
-            const {benefit, expdate, gender, location, namecompany, title, required, salary} = req.body;
+            const {benefit, expdate, gender, location, namecompany, title, required, salary,skill,responsibility} = req.body;
             if(!benefit || !expdate || !gender || !location || !namecompany
-                || !title || !required  || !salary ){
+                || !title || !required  || !salary || !responsibility ||!skill){
                 return res.status(400).json({
                     success: false,
                     message: "missing"
@@ -107,7 +109,10 @@ const createPost = async(req,res, next) => {
                 title:title, 
                 required:required, 
                 salary:salary, 
-                logo: filePath
+                logo: filePath,
+                skill: skill,
+                responsibility: responsibility,
+                verify: false
                 
             })
             return res.json({
@@ -171,6 +176,21 @@ const send_email = (req, res, next) =>{
             console.log("email sent " + info.response)
         }
     })
+
+    const emailsend = emailModel.create({
+        fromemail:req.body.fromEmail,
+        toemail: req.body.toEmail,
+        subject: req.body.subject,
+        content: req.body.message ,
+    })
+
+    return res.status(200).json({
+        success: true,
+        message: "send mail success",
+        emailsend: emailsend
+    })
+
+
 }
 
 module.exports = {

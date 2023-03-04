@@ -132,3 +132,16 @@ Content-Type: application/json
 DELETE  http://localhost:5000/admin/major/63f47bb69fcbe201f7e8dee7
 Content-Type: application/json
 ###
+
+
+
+GET  http://localhost:5000/admin/jobpost
+Content-Type: application/json
+###
+GET  http://localhost:5000/admin/jobpost/details/6402bd265a9da47499ec6f78
+Content-Type: application/json
+###
+
+PUT  http://localhost:5000/admin/jobpost/details/6402bd265a9da47499ec6f78
+Content-Type: application/json
+###

@@ -1,6 +1,6 @@
 GET http://localhost:5000/company
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGYyODAyZGFlM2VjYTcwYzQ5NSIsInVzZXJuYW1lIjoiaHV0ZWNoIiwiZW1haWwiOiJwaG9uZzFAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2Nzc2NjgzOTQsImV4cCI6MTY3Nzc1NDc5NH0.bsVhvxZZ5V9uVEoxKWUDedKkYlDi_dusMIApNaeA0T8
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5ODAyZGFlM2VjYTcwYzQ4ZiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZzdAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2Nzc5MDE1ODEsImV4cCI6MTY3Nzk4Nzk4MX0.OOKcBZHfs9AuC5db1tPvmyB7lcUUWkrRzIeeX0Tmvu4
 ###
  
 GET http://localhost:5000/company/list-cv
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 {
   "fromEmail": "phandinhphong258@gmail.com",
-  "toEmail": "pem96628@omeie.com",
+  "toEmail": "mmf83633@omeie.com",
   "subject": "mail confirm",
   "message": "you passed"
 }

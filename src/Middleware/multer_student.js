@@ -10,12 +10,6 @@ var storageEngine = multer.diskStorage({
     }
   })
 
-  const fileFilter = function (req, file, cb) {
-    if (file.mimetype === 'image/png') {
-      cb(null, true);
-    } else {
-      cb(new Error('Only PNG files are allowed'), false);
-    }
-  };
-  const upload = multer({ storage: storageEngine, fileFilter: fileFilter })
+  
+  const upload = multer({ storage: storageEngine })
 module.exports = upload

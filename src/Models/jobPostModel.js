@@ -42,8 +42,12 @@ const JobPostSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    mission:{
+    responsibility:{
         type: String,
+        require: true,
+    },
+    verify:{
+        type: Boolean,
         require: true,
     },
 });

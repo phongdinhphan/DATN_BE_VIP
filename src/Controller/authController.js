@@ -16,40 +16,33 @@ router.post('/register', async (req, res) => {
     try {
         const { username, password, confpassword, email, phonenumber, academicyear, school } = req.body;
 
-        const config = {
-            service: 'gmail',
-            auth: {
+        const tranforter = nodemailer.createTransport({
+            service: "gmail",
+            auth:{
                 user: process.env.AUTH_EmailSend,
                 pass: process.env.AUTH_Pass,
             }
-        }
-        let transporter = nodemailer.createTransport(config)
+        })
 
-        let mailGenarator = new mailgen({
-            theme: "default",
-            product: {
-                name: "Mailgen",
-                link: "http://mailgen.js/"
+        const otp = `${Math.floor(1000 + Math.random() * 9000)}`
+        const mailOptions = {
+            from: process.env.AUTH_EmailSend,
+            to: email,
+            subject: `Message from ${email}: Veriy email`,
+            text: 'thanks for register' ,
+            html: `<h2> ${username}! Thanks for register on our site </h2>
+                    <h4>Please verify your email to contine wiht ${otp}</h4>`
+        }
+
+      
+        tranforter.sendMail(mailOptions,(error,info)=> {
+            if(error){
+                console.log(error);
+            }
+            else{
+                console.log("email sent " + info.response)
             }
         })
-        const otp = `${Math.floor(1000 + Math.random() * 9000)}`
-        let response = {
-            body: {
-                name: "verify your email",
-                intro: " verify your email",
-                table: {
-                    data: {
-                        item:`<h2> ${username}! Thanks for register on our site </h2>
-                            <h4>Please verify your email to contine wiht ${otp}</h4>
-                             `
-                    }
-                },
-                outro: " Check your mail"
-            }
-        }
-
-       
-
 
         if (!email || !password || !username || !phonenumber) {
             return res.status(400).json({
@@ -65,16 +58,6 @@ router.post('/register', async (req, res) => {
                 message: "email already"
             })
         }
-
-        let mail = mailGenarator.generate(response)
-
-        let messageSend = {
-            from: process.env.AUTH_EmailSend,
-            to: email,
-            subject: "Mail from ICN verify register",
-            html: mail
-        }
-
 
             
         const checkPhoneNumber = await accountModel.findOne({ phonenumber })
@@ -108,22 +91,6 @@ router.post('/register', async (req, res) => {
             academicyear: academicyear,
             school: school,
             verify: false
-        })
-
-        transporter.sendMail((messageSend),(req,res)=>{
-            try {
-                then(() => {
-                    return res.status(201).json({
-                        success: true,
-                        message: "you verified email"
-                    })
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-            } catch (error) {
-                
-            }
         })
 
         return res.status(200).json({
