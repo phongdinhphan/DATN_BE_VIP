@@ -78,14 +78,22 @@ const detailsCV = (req, res, next) =>{
 const createCV = async(req,res, next) => {
     try {
             // get info user 
-            const {date, name, major, email, namecompany, nameschool, status, url, verify} = req.body;
+            const {date, name, major, email, namecompany, nameschool} = req.body;
             if(!date || !name || !major || !email || !namecompany
-                || !nameschool || !url ){
+                || !nameschool ){
                 return res.status(400).json({
                     success: false,
                     message: "missing"
                 })
             } 
+            if(!req.file){
+                res.send({
+                status: false,
+                message: "No files"
+                })
+            } 
+            console.log(req.file);
+            const filePath = req.file.path.replace(/\\/g, '/');
             const jobaplli =   await  jobApplicationModel.create({
                 date: date, 
                 name:  name, 
@@ -94,12 +102,12 @@ const createCV = async(req,res, next) => {
                 namecompany: namecompany, 
                 nameschool: nameschool, 
                 status: "Đang chờ xác nhận", 
-                url: url, 
+                url: filePath, 
                 verify: false
             })
             return res.json({
                 success: true,
-                message: "create jobpost success",
+                message: "create jobapp success",
                 jobaplli: jobaplli
             })
     } catch (error) {
@@ -107,26 +115,7 @@ const createCV = async(req,res, next) => {
     }   
 }
 
-const upload = async (req, res) => {
-    try {
-        if(!req.url){
-            res.send({
-                status: false,
-                message: "no files"
-            })
-        }
-        else{
-            const{url} = req.body.url
-            url.mv("./uploads" + url.name)
-            res.send({
-                status: true,
-                message: "Files is uploaded"
-            })
-        }
-    } catch (error) {
-        res.status(500).send(error)
-    }
-}
+
 
   
 module.exports = {
@@ -135,6 +124,5 @@ module.exports = {
     createCV: createCV,
     detailsCV: detailsCV,
     detailsPost:detailsPost,
-    upload: upload
 }
 

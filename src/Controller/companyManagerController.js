@@ -94,9 +94,10 @@ const createPost = async(req,res, next) => {
                 })
             } 
             const date = new Date(); 
-            const formattedDate = moment(date).format('DD/MM/YYYY');
+            const formattedDate = format(date, 'dd/MM/yyyy');
             console.log(req.file);
             //const {logo} = req.file
+            const filePath = req.file.path.replace(/\\/g, '/');
             const jobpost =   await  jobPostModel.create({
                 benefit:benefit, 
                 expdate:formattedDate, 
@@ -106,7 +107,7 @@ const createPost = async(req,res, next) => {
                 title:title, 
                 required:required, 
                 salary:salary, 
-                logo: req.file.path
+                logo: filePath
                 
             })
             return res.json({
