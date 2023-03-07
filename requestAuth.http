@@ -3,15 +3,12 @@ Content-Type: application/json
 
 {
     "username": "aitech",
-    "email": "lao83433@zslsz.com",
+    "email": "a2132123bc@zslsz.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "5354343",
+    "phonenumber": "623432111",
     "academicyear": "2019",
-    "address": "tphcm",
-    "code": "123123123",
     "gender": "nam",
-    "major": "cntt",
     "school": "hutech"
     
 }

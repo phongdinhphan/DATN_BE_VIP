@@ -14,7 +14,7 @@ const mailgen = require('mailgen')
 ///{POST} http://localhost:5000/auth/register
 router.post('/register', async (req, res) => {
     try {
-        const { username, password, confpassword, email, phonenumber, academicyear, school } = req.body;
+        const { username, password, confpassword, email, phonenumber, school ,gender} = req.body;
 
         const tranforter = nodemailer.createTransport({
             service: "gmail",
@@ -81,6 +81,7 @@ router.post('/register', async (req, res) => {
             password: password,
             email: email,
             phonenumber: phonenumber,
+            gender:gender,
             role: 'Student',
             verified: false
         })
@@ -88,8 +89,8 @@ router.post('/register', async (req, res) => {
             studentModel: username,
             studentemail: email,
             studentphone: phonenumber,
-            academicyear: academicyear,
             school: school,
+            gender:gender,
             verify: false
         })
 

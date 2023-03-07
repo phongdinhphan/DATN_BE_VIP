@@ -1,6 +1,6 @@
 GET http://localhost:5000/company
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5ODAyZGFlM2VjYTcwYzQ4ZiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZzdAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2Nzc5MDE1ODEsImV4cCI6MTY3Nzk4Nzk4MX0.OOKcBZHfs9AuC5db1tPvmyB7lcUUWkrRzIeeX0Tmvu4
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5ODAyZGFlM2VjYTcwYzQ4ZiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZzdAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzgwOTEyNTUsImV4cCI6MTY3ODE3NzY1NX0.4d9unzu1JrHPdikqL5L-IbAXNwjyF8fLr5qpCQm7Ies
 ###
  
 GET http://localhost:5000/company/list-cv
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 {
   "fromEmail": "phandinhphong258@gmail.com",
-  "toEmail": "mmf83633@omeie.com",
+  "toEmail": "uka56346@nezid.com",
   "subject": "mail confirm",
   "message": "you passed"
 }
@@ -38,6 +38,14 @@ Content-Type: application/json
 DELETE  http://localhost:5000/company/63eb5bbdd055caba8c9ff0c6
 Content-Type: application/json
 
+####
+PUT http://localhost:5000/company/details/6402bd265a9da47499ec6f78
+Content-Type: application/json
+
+{
+  "benefit": "100tr 1 tháng"
+
+}
 # ###
 # POST http://localhost:5000/company/upload_files
 # Content-Type: application/json
