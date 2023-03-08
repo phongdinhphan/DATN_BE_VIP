@@ -17,7 +17,7 @@ const { log } = require('console');
 ///[GET] http://localhost:5000/company
 const listPost = async (req, res, next) =>{
     try {
-        jobPostModel.find({})
+        jobPostModel.find({verify: true})
         .then(listpost => {
             // console.log(listpost)
             const a = listpost?.filter((post) => {
@@ -35,7 +35,7 @@ const listPost = async (req, res, next) =>{
 
 const listCV = async (req, res, next) =>{
     try {
-        jobApplicationModel.find({verify: true})
+        jobApplicationModel.find()
         .then(listpost => {
             // console.log(listpost)
             const a =  listpost?.filter((post) =>post?.namecompany === req.username ) 

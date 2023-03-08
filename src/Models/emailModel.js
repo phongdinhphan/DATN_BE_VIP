@@ -14,7 +14,7 @@ const emailSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-});
+}, { versionKey: false });
 
 const emailModel = mongoose.model('email',emailSchema)
 module.exports= emailModel;

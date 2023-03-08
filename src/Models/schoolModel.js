@@ -15,7 +15,7 @@ const schoolSchema = new mongoose.Schema({
         unique: true,
     },
     location: String,
-});
+}, { versionKey: false });
 
 const schoolModel = mongoose.model('school',schoolSchema)
 module.exports= schoolModel;

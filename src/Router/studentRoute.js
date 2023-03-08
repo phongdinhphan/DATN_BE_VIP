@@ -10,5 +10,9 @@ router.get('/details/:accId',studentManagerController.detailsPost)
 
 router.get('/cv',verify,studentManagerController.listCV)
 router.get('/cv/details/:accId',verify,studentManagerController.detailsCV)
-router.post('/create',upload.single("cv"),studentManagerController.createCV)
+router.post('/create',upload.single("cv"),studentManagerController.createCV)    
+
+router.put('/update-profile',verify,studentManagerController.update_profile)
+router.get('/profile',verify,studentManagerController.profile)
+
 module.exports = router;

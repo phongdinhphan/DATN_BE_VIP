@@ -50,7 +50,7 @@ const JobPostSchema = new mongoose.Schema({
         type: Boolean,
         require: true,
     },
-});
+}, { versionKey: false });
 
 const jobpostModel = mongoose.model('jobpost',JobPostSchema)
 module.exports= jobpostModel;

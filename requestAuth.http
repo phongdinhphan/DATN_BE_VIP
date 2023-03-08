@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
     "username": "aitech",
-    "email": "a2132123bc@zslsz.com",
+    "email": "123111@zslsz.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "623432111",
+    "phonenumber": "22222",
     "academicyear": "2019",
     "gender": "nam",
     "school": "hutech"
@@ -17,7 +17,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "phong7@gmail.com",
+    "email": "qyy24211@omeie.com",
     "password": "123"
 
 }

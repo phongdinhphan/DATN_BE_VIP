@@ -43,7 +43,7 @@ const StudentSchema = new mongoose.Schema({
         require: true,
     },
     
-});
+}, { versionKey: false });
 
 const studentModel = mongoose.model('student',StudentSchema)
 module.exports= studentModel;

@@ -38,7 +38,7 @@ const jobAppSchema = new mongoose.Schema({
         require: true,
     },
 
-});
+}, { versionKey: false });
 
 const jobAppModel = mongoose.model('jobapplication',jobAppSchema)
 module.exports= jobAppModel;

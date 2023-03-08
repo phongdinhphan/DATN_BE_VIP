@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
 const jobApplicationModel = require('../Models/jobApplication')
+const studentModel = require('../Models/studentModel')
 
 
 ///[GET] http://localhost:5000/company
@@ -116,6 +117,47 @@ const createCV = async(req,res, next) => {
 }
 
 
+/// [PUT] http://localhost:5000/update-profile
+const update_profile = (req, res,next) => {
+    try {
+        const {studentname, academicyear,address, code, major, school} = req.body
+        studentModel.findOneAndUpdate({studentemail: req.email},{
+            studentname: studentname,
+            academicyear: academicyear,
+            address: address,
+            code: code,
+
+            major: major, 
+            school: school,
+        })
+        .then(() => {
+            res.json({
+                success: true,
+                profile: req.body
+            })
+        })
+        .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+   
+} 
+
+const profile = (req, res,next) => {
+    try {
+        studentModel.find({studentemail: req.email})
+        .then((profile) => {
+            res.json({
+                success: true,
+                profile: profile
+            })
+        })
+        .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+   
+} 
 
   
 module.exports = {
@@ -124,5 +166,7 @@ module.exports = {
     createCV: createCV,
     detailsCV: detailsCV,
     detailsPost:detailsPost,
+    update_profile: update_profile,
+    profile: profile
 }
 

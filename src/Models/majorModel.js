@@ -5,7 +5,7 @@ const majorSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
-});
+}, { versionKey: false });
 
 const majorModel = mongoose.model('major',majorSchema)
 module.exports= majorModel;

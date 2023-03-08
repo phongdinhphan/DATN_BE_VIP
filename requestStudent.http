@@ -30,3 +30,23 @@ GET http://localhost:5000/cv
 Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZWI0ZDgxMDIwNDQ5NjZjOGVhZDdkOCIsInVzZXJuYW1lIjoidGhhbzEiLCJlbWFpbCI6InBoMTAwN0BnbWFpbC5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3Njg4Njc0MSwiZXhwIjoxNjc2OTczMTQxfQ.eDMQDAoMDGcEWlAeeU55mNhPW_L_eGpKH78ZwjaeDqQ
 ###
+
+GET http://localhost:5000/profile
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjNTVmMDRhYmI0YTljY2VhY2MzNiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJxeXkyNDIxMUBvbWVpZS5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3ODI3MjM4MiwiZXhwIjoxNjc4MzU4NzgyfQ.JgDIkN2ui4CpbO0dmIHunTjHjDuo1NxKlja12H_lQz8
+###
+
+
+PUT http://localhost:5000/update-profile
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjNTVmMDRhYmI0YTljY2VhY2MzNiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJxeXkyNDIxMUBvbWVpZS5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3ODI3MTQ4NCwiZXhwIjoxNjc4MzU3ODg0fQ.FyU1PwYfYzAtIdXU_ivhBC9mR7YXrVEMhN2CQaLvYRg
+
+{
+   "studentname": "studentname",
+   "studentname": "academicyear",
+   "address": "tphcm",
+   "code": "1231312",
+   "major": "cntt", 
+   "school": "school"
+}
+###
