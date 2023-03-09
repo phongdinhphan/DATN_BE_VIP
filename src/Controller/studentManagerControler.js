@@ -8,17 +8,15 @@ const studentModel = require('../Models/studentModel')
 ///[GET] http://localhost:5000/company
 const listPost = async (req, res, next) =>{
     try {
-        jobApplicationModel.find({})
-        .then(listpost => {
-            // console.log(listpost)
-            const a = listpost?.filter((post) => {
-                const regex = new RegExp(req.email, 'i');
-                return post?.email && regex.test(post.email);
-              });
-            console.log(a)
-    
-        })
-        .catch(next) 
+        try {
+            jobPostModel.find({})
+            .then(listPost => {
+             res.json(listPost)
+            })
+            .catch(next)
+        } catch (error) {
+            console.log(error)
+        }
       }
     catch (error) {
         console.log(error)
@@ -34,7 +32,7 @@ const listCV = async (req, res, next) =>{
                 const regex = new RegExp(req.email, 'i');
                 return app?.email && regex.test(app.email);
               });
-            console.log(a)
+              res.json(a)
     
         })
         .catch(next) 
