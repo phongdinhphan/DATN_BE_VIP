@@ -9,10 +9,22 @@ const companySchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
-    websitecompany: String,
+    websitecompany:  {
+        type: String,
+        unique: true,
+    },
     phonecompany: {
         type: String,
         unique: true,
+    },
+    introduce: {
+        type: String,
+        require: true,
+        maxlength: 1500,
+    },
+    slogan: {
+        type: String,
+        require: true,
     },
 }, { versionKey: false });
 

@@ -3,6 +3,9 @@ const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
 const jobApplicationModel = require('../Models/jobApplication')
 const studentModel = require('../Models/studentModel')
+const skillModel = require('../Models/skillModel')
+const companyModel = require('../Models/companyModel')
+
 
 
 ///[GET] http://localhost:5000/company
@@ -11,8 +14,10 @@ const listPost = async (req, res, next) =>{
         try {
             jobPostModel.find({})
             .then(listPost => {
-             res.json(listPost)
-            })
+                    res.json({
+                        listPost: listPost,
+                    })
+                })
             .catch(next)
         } catch (error) {
             console.log(error)
@@ -157,6 +162,17 @@ const profile = (req, res,next) => {
    
 } 
 
+const listSkill = async (req, res, next) =>{
+    try {
+        skillModel.find({})
+            .then(listskill => {
+            res.json(listskill)
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+  }
   
 module.exports = {
     listPost: listPost,
@@ -165,6 +181,7 @@ module.exports = {
     detailsCV: detailsCV,
     detailsPost:detailsPost,
     update_profile: update_profile,
-    profile: profile
+    profile: profile,
+    listSkill: listSkill,
 }
 

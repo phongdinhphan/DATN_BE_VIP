@@ -129,11 +129,11 @@ Content-Type: application/json
     "namemajor": "tâm lý học"
 }
 ###
-DELETE  http://localhost:5000/admin/major/63f47bb69fcbe201f7e8dee7
+DELETE  http://localhost:5000/admin/major/63e9a2c881f9d64ac1b5eef3
 Content-Type: application/json
 ###
 
-
+///api job post
 
 GET  http://localhost:5000/admin/jobpost
 Content-Type: application/json
@@ -143,5 +143,32 @@ Content-Type: application/json
 ###
 
 PUT  http://localhost:5000/admin/jobpost/details/6402bd265a9da47499ec6f78
+Content-Type: application/json
+###
+
+
+/// api skill
+
+GET http://localhost:5000/admin/skill
+###
+POST http://localhost:5000/admin/skill/create
+Content-Type: application/json
+
+{
+    "nameskill": "IT skill"
+}
+###
+
+GET http://localhost:5000/admin/skill/details/640bf65018630e90e6fb1bd9
+Content-Type: application/json
+###
+PUT http://localhost:5000/admin/skill/details/640bf65018630e90e6fb1bd9
+Content-Type: application/json
+
+{
+    "nameskill": "marketing skill"
+}
+###
+DELETE  http://localhost:5000/admin/skill/640bf65018630e90e6fb1bd9
 Content-Type: application/json
 ###

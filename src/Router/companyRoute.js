@@ -17,7 +17,8 @@ router.delete('/:accId',companyManagerController.Delete)
 router.get('/list-cv/details/:accId',companyManagerController.showDetails_cv)
 router.post('/list-cv/details/:accId/send-email',companyManagerController.send_email)
 
-
+router.put('/update-profile',verify,companyManagerController.update_profile)
+router.get('/profile',verify,companyManagerController.profile)
 
 
 module.exports = router

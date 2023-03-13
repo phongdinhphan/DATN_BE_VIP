@@ -3,13 +3,12 @@ const router = express.Router()
 const jobPostModel = require('../Models/jobPostModel')
 const jobApplicationModel = require('../Models/jobApplication')
 const emailModel = require('../Models/emailModel')
+const companyModel = require('../Models/companyModel')
 const skillModel = require('../Models/skillModel')
 const multer = require('multer');
 const upload = multer();
 const nodemailer = require('nodemailer')
 const moment = require('moment');
-const { format } = require('date-fns');
-const { log } = require('console');
 
 // const date = new Date();
 // const formattedDate = format(date, 'dd/MM/yyyy');
@@ -192,6 +191,40 @@ const send_email = (req, res, next) => {
 
 }
 
+const update_profile = (req, res, next) => {
+    try {
+        const {introduce, slogan} = req.body
+        companyModel.findOneAndUpdate({emailcompany: req.email},{
+            introduce: introduce,
+            slogan: slogan,
+        })
+        .then(() => {
+            res.json({
+                success: true,
+                profile: req.body
+            })
+        })
+        .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const profile = (req, res,next) => {
+    try {
+        companyModel.find({emailcompany: req.email})
+        .then((profile) => {
+            res.json({
+                success: true,
+                profile: profile
+            })
+        })
+        .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+   
+} 
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -201,6 +234,8 @@ module.exports = {
     Delete: Delete,
     showDetails_cv: showDetails_cv,
     send_email: send_email,
+    update_profile: update_profile,
+    profile: profile
     // Upload: Upload
 }
 

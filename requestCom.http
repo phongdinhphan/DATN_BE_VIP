@@ -46,9 +46,20 @@ Content-Type: application/json
   "benefit": "100tr 1 tháng"
 
 }
-# ###
-# POST http://localhost:5000/company/upload_files
-# Content-Type: application/json
-# {
+###
+GET http://localhost:5000/company/profile
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5ODAyZGFlM2VjYTcwYzQ4ZiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJhaXRlY2hAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2Nzg1MDQyNTEsImV4cCI6MTY3ODU5MDY1MX0.fGFRsM5_OmxN5XdABus2k_6tKI_K5Dr39LEoS2dVzuE
+###
 
-# }
+
+PUT http://localhost:5000/company/update-profile
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5ODAyZGFlM2VjYTcwYzQ4ZiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJhaXRlY2hAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2Nzg1MDQyNTEsImV4cCI6MTY3ODU5MDY1MX0.fGFRsM5_OmxN5XdABus2k_6tKI_K5Dr39LEoS2dVzuE
+
+{
+  "introduce": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (BIDV) là ngân hàng hàng đầu tại Việt Nam, hoạt động kinh doanh trong nhiều lĩnh vực như: Ngân hàng, Bảo hiểm, Chứng khoán. Với hơn 25.000 cán bộ nhân viên, BIDV nhận thức được rằng nguồn nhân lực là một nhân tố quan trọng hàng đầu cho sự phát triển và thành công của tổ chức. Vì vậy, một trong những mục tiêu quan trọng nhất của BIDV là phải xây dựng, duy trì và phát triển đội ngũ nhân viên đảm bảo đủ về số lượng và chất lượng để thực hiện thắng lợi các mục tiêu, chiến lược kinh doanh của hệ thống. ",
+  "slogan": "DỄ DÀNG - NHANH CHÓNG - CHUẨN MỰC - TÍN NGHĨA"
+}
+
+###
