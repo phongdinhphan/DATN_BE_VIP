@@ -9,6 +9,7 @@ const multer = require('multer');
 const upload = multer();
 const nodemailer = require('nodemailer')
 const moment = require('moment');
+const cloudinary = require('cloudinary').v2;
 
 // const date = new Date();
 // const formattedDate = format(date, 'dd/MM/yyyy');
@@ -79,10 +80,11 @@ const showDetails_cv = (req, res, next) => {
 /// [POST] http://localhost:5000/company/create
 const createPost = async (req, res, next) => {
     try {
-        // get info user 
+        //get info user 
         const { benefit, expdate, gender, location, namecompany, title, required, salary, skill, responsibility } = req.body;
         if (!benefit || !expdate || !gender || !location || !namecompany
             || !title || !required || !salary || !responsibility || !skill) {
+            cloudinary.uploader.destroy(req.file.filename)
             return res.status(400).json({
                 success: false,
                 message: "missing"
@@ -96,18 +98,18 @@ const createPost = async (req, res, next) => {
         }
         // const {expdate2} = "23/04/20223"
         console.log(req.file);
-        const filePath = req.file.path.replace(/\\/g, '/');
-        const expdate2 = moment.utc("23/04/2023", "DD/MM/YYYY").local();
+        // const filePath = req.file.path.replace(/\\/g, '/');
+        // const expdate2 = moment.utc("23/04/2023", "DD/MM/YYYY").local();
         const jobpost = await jobPostModel.create({
             benefit: benefit,
-            expdate: expdate2,
+            expdate: expdate,
             gender: gender,
             location: location,
             namecompany: namecompany,
             title: title,
             required: required,
             salary: salary,
-            logo: filePath,
+            logo: req.file.path,
             skill: skill,
             responsibility: responsibility,
             verify: false

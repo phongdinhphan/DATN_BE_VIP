@@ -2,16 +2,20 @@ const express = require('express')
 const router = express.Router()
 const companyManagerController = require('../Controller/companyManagerController')
 const multer = require("multer");
-const upload2 =  multer({ dest: "uploads/" });
 
 const verify = require('../Middleware/auth')
 const upload = require('../Middleware/multer')
+const uploadCloud = require('../Middleware/cloudinary.config')
+
 
 router.get('/',verify,companyManagerController.listPost)
 router.get('/list-cv',verify,companyManagerController.listCV)
 router.get('/details/:accId',companyManagerController.showDetails)
 router.put('/details/:accId',companyManagerController.update)
-router.post('/create',upload.single("logo"),companyManagerController.createPost)
+router.post('/create',uploadCloud.single('logo'),companyManagerController.createPost)
+
+
+
 router.delete('/:accId',companyManagerController.Delete)
 
 router.get('/list-cv/details/:accId',companyManagerController.showDetails_cv)
