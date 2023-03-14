@@ -16,7 +16,7 @@ const moment = require('moment');
 ///[GET] http://localhost:5000/company
 const listPost = async (req, res, next) => {
     try {
-        jobPostModel.find({ verify: true })
+        jobPostModel.find({})
             .then(listpost => {
                 // console.log(listpost)
                 const a = listpost?.filter((post) => {
