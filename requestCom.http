@@ -35,7 +35,7 @@ Content-Type: application/json
   "benifit": "không có"
 }
 ###
-DELETE  http://localhost:5000/company/63eb5bbdd055caba8c9ff0c6
+DELETE  http://localhost:5000/company/64104752a178beae8908e393
 Content-Type: application/json
 
 ####

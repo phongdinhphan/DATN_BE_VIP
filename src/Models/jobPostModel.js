@@ -50,6 +50,10 @@ const JobPostSchema = new mongoose.Schema({
         type: Boolean,
         require: true,
     },
+    filename:{
+        type: String,
+        unique: true,
+    },
 }, { versionKey: false });
 
 const jobpostModel = mongoose.model('jobpost',JobPostSchema)

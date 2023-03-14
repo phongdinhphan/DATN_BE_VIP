@@ -112,8 +112,8 @@ const createPost = async (req, res, next) => {
             logo: req.file.path,
             skill: skill,
             responsibility: responsibility,
-            verify: false
-
+            verify: false,
+            filename: req.file.filename,
         })
         return res.json({
             success: true,
@@ -139,12 +139,16 @@ const update = (req, res, next) => {
 /// [DELETE]  http://localhost:5000/company/:id
 const Delete = (req, res, next) => {
     try {
-        jobPostModel.findByIdAndDelete({ _id: req.params.accId }, req.body)
-            .then(() => res.json({
-                success: true,
-                userDetele: req.body
-            }))
-            .catch(next)
+        jobPostModel.findOne({ _id: req.params.accId })
+            .then(user => {
+                cloudinary.uploader.destroy(user.filename)
+                jobPostModel.findByIdAndDelete({ _id: req.params.accId })
+                .then(()=>{
+                    res.json({
+                        success: true,
+                    })
+                })
+            })
     } catch (error) {
         console.log(error);
     }

@@ -14,9 +14,7 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZWI0ZDgxMD
 
 POST http://localhost:5000/create
 Content-Type: application/json
-
 {
-   "date": "12/1/2023",
    "major": "CNTT",
    "name":"phong",
    "email": "phong1007@gmail.com",

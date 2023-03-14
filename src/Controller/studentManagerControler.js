@@ -76,8 +76,8 @@ const detailsCV = (req, res, next) => {
 const createCV = async (req, res, next) => {
     try {
         // get info user 
-        const { date, name, major, email, namecompany, nameschool } = req.body;
-        if (!date || !name || !major || !email || !namecompany
+        const { name, major, email, namecompany, nameschool } = req.body;
+        if ( !name || !major || !email || !namecompany
             || !nameschool) {
             return res.status(400).json({
                 success: false,
@@ -90,17 +90,18 @@ const createCV = async (req, res, next) => {
                 message: "No files"
             })
         }
-        console.log(req.file);
-        const filePath = req.file.path.replace(/\\/g, '/');
+        const now = new Date();
+        console.log(now);
+        console.log(req.file); 
         const jobaplli = await jobApplicationModel.create({
-            date: date,
+            date: now,
             name: name,
             major: major,
             email: email,
             namecompany: namecompany,
             nameschool: nameschool,
             status: "Đang chờ xác nhận",
-            url: filePath,
+            url: req.file.path,
             verify: false
         })
         return res.json({
