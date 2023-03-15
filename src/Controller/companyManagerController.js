@@ -96,25 +96,28 @@ const createPost = async (req, res, next) => {
                 message: "No files"
             })
         }
+     
         // const {expdate2} = "23/04/20223"
         console.log(req.file);
         // const filePath = req.file.path.replace(/\\/g, '/');
         // const expdate2 = moment.utc("23/04/2023", "DD/MM/YYYY").local();
         const jobpost = await jobPostModel.create({
-            benefit: benefit,
-            expdate: expdate,
-            gender: gender,
-            location: location,
-            namecompany: namecompany,
-            title: title,
-            required: required,
-            salary: salary,
+            benefit: req.body.benefit,
+            expdate: req.body.expdate,
+            gender: req.body.gender,
+            location: req.body.location,
+            namecompany: req.body.namecompany,
+            title: req.body.title,
+            required: req.body.required,
+            salary: req.body.salary,
             logo: req.file.path,
-            skill: skill,
-            responsibility: responsibility,
+            skill: req.body.skill,
+            responsibility: req.body.responsibility,
             verify: false,
             filename: req.file.filename,
-        })
+          });
+          
+          await jobpost.save();
         return res.json({
             success: true,
             message: "create jobpost success",
@@ -128,8 +131,15 @@ const createPost = async (req, res, next) => {
 /// [PUT] http://localhost:5000/company/details/:id
 const update = (req, res, next) => {
     try {
-        jobPostModel.updateOne({ _id: req.params.accId }, req.body)
-            .then(() => res.json(req.body))
+        jobPostModel.updateOne({ _id: req.params.accId }, { $push: { skill: req.body.skill }}, req.body)
+            .then(() => {
+                if(!req.body.skill){
+                    list.push(req.body.skill)
+                    jobPostModel.skill =list
+                }
+                res.json(req.body)
+
+            })
             .catch(next)
     } catch (error) {
         console.log(error);

@@ -39,11 +39,11 @@ DELETE  http://localhost:5000/company/64104752a178beae8908e393
 Content-Type: application/json
 
 ####
-PUT http://localhost:5000/company/details/6402bd265a9da47499ec6f78
+PUT http://localhost:5000/company/details/6411402b1a13b2a4c33e26c0
 Content-Type: application/json
 
 {
-  "benefit": "100tr 1 tháng"
+  "skill": "node js js",
 
 }
 ###
