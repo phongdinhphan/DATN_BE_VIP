@@ -5,6 +5,8 @@ const jobApplicationModel = require('../Models/jobApplication')
 const studentModel = require('../Models/studentModel')
 const skillModel = require('../Models/skillModel')
 const companyModel = require('../Models/companyModel')
+const accountModel = require('../Models/accountModel')
+
 
 
 
@@ -77,7 +79,7 @@ const createCV = async (req, res, next) => {
     try {
         // get info user 
         const { name, major, email, namecompany, nameschool } = req.body;
-        if ( !name || !major || !email || !namecompany
+        if (!name || !major || !email || !namecompany
             || !nameschool) {
             return res.status(400).json({
                 success: false,
@@ -92,7 +94,7 @@ const createCV = async (req, res, next) => {
         }
         const now = new Date();
         console.log(now);
-        console.log(req.file); 
+        console.log(req.file);
         const jobaplli = await jobApplicationModel.create({
             date: now,
             name: name,
@@ -169,6 +171,40 @@ const listSkill = async (req, res, next) => {
     }
 }
 
+const reset_pass = async (req, res, next) => {
+    try {
+        const { newpassword, confpassword } = req.body;
+        if (!newpassword || !confpassword) {
+            return res.status(400).json({
+                success: false,
+                message: "missing"
+            })
+        }
+        const check = await accountModel.findOneAndUpdate({ email: req.email }, { password: newpassword })
+
+        if (!check) {
+            return res.status(400).json({
+                success: false,
+                message: "email encorrect"
+            })
+        }
+
+        if (confpassword != newpassword) {
+            return res.status(400).json({
+                success: false,
+                message: "confirm password incorrect"
+            })
+        }
+        return res.status(200).json({
+            success: true,
+            User: check,
+
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -178,5 +214,6 @@ module.exports = {
     update_profile: update_profile,
     profile: profile,
     listSkill: listSkill,
+    reset_pass: reset_pass,
 }
 
