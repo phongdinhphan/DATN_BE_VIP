@@ -10,6 +10,8 @@ router.post('/login', authController);
 router.post('/forgot-password', authController);
 router.post('/reset-password', authController);
 router.get('/confirm/:email', authController);
+router.post('/reset-password/:email', authController);
+router.post('/forgot-password/:email', authController);
 
 
 module.exports = router

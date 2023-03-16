@@ -174,36 +174,46 @@ router.post('/login', async (req, res) => {
 
 
 router.post('/reset-password', async (req, res) => {
-    const { newpassword, confpassword, email } = req.body;
-    if (!email || !newpassword || !confpassword) {
+    const { email } = req.body;
+    if (!email ) {
         return res.status(400).json({
             success: false,
             message: "missing"
         })
     }
     try {
-        const check = await accountModel.findOneAndUpdate({ email: email }, { password: newpassword })
-
-        if (!check) {
-            return res.status(400).json({
-                success: false,
-                message: "email encorrect"
-            })
-        }
-
-        if (confpassword != newpassword) {
-            return res.status(400).json({
-                success: false,
-                message: "confirm password incorrect"
-            })
-        }
-
-
-        return res.status(200).json({
-            success: true,
-            User: check,
-
+        const tranforter = nodemailer.createTransport({
+            service: "gmail",
+            auth:{
+                user: process.env.AUTH_EmailSend,
+                pass: process.env.AUTH_Pass,
+            }
         })
+
+        const otp = `${Math.floor(1000 + Math.random() * 9000)}`
+        const mailOptions = {
+            from: process.env.AUTH_EmailSend,
+            to: email,
+            subject: `Message from ${email}: Veriy email`,
+            text: 'thanks for register' ,
+            html: `<div>
+                    <h1>Email Confirmation</h1>
+                    <h2>Hello! Thanks for register on our site </h2>
+                    <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
+                    <h4>Please click here to reset password</h4>
+                    <a href=http://localhost:5000/auth/reset-password/${email}> Click here</a>
+                </div>` ,
+        }
+      
+        tranforter.sendMail(mailOptions,(error,info)=> {
+            if(error){
+                console.log(error);
+            }
+            else{
+                console.log("email sent " + info.response)
+            }
+        })
+ 
     } catch (error) {
         console.log("error", error)
     }
@@ -225,6 +235,118 @@ router.get("/confirm/:email", async  (req, res)=> {
                    
                 })
 
+            })
+            .catch(console.error())
+    } catch (error) {
+        console.log(error)
+    }
+})
+router.post("/reset-password/:email", async  (req, res)=> {
+    try {
+        const {oldPass, newPass, cfmPass} = req.body
+        if (!oldPass || !newPass || !cfmPass) {
+            return res.status(400).json({
+                success: false,
+                message: "missing"
+            })
+        }
+        if(newPass != cfmPass){
+            return res.status(400).json({
+                success: false,
+                message: "confirm password incorrect"
+            }) 
+        }
+        accountModel.findOneAndUpdate({email: req.params.email},{password: cfmPass})
+            .then(account => {
+                if(!account){
+                    return res.status(404).send({ message: "User Not found." });
+                }
+                if(oldPass !=account.password){
+                    return res.status(404).send({ message: "Old password incorrect." });
+                }
+                res.json({
+                    success: true,
+                    message: "reset success",
+                   
+                })
+            })
+            .catch(console.error())
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.post('/forgot-password', async (req, res) => {
+    const { email } = req.body;
+    if (!email ) {
+        return res.status(400).json({
+            success: false,
+            message: "missing"
+        })
+    }
+    try {
+        const tranforter = nodemailer.createTransport({
+            service: "gmail",
+            auth:{
+                user: process.env.AUTH_EmailSend,
+                pass: process.env.AUTH_Pass,
+            }
+        })
+
+        const otp = `${Math.floor(1000 + Math.random() * 9000)}`
+        const mailOptions = {
+            from: process.env.AUTH_EmailSend,
+            to: email,
+            subject: `Message from ${email}: Veriy email`,
+            text: 'forgot the password' ,
+            html: `<div>
+                    <h1>Email Confirmation</h1>
+                    <h2>Hello! Thanks for register on our site </h2>
+                    <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
+                    <h4>Please click here to forgot password</h4>
+                    <a href=http://localhost:5000/auth/forgot-password/${email}> Click here</a>
+                </div>` ,
+        }
+      
+        tranforter.sendMail(mailOptions,(error,info)=> {
+            if(error){
+                console.log(error);
+            }
+            else{
+                console.log("email sent " + info.response)
+            }
+        })
+ 
+    } catch (error) {
+        console.log("error", error)
+    }
+})
+
+router.post("/forgot-password/:email", async  (req, res)=> {
+    try {
+        const {newPass, cfmPass} = req.body
+        if ( !newPass || !cfmPass) {
+            return res.status(400).json({
+                success: false,
+                message: "missing"
+            })
+        }
+        if(newPass != cfmPass){
+            return res.status(400).json({
+                success: false,
+                message: "confirm password incorrect"
+            }) 
+        }
+        accountModel.findOneAndUpdate({email: req.params.email},{password: cfmPass})
+            .then(account => {
+                if(!account){
+                    return res.status(404).send({ message: "User Not found." });
+                }
+                res.json({
+                    success: true,
+                    message: "success",
+                   
+                })
             })
             .catch(console.error())
     } catch (error) {

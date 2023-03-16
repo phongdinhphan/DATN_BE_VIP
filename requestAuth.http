@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
     "username": "aitech",
-    "email": "yqc09604@omeie.com",
+    "email": "alo19703@zslsz.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "9219221113",
+    "phonenumber": "92191",
     "academicyear": "2019",
     "gender": "nam",
     "school": "hutech"
@@ -29,9 +29,17 @@ POST http://localhost:5000/auth/reset-password
 Content-Type: application/json
 
 {
-    "email": "ph1007@gmail.com",
-    "newpassword": "321111111",
-    "confpassword": "321111111"
+    "email": "alo19703@zslsz.com"
+}
+###
+
+POST http://localhost:5000/auth/reset-password/alo19703@zslsz.com
+Content-Type: application/json
+
+{
+    "oldPass": "11111",
+    "newPass": "12222",
+    "cfmPass": "12222"
 
 }
 ###
@@ -40,8 +48,14 @@ POST http://localhost:5000/auth/forgot-password
 Content-Type: application/json
 
 {
-    "email": "ph1007@gmail.com",
-    "newpassword": "123",
-    "confpassword": "123"
+    "email": "alo19703@zslsz.com"
+}
+###
+POST http://localhost:5000/auth/forgot-password/alo19703@zslsz.com
+Content-Type: application/json
+
+{
+    "newPass": "333",
+    "cfmPass": "333"
 
 }
