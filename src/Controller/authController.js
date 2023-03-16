@@ -30,10 +30,14 @@ router.post('/register', async (req, res) => {
             to: email,
             subject: `Message from ${email}: Veriy email`,
             text: 'thanks for register' ,
-            html: `<h2> ${username}! Thanks for register on our site </h2>
-                    <h4>Please verify your email to contine wiht ${otp}</h4>`
+            html: `<div>
+                    <h1>Email Confirmation</h1>
+                    <h2>Hello ${username}! Thanks for register on our site </h2>
+                    <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
+                    <h4>Please verify your email to contine</h4>
+                    <a href=http://localhost:5000/auth/confirm/${email}> Click here</a>
+                </div>` ,
         }
-
       
         tranforter.sendMail(mailOptions,(error,info)=> {
             if(error){
@@ -206,6 +210,26 @@ router.post('/reset-password', async (req, res) => {
 
 
 
+})
+
+router.get("/confirm/:email", async  (req, res)=> {
+    try {
+        accountModel.findOneAndUpdate({email: req.params.email},{verified: true})
+            .then(account => {
+                if(!account){
+                    return res.status(404).send({ message: "User Not found." });
+                }
+                res.json({
+                    success: true,
+                    message: "verified success",
+                   
+                })
+
+            })
+            .catch(console.error())
+    } catch (error) {
+        console.log(error)
+    }
 })
 module.exports = router
 
