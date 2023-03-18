@@ -17,6 +17,7 @@ router.post('/create',uploadCloud.single("cv"),studentManagerController.createCV
 router.put('/update-profile',verify,studentManagerController.update_profile)
 router.get('/profile',verify,studentManagerController.profile)
 router.post('/setting/reset-password',verify,studentManagerController.reset_pass)
+router.put('/details/:accId',verify,studentManagerController.add_favorite)
 
 
 module.exports = router;

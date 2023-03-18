@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
     "username": "aitech",
-    "email": "alo19703@zslsz.com",
+    "email": "lqv55585@zslsz.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "92191",
+    "phonenumber": "92191124",
     "academicyear": "2019",
     "gender": "nam",
     "school": "hutech"
@@ -17,7 +17,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "ph1007@gmail.com",
+    "email": "zyg81268@omeie.com",
     "password": "123"
 
 }
@@ -32,6 +32,11 @@ Content-Type: application/json
     "email": "alo19703@zslsz.com"
 }
 ###
+
+GET http://localhost:5000/auth/confirm/email
+Content-Type: application/json
+
+####
 
 POST http://localhost:5000/auth/reset-password/alo19703@zslsz.com
 Content-Type: application/json

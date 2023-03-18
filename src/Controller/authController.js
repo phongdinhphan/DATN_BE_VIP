@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
                     <h2>Hello ${username}! Thanks for register on our site </h2>
                     <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
                     <h4>Please verify your email to contine</h4>
-                    <a href=http://localhost:5000/auth/confirm/${email}> Click here</a>
+                    <a href=http://localhost:3000/auth/confirm/${email}> Click here</a>
                 </div>` ,
         }
       
@@ -201,7 +201,7 @@ router.post('/reset-password', async (req, res) => {
                     <h2>Hello! Thanks for register on our site </h2>
                     <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
                     <h4>Please click here to reset password</h4>
-                    <a href=http://localhost:5000/auth/reset-password/${email}> Click here</a>
+                    <a href=http://localhost:3000/auth/reset-password/${email}> Click here</a>
                 </div>` ,
         }
       
@@ -304,7 +304,7 @@ router.post('/forgot-password', async (req, res) => {
                     <h2>Hello! Thanks for register on our site </h2>
                     <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
                     <h4>Please click here to forgot password</h4>
-                    <a href=http://localhost:5000/auth/forgot-password/${email}> Click here</a>
+                    <a href=http://localhost:3000/auth/forgot-password/${email}> Click here</a>
                 </div>` ,
         }
       

@@ -205,6 +205,22 @@ const reset_pass = async (req, res, next) => {
     }
 }
 
+const add_favorite = async (req, res,next) => {
+    try {
+        studentModel.updateOne({ studentemail: req.email },{ $push: { favorite:  req.params.accId }})
+            .then((profile) => {
+                res.json({
+                    success: true,
+                    message: "Add success",
+                    profile:profile,
+                })
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -215,5 +231,6 @@ module.exports = {
     profile: profile,
     listSkill: listSkill,
     reset_pass: reset_pass,
+    add_favorite: add_favorite,
 }
 

@@ -34,15 +34,15 @@ const showDetails = (req, res, next) =>{
 const createMajor = async(req,res) => {
     try {
            // get info user 
-           const {nameMajor} = req.body;
-           if(!nameMajor){
+           const {namemajor} = req.body;
+           if(!namemajor){
                return res.status(400).json({
                    success: false,
                    message: "missing"
                })
            }     
            const Major =   await  majorModel.create({
-               namemajor: nameMajor,
+               namemajor: namemajor,
            })
            return res.json({
                success: true,

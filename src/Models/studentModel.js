@@ -42,6 +42,9 @@ const StudentSchema = new mongoose.Schema({
         type : Boolean,
         require: true,
     },
+    favorite:{
+        type : Array,
+    },
     
 }, { versionKey: false });
 
