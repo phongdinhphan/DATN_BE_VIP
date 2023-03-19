@@ -78,7 +78,7 @@ const detailsCV = (req, res, next) => {
 const createCV = async (req, res, next) => {
     try {
         // get info user 
-        const { name, major, email, namecompany, nameschool } = req.body;
+        const { name, major, email, namecompany, nameschool, title} = req.body;
         if (!name || !major || !email || !namecompany
             || !nameschool) {
             return res.status(400).json({
@@ -104,7 +104,8 @@ const createCV = async (req, res, next) => {
             nameschool: nameschool,
             status: "Đang chờ xác nhận",
             url: req.file.path,
-            verify: false
+            verify: false,
+            title: title,
         })
         return res.json({
             success: true,

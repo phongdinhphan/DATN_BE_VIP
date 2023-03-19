@@ -96,7 +96,7 @@ const createPost = async (req, res, next) => {
                 message: "No files"
             })
         }
-     
+
         // const {expdate2} = "23/04/20223"
         console.log(req.file);
         // const filePath = req.file.path.replace(/\\/g, '/');
@@ -115,9 +115,9 @@ const createPost = async (req, res, next) => {
             responsibility: req.body.responsibility,
             verify: false,
             filename: req.file.filename,
-          });
-          
-          await jobpost.save();
+        });
+
+        await jobpost.save();
         return res.json({
             success: true,
             message: "create jobpost success",
@@ -131,11 +131,11 @@ const createPost = async (req, res, next) => {
 /// [PUT] http://localhost:5000/company/details/:id
 const update = (req, res, next) => {
     try {
-        jobPostModel.updateOne({ _id: req.params.accId }, { $push: { skill: req.body.skill }}, req.body)
+        jobPostModel.updateOne({ _id: req.params.accId }, { $push: { skill: req.body.skill } }, req.body)
             .then(() => {
-                if(!req.body.skill){
+                if (!req.body.skill) {
                     list.push(req.body.skill)
-                    jobPostModel.skill =list
+                    jobPostModel.skill = list
                 }
                 res.json(req.body)
 
@@ -153,11 +153,11 @@ const Delete = (req, res, next) => {
             .then(user => {
                 cloudinary.uploader.destroy(user.filename)
                 jobPostModel.findByIdAndDelete({ _id: req.params.accId })
-                .then(()=>{
-                    res.json({
-                        success: true,
+                    .then(() => {
+                        res.json({
+                            success: true,
+                        })
                     })
-                })
             })
     } catch (error) {
         console.log(error);
@@ -166,81 +166,102 @@ const Delete = (req, res, next) => {
 }
 
 const send_email = (req, res, next) => {
-    console.log(req.body)
-    const tranforter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-            user: process.env.AUTH_EmailSend,
-            pass: process.env.AUTH_Pass,
-        }
-    })
+    try {
+        console.log(req.body)
 
-    const mailOptions = {
-        from: req.body.fromEmail,
-        to: req.body.toEmail,
-        subject: `Message from ${req.body.fromEmail}: ${req.body.subject}`,
-        text: req.body.message
+        const tranforter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.AUTH_EmailSend,
+                pass: process.env.AUTH_Pass,
+            }
+        })
+
+        const mailOptions = {
+            from: req.body.fromEmail,
+            to: req.body.toEmail,
+            subject: `Message from ${req.body.fromEmail}: ${req.body.subject}`,
+            text: req.body.message
+        }
+
+        tranforter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log("email sent " + info.response)
+            }
+        })
+        
+
+        const emailsend = emailModel.create({
+            fromemail: req.body.fromEmail,
+            toemail: req.body.toEmail,
+            subject: req.body.subject,
+            content: req.body.message,
+        })
+
+        jobApplicationModel.findOneAndUpdate({ _id: req.params.accId },{status: "Đã xác nhận qua Email"})
+        .then(() =>res.status(200).json({
+                    success: true,
+                    message: "send mail success",
+                    emailsend: emailsend
+            }))
+        .catch(next)
+    } catch (error) {
     }
-
-    tranforter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("email sent " + info.response)
-        }
-    })
-
-    const emailsend = emailModel.create({
-        fromemail: req.body.fromEmail,
-        toemail: req.body.toEmail,
-        subject: req.body.subject,
-        content: req.body.message,
-    })
-
-    return res.status(200).json({
-        success: true,
-        message: "send mail success",
-        emailsend: emailsend
-    })
-
-
 }
 
 const update_profile = (req, res, next) => {
     try {
-        const {introduce, slogan} = req.body
-        companyModel.findOneAndUpdate({emailcompany: req.email},{
+        const { introduce, slogan } = req.body
+        companyModel.findOneAndUpdate({ emailcompany: req.email }, {
             introduce: introduce,
             slogan: slogan,
         })
-        .then(() => {
-            res.json({
-                success: true,
-                profile: req.body
+            .then(() => {
+                res.json({
+                    success: true,
+                    profile: req.body
+                })
             })
-        })
-        .catch(next)
+            .catch(next)
     } catch (error) {
         console.log(error);
     }
 }
 
-const profile = (req, res,next) => {
+const profile = (req, res, next) => {
     try {
-        companyModel.find({emailcompany: req.email})
-        .then((profile) => {
-            res.json({
-                success: true,
-                profile: profile
+        companyModel.find({ emailcompany: req.email })
+            .then((profile) => {
+                res.json({
+                    success: true,
+                    profile: profile
+                })
             })
-        })
-        .catch(next)
+            .catch(next)
     } catch (error) {
         console.log(error);
     }
-   
-} 
+
+}
+
+const refuse_cv = (req, res, next) => {
+    try {
+        jobApplicationModel.findOneAndUpdate({ _id: req.params.accId }, {status: "Đã từ chối"})
+            .then(account =>
+                res.json({
+                    success: true,
+                    message: "refuse success"
+                })
+            )
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -251,7 +272,8 @@ module.exports = {
     showDetails_cv: showDetails_cv,
     send_email: send_email,
     update_profile: update_profile,
-    profile: profile
+    profile: profile,
+    refuse_cv: refuse_cv,
     // Upload: Upload
 }
 

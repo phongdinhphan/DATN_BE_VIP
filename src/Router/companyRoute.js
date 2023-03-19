@@ -19,6 +19,7 @@ router.post('/create',uploadCloud.single('logo'),companyManagerController.create
 router.delete('/:accId',companyManagerController.Delete)
 
 router.get('/list-cv/details/:accId',companyManagerController.showDetails_cv)
+router.put('/list-cv/details/:accId',companyManagerController.refuse_cv)
 router.post('/list-cv/details/:accId/send-email',companyManagerController.send_email)
 
 router.put('/update-profile',verify,companyManagerController.update_profile)

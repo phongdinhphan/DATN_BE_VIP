@@ -37,6 +37,11 @@ const jobAppSchema = new mongoose.Schema({
         type: Boolean,
         require: true,
     },
+    title:{
+        type: String,
+        unique: true,
+    },
+
 
 }, { versionKey: false });
 

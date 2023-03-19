@@ -54,6 +54,7 @@ const JobPostSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
+ 
 }, { versionKey: false });
 
 const jobpostModel = mongoose.model('jobpost',JobPostSchema)

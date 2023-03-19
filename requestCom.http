@@ -11,7 +11,7 @@ GET http://localhost:5000/company/details/63eb615d91d27de2f55b033b
 Content-Type: application/json
 ###
 
-POST http://localhost:5000/company/list-cv/details/63eb615d91d27de2f55b033b/send-email
+POST http://localhost:5000/company/list-cv/details/641032306f6bccb934879139/send-email
 Content-Type: application/json
 
 {
@@ -26,6 +26,9 @@ GET http://localhost:5000/company/list-cv/details/63f33dbea2af566a3ee58cd3
 Content-Type: application/json
 ###
 
+PUT http://localhost:5000/company/list-cv/details/641570c46e6f9d283bb0acfa
+Content-Type: application/json
+###
 
 POST http://localhost:5000/company/create
 Content-Type: application/json
