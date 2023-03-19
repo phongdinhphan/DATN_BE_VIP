@@ -256,21 +256,21 @@ router.post("/reset-password/:email", async  (req, res)=> {
                 message: "confirm password incorrect"
             }) 
         }
-        accountModel.findOneAndUpdate({email: req.params.email},{password: cfmPass})
-            .then(account => {
-                if(!account){
+       const user =  await accountModel.findOne({email: req.email})
+                if(!user){
                     return res.status(404).send({ message: "User Not found." });
+                    
                 }
-                if(oldPass !=account.password){
+                else if(oldPass !=user.password){
                     return res.status(404).send({ message: "Old password incorrect." });
                 }
-                res.json({
-                    success: true,
-                    message: "reset success",
-                   
-                })
-            })
-            .catch(console.error())
+                user.password = cfmPass
+                await user.save();
+                return res.status(400).json({
+                    success: false,
+                    message: "Change success"
+                }) 
+            
     } catch (error) {
         console.log(error)
     }
@@ -337,18 +337,20 @@ router.post("/forgot-password/:email", async  (req, res)=> {
                 message: "confirm password incorrect"
             }) 
         }
-        accountModel.findOneAndUpdate({email: req.params.email},{password: cfmPass})
-            .then(account => {
-                if(!account){
-                    return res.status(404).send({ message: "User Not found." });
-                }
-                res.json({
-                    success: true,
-                    message: "success",
-                   
-                })
-            })
-            .catch(console.error())
+        const user =  await accountModel.findOne({email: req.email})
+        if(!user){
+            return res.status(404).send({ message: "User Not found." });
+            
+        }
+        else if(oldPass !=user.password){
+            return res.status(404).send({ message: "Old password incorrect." });
+        }
+        user.password = cfmPass
+        await user.save();
+        return res.status(400).json({
+            success: false,
+            message: "Change success"
+        }) 
     } catch (error) {
         console.log(error)
     }

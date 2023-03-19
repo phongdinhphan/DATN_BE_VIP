@@ -49,13 +49,14 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjMzY4Zj
 }
 ###    
 
-POST http://localhost:5000/setting/reset-password
+POST http://localhost:5000/setting/change-password
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjMzY4ZjM3OTZkNzg4ODMxYjg1YSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaDEwMDdAZ21haWwuY29tIiwicm9sZSI6IlN0dWRlbnQiLCJpYXQiOjE2Nzg4NzU4ODEsImV4cCI6MTY3ODk2MjI4MX0.Rl2ulTwWnRttto0DB_HG_PFVrWN5UxS_GGvZtoC2dNg
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjNWE3ZTQzMmQ3ZGFiMzc0NTY0MCIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJuZmUwOTkzMEBuZXppZC5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3OTIyMjA2MiwiZXhwIjoxNjc5MzA4NDYyfQ.aI2l2k7UHxOhjvB8O2OkPFNnKbZYVcbEJLfhsOptqW8
 
 {
-   "newpassword": "32111111",
-    "confpassword": "32111111"
+   "oldPass": "1231",
+   "newPass": "123",
+   "cfmPass": "123"
 }
 ###
 

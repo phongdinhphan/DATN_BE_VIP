@@ -78,9 +78,9 @@ const detailsCV = (req, res, next) => {
 const createCV = async (req, res, next) => {
     try {
         // get info user 
-        const { name, major, email, namecompany, nameschool, title} = req.body;
+        const { name, major, email, namecompany, nameschool, title, logo } = req.body;
         if (!name || !major || !email || !namecompany
-            || !nameschool) {
+            || !nameschool || !logo) {
             return res.status(400).json({
                 success: false,
                 message: "missing"
@@ -106,6 +106,7 @@ const createCV = async (req, res, next) => {
             url: req.file.path,
             verify: false,
             title: title,
+            logo: logo,
         })
         return res.json({
             success: true,
@@ -172,48 +173,72 @@ const listSkill = async (req, res, next) => {
     }
 }
 
-const reset_pass = async (req, res, next) => {
+const change_pass = async (req, res, next) => {
     try {
-        const { newpassword, confpassword } = req.body;
-        if (!newpassword || !confpassword) {
+        const { oldPass, newPass, cfmPass } = req.body
+        if (!oldPass || !newPass || !cfmPass) {
             return res.status(400).json({
                 success: false,
                 message: "missing"
             })
         }
-        const check = await accountModel.findOneAndUpdate({ email: req.email }, { password: newpassword })
-
-        if (!check) {
-            return res.status(400).json({
-                success: false,
-                message: "email encorrect"
-            })
-        }
-
-        if (confpassword != newpassword) {
+        if (newPass != cfmPass) {
             return res.status(400).json({
                 success: false,
                 message: "confirm password incorrect"
             })
         }
-        return res.status(200).json({
-            success: true,
-            User: check,
+        const user = await accountModel.findOne({ email: req.email })
+        if (!user) {
+            return res.status(404).send({ message: "User Not found." });
 
+        }
+        else if (oldPass != user.password) {
+            return res.status(404).send({ message: "Old password incorrect." });
+        }
+        user.password = cfmPass
+        await user.save();
+        return res.status(400).json({
+            success: false,
+            message: "Change success"
         })
+
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 }
 
-const add_favorite = async (req, res,next) => {
+const add_favorite = async (req, res, next) => {
+    const action = req.query.action;
+
+    const update = action === "add"
+        ? { $push: { favorite: req.params.accId } }
+        : { $pull: { favorite: req.params.accId } };
+
+    studentModel.updateOne(
+        { studentemail: req.email },
+        update
+    )
+        .then((result) => {
+            const message = action === "add" ? "Add success" : "Remove success";
+            res.json({
+                success: true,
+                message: message,
+                result: result,
+            });
+        })
+        .catch(next);
+
+}
+
+const delete_favorite = async (req, res, next) => {
     try {
-        studentModel.updateOne({ studentemail: req.email },{ $push: { favorite:  req.params.accId }})
+        studentModel.updateOne({ studentemail: req.email }, { $pull: { favorite: req.params.accId } })
             .then((profile) => {
                 res.json({
                     success: true,
                     message: "Add success",
-                    profile:profile,
+                    profile: profile,
                 })
             })
             .catch(next)
@@ -231,7 +256,8 @@ module.exports = {
     update_profile: update_profile,
     profile: profile,
     listSkill: listSkill,
-    reset_pass: reset_pass,
     add_favorite: add_favorite,
+    change_pass: change_pass,
+    delete_favorite: delete_favorite,
 }
 

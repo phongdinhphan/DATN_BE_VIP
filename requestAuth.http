@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
     "username": "aitech",
-    "email": "lqv55585@zslsz.com",
+    "email": "bcu96623@zslsz.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "92191124",
+    "phonenumber": "93911241",
     "academicyear": "2019",
     "gender": "nam",
     "school": "hutech"
@@ -17,7 +17,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "zyg81268@omeie.com",
+    "email": "nfe09930@nezid.com",
     "password": "123"
 
 }
@@ -29,22 +29,22 @@ POST http://localhost:5000/auth/reset-password
 Content-Type: application/json
 
 {
-    "email": "alo19703@zslsz.com"
+    "email": "bcu96623@zslsz.com"
 }
 ###
 
-GET http://localhost:5000/auth/confirm/email
+GET http://localhost:5000/auth/confirm/bbm05118@zslsz.com
 Content-Type: application/json
 
 ####
 
-POST http://localhost:5000/auth/reset-password/alo19703@zslsz.com
+POST http://localhost:3000/auth/reset-password/alo19703@zslsz.com
 Content-Type: application/json
 
 {
-    "oldPass": "11111",
-    "newPass": "12222",
-    "cfmPass": "12222"
+    "oldPass": "123",
+    "newPass": "1233",
+    "cfmPass": "1233"
 
 }
 ###
@@ -56,7 +56,7 @@ Content-Type: application/json
     "email": "alo19703@zslsz.com"
 }
 ###
-POST http://localhost:5000/auth/forgot-password/alo19703@zslsz.com
+POST http://localhost:3000/auth/forgot-password/alo19703@zslsz.com
 Content-Type: application/json
 
 {

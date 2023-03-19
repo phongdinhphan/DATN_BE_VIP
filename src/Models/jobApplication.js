@@ -39,7 +39,11 @@ const jobAppSchema = new mongoose.Schema({
     },
     title:{
         type: String,
-        unique: true,
+        require: true,
+    },
+    logo:{
+        type: String,
+        require: true,
     },
 
 
