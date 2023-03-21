@@ -78,9 +78,9 @@ const detailsCV = (req, res, next) => {
 const createCV = async (req, res, next) => {
     try {
         // get info user 
-        const { name, major, email, namecompany, nameschool, title, logo } = req.body;
+        const { name, major, email, namecompany, nameschool, title, logo ,id_post} = req.body;
         if (!name || !major || !email || !namecompany
-            || !nameschool || !logo) {
+            || !nameschool || !logo || !id_post) {
             return res.status(400).json({
                 success: false,
                 message: "missing"
@@ -107,6 +107,7 @@ const createCV = async (req, res, next) => {
             verify: false,
             title: title,
             logo: logo,
+            id_post: id_post,
         })
         return res.json({
             success: true,
@@ -198,8 +199,8 @@ const change_pass = async (req, res, next) => {
         }
         user.password = cfmPass
         await user.save();
-        return res.status(400).json({
-            success: false,
+        return res.status(200).json({
+            success: true,
             message: "Change success"
         })
 
@@ -209,31 +210,8 @@ const change_pass = async (req, res, next) => {
 }
 
 const add_favorite = async (req, res, next) => {
-    const action = req.query.action;
-
-    const update = action === "add"
-        ? { $push: { favorite: req.params.accId } }
-        : { $pull: { favorite: req.params.accId } };
-
-    studentModel.updateOne(
-        { studentemail: req.email },
-        update
-    )
-        .then((result) => {
-            const message = action === "add" ? "Add success" : "Remove success";
-            res.json({
-                success: true,
-                message: message,
-                result: result,
-            });
-        })
-        .catch(next);
-
-}
-
-const delete_favorite = async (req, res, next) => {
     try {
-        studentModel.updateOne({ studentemail: req.email }, { $pull: { favorite: req.params.accId } })
+        studentModel.updateOne({ studentemail: req.email }, { $push: { favorite: req.params.accId } })
             .then((profile) => {
                 res.json({
                     success: true,
@@ -245,6 +223,43 @@ const delete_favorite = async (req, res, next) => {
     } catch (error) {
         console.log(error);
     }
+
+}
+
+const delete_favorite = async (req, res, next) => {
+    try {
+        studentModel.updateOne({ studentemail: req.email }, { $pull: { favorite: req.params.accId } })
+            .then((profile) => {
+                res.json({
+                    success: true,
+                    message: "Delete success",
+                    profile: profile,
+                })
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const up_cv = async ( req, res , next) => {
+    if (!req.file) {
+        res.send({
+            status: false,
+            message: "No files"
+        })
+    }
+    console.log(req.file);
+    studentModel.findOneAndUpdate({studentemail: req.email}, {$push: {list_cv: req.file.path}})
+        .then((profile) => {
+            console.log(profile.list_cv)
+            res.json({
+                success: true,
+                message: "Adđ success",
+                profile: profile.list_cv,
+            })
+        })
+        .catch(next)
 }
 
 module.exports = {
@@ -259,5 +274,6 @@ module.exports = {
     add_favorite: add_favorite,
     change_pass: change_pass,
     delete_favorite: delete_favorite,
+    up_cv: up_cv,
 }
 

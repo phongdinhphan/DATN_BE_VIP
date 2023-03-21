@@ -45,6 +45,9 @@ const StudentSchema = new mongoose.Schema({
     favorite:{
         type : Array,
     },
+    list_cv:{
+        type : Array,
+    },
     
 }, { versionKey: false });
 

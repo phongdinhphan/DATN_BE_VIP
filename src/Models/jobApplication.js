@@ -45,6 +45,11 @@ const jobAppSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    id_post:{
+        type: String,
+        require: true,
+    },
+
 
 
 }, { versionKey: false });

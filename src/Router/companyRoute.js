@@ -24,6 +24,7 @@ router.post('/list-cv/details/:accId/send-email',companyManagerController.send_e
 
 router.put('/update-profile',verify,companyManagerController.update_profile)
 router.get('/profile',verify,companyManagerController.profile)
+router.get('/list-skill',companyManagerController.listSkill)
 
 
 module.exports = router

@@ -18,6 +18,8 @@ router.put('/update-profile',verify,studentManagerController.update_profile)
 router.get('/profile',verify,studentManagerController.profile)
 router.post('/setting/change-password',verify,studentManagerController.change_pass)
 router.put('/details/:accId',verify,studentManagerController.add_favorite)
+router.put('/details/delete-fa/:accId',verify,studentManagerController.delete_favorite)
+router.post('/addcv',verify,uploadCloud.single("cv1"),studentManagerController.up_cv)    
 
 
 module.exports = router;

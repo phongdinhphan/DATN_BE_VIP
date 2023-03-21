@@ -262,6 +262,19 @@ const refuse_cv = (req, res, next) => {
     }
 
 }
+
+
+const listSkill = async (req, res, next) =>{
+    try {
+        skillModel.find({})
+            .then(listskill => {
+            res.json(listskill)
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+  }
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -274,6 +287,7 @@ module.exports = {
     update_profile: update_profile,
     profile: profile,
     refuse_cv: refuse_cv,
+    listSkill: listSkill,
     // Upload: Upload
 }
 
