@@ -2,6 +2,10 @@ const express = require('express')
 const router = express.Router()
 const accountModel = require('../Models/accountModel')
 const jwt = require('jsonwebtoken');
+const companyModel = require('../Models/companyModel')
+const schoolModel = require('../Models/schoolModel');
+const studentModel = require('../Models/studentModel')
+
 
 
 ///[GET] http://localhost:5000/admin/account
@@ -56,8 +60,6 @@ const createAccount = async(req,res, next) => {
             message: "phone number already"
         })
         }  
-
-
         const user =   await  accountModel.create({
             username: username,
             password: password ,
@@ -65,11 +67,52 @@ const createAccount = async(req,res, next) => {
             phonenumber:phonenumber,
             role: role,
         })
-        return res.json({
-            success: true,
-            message: "create user success",
-            user: user
-        })
+
+        if(role == "Company"){
+            const company = await companyModel.create({
+                namecompany: username,
+                emailcompany: email,
+                phonecompany: phonenumber
+            })
+            company.save()
+            return res.json({
+                success: true,
+                message: "create company success",
+                company: company,
+                user: user
+            })
+        }
+        else if(role == "School"){
+            const school = await schoolModel.create({
+                nameschool: username,
+                emailschool: email,
+                phoneschool: phonenumber
+            })
+            school.save()
+            return res.json({
+                success: true,
+                message: "create company success",
+                school: school,
+                user: user
+            })
+        }
+
+        else if(role == "Student"){
+            const Student = await studentModel.create({
+                studentname: username,
+                studentemail: email,
+                studentphone: phonenumber
+            })
+            Student.save()
+            return res.json({
+                success: true,
+                message: "create company success",
+                Student: Student,
+                user: user
+            })
+        }
+       
+        user.save()
      
      } catch (error) {
          console.log(error)

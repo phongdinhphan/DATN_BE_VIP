@@ -5,14 +5,13 @@ Content-Type: application/json
 ###
 POST http://localhost:5000/admin/account/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTRiZWE1NGViZWE5NzMyNmI1ZjBmYyIsInVzZXJuYW1lIjoidGhhbzEiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3NjExOTM4NiwiZXhwIjoxNjc2MTE5OTg2fQ.wV1iIGABhLsMWvBmA-W-f2Up7QAEs8SEH1snoXoTS1Q
 
 {
     "username": "thao1011111",
-    "email": "tt2007777@gmail.com",
+    "email": "phoa1234@gmail.com",
     "password": "123",
-    "phonenumber": "221199777",
-    "role": "Admin"
+    "phonenumber": "1234562",
+    "role": "Student"
 }
 ###
 GET http://localhost:5000/admin/account/details/63e4be71844ea261a211fbb5

@@ -10,6 +10,8 @@ const upload = multer();
 const nodemailer = require('nodemailer')
 const moment = require('moment');
 const cloudinary = require('cloudinary').v2;
+const accountModel = require('../Models/accountModel')
+
 
 // const date = new Date();
 // const formattedDate = format(date, 'dd/MM/yyyy');
@@ -212,20 +214,20 @@ const send_email = (req, res, next) => {
     }
 }
 
-const update_profile = (req, res, next) => {
+const update_profile = async(req, res, next) => {
     try {
-        const { introduce, slogan } = req.body
-        companyModel.findOneAndUpdate({ emailcompany: req.email }, {
-            introduce: introduce,
-            slogan: slogan,
+         const a = await  companyModel.findOneAndUpdate({ emailcompany: req.email },req.body)    
+         const b = await accountModel.findOneAndUpdate({email: req.email},{
+                username: req.body.namecompany,
+                phonenumber: req.body.phonecompany,
         })
-            .then(() => {
-                res.json({
-                    success: true,
-                    profile: req.body
-                })
-            })
-            .catch(next)
+        res.json({
+            success: true,
+            message:"update profile success",
+        })
+        await a.save()
+        await b.save()
+     
     } catch (error) {
         console.log(error);
     }

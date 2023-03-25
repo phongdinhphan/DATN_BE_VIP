@@ -22,3 +22,22 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMz
   "school": "hutech",
   "verify": true
 }
+###
+
+GET http://localhost:5000/uni/profile
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFkMDYyMDE5NzQ5NGMyM2I5MTY2YSIsInVzZXJuYW1lIjoidGhhbzEwMTExMTEiLCJlbWFpbCI6InBob2ExMkBnbWFpbC5jb20iLCJyb2xlIjoiU2Nob29sIiwiaWF0IjoxNjc5NDgyNDg1LCJleHAiOjE2Nzk1Njg4ODV9.ZeNxVR96uBXJjMCcUTa3Vx-2SDhxThf3DRhDL__hzzY
+###
+
+
+PUT http://localhost:5000/uni/update-profile
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGYyODAyZGFlM2VjYTcwYzQ5NSIsInVzZXJuYW1lIjoibmjDom4gdsSDbiIsImVtYWlsIjoiaHV0ZWNoQGdtYWlsLmNvbSIsInJvbGUiOiJDb21wYW55IiwiaWF0IjoxNjc5NzE1NjgxLCJleHAiOjE2Nzk4MDIwODF9.u0cibbCIV3nbOx_2x7chp6OFPOLYkgxW6kp_nn9lw2w
+
+{
+  "nameschool": "nhân văn",
+  "phoneschool": "412312",
+  "websiteschool": "https://www.tdtu97.edu.vn/"
+
+}
+###

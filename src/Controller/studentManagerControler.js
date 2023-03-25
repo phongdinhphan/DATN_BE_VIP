@@ -123,16 +123,14 @@ const createCV = async (req, res, next) => {
 /// [PUT] http://localhost:5000/update-profile
 const update_profile = (req, res, next) => {
     try {
-        const { studentname, academicyear, address, code, major, school } = req.body
-        studentModel.findOneAndUpdate({ studentemail: req.email }, {
-            studentname: studentname,
-            academicyear: academicyear,
-            address: address,
-            code: code,
-
-            major: major,
-            school: school,
-        })
+        const {gender,studentname, academicyear, address, code, major, school } = req.body
+        if (!studentname || !academicyear || !address || !code  || !major || !school){
+            return res.status(400).json({
+                success: false,
+                message: "missing"
+            })
+        }
+        studentModel.findOneAndUpdate({ studentemail: req.email }, req.body)
             .then(() => {
                 res.json({
                     success: true,
@@ -148,7 +146,7 @@ const update_profile = (req, res, next) => {
 
 const profile = (req, res, next) => {
     try {
-        studentModel.find({ studentemail: req.email })
+        studentModel.findOne({ studentemail: req.email })
             .then((profile) => {
                 res.json({
                     success: true,
@@ -241,6 +239,18 @@ const delete_favorite = async (req, res, next) => {
         console.log(error);
     }
 }
+const get_favorite = async (req, res, next) => {
+    try {
+        studentModel.findOne({ studentemail: req.email } )
+            .then((profile) => {
+                console.log(profile.favorite[0]); // lấy phần tử đầu tiên trong mảng
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 const up_cv = async ( req, res , next) => {
     if (!req.file) {
@@ -275,5 +285,6 @@ module.exports = {
     change_pass: change_pass,
     delete_favorite: delete_favorite,
     up_cv: up_cv,
+    get_favorite: get_favorite,
 }
 

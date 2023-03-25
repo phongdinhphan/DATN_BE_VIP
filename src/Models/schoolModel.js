@@ -9,7 +9,10 @@ const schoolSchema = new mongoose.Schema({
         type:  String,
         unique: true,
     },
-    websiteschool: String,
+    websiteschool: {
+        type:  String,
+        unique: true,
+    },
     phoneschool:{
         type:  String,
         unique: true,

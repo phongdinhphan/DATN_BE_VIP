@@ -43,7 +43,7 @@ router.put('/skill/details/:accId',skillsController.update)
 
 
 // //Route create
-router.post('/account/create',verify,accountController.createAccount)
+router.post('/account/create',accountController.createAccount)
 router.post('/school/create',schoolController.createschool)
 router.post('/major/create',majorController.createMajor)
 router.post('/company/create',companytController.createCompany)

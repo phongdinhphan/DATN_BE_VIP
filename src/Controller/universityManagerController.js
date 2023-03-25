@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const universitytModel = require('../Models/studentModel')
 const jwt = require('jsonwebtoken');
+const schoolModel = require('../Models/schoolModel')
+const accountModel = require('../Models/accountModel')
+
 
 const listStudent = async (req, res, next) =>{
     try {
@@ -46,8 +49,52 @@ const updateStudent = (req, res, next) =>{
     }
   }
 
+
+const update_profile = async (req, res, next) => {
+    try {
+         const b = await accountModel.findOneAndUpdate({email: req.email},{
+                username: req.body.nameschool,
+                phonenumber: req.body.phoneschool,
+        })
+        const a = await schoolModel.findOneAndUpdate({ emailschool: req.email}, {
+            nameschool: req.body.nameschool,
+            phonenumber:req.body.phonenumber,
+            websiteschool: req.body.websiteschool,
+            
+        })    
+        res.json({
+            success: true,
+            message:"update profile success",
+            profile: req.body
+        })
+        await a.save()
+        await b.save()
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+const profile = (req, res, next) => {
+    try {
+        schoolModel.findOne({ emailschool: req.email })
+            .then((profile) => {
+                res.json({
+                    success: true,
+                    profile: profile
+                })
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+
+} 
 module.exports = {
     listStudent: listStudent,
     detailsStudent: detailsStudent,
     updateStudent: updateStudent,
+    update_profile: update_profile,
+    profile: profile,
 }

@@ -31,17 +31,18 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjMzY4Zj
 
 GET http://localhost:5000/profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjMzY4ZjM3OTZkNzg4ODMxYjg1YSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaDEwMDdAZ21haWwuY29tIiwicm9sZSI6IlN0dWRlbnQiLCJpYXQiOjE2NzgzNzQzNDQsImV4cCI6MTY3ODQ2MDc0NH0.z38Vi-153Qsjt3x9L9ax4wdgMq_q0r6unEAM8q3tCfM
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFkMWQxNTM5NWZhYWI5NWYxNDc0MCIsInVzZXJuYW1lIjoidGhhbzEwMTExMTEiLCJlbWFpbCI6InBob2ExMjM0QGdtYWlsLmNvbSIsInJvbGUiOiJTdHVkZW50IiwiaWF0IjoxNjc5NDgxNTU1LCJleHAiOjE2Nzk1Njc5NTV9.jCW9unSW5qVRUdR2MoQbbEmRjcOgRzeA_qqwidcuets
 ###
 
 
 PUT http://localhost:5000/update-profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjMzY4ZjM3OTZkNzg4ODMxYjg1YSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaDEwMDdAZ21haWwuY29tIiwicm9sZSI6IlN0dWRlbnQiLCJpYXQiOjE2NzgzNzQzNDQsImV4cCI6MTY3ODQ2MDc0NH0.z38Vi-153Qsjt3x9L9ax4wdgMq_q0r6unEAM8q3tCfM
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFkMWQxNTM5NWZhYWI5NWYxNDc0MCIsInVzZXJuYW1lIjoidGhhbzEwMTExMTEiLCJlbWFpbCI6InBob2ExMjM0QGdtYWlsLmNvbSIsInJvbGUiOiJTdHVkZW50IiwiaWF0IjoxNjc5NDgxNTU1LCJleHAiOjE2Nzk1Njc5NTV9.jCW9unSW5qVRUdR2MoQbbEmRjcOgRzeA_qqwidcuets
 
 {
+   "gender": "Nam",
    "studentname": "studentname",
-   "studentname": "academicyear",
+   "academicyear": "academicyear",
    "address": "tphcm",
    "code": "1231312",
    "major": "cntt", 
@@ -68,3 +69,15 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTI4ODdmNj
 ###
 
 
+
+PUT http://localhost:5000/details/delete-fa/63f341e117a9540b9ff75a60
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTI4ODdmNjY3ZjVhNGVjMGZmZDI3YiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJ6eWc4MTI2OEBvbWVpZS5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3OTM4MDA3MSwiZXhwIjoxNjc5NDY2NDcxfQ.htupGfyNrXwMiadkgzc6HMkic84sN5wLckCYY1HfqIM
+
+###
+
+GET  http://localhost:5000/a
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTI4ODdmNjY3ZjVhNGVjMGZmZDI3YiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJ6eWc4MTI2OEBvbWVpZS5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3OTM4NjQ2NiwiZXhwIjoxNjc5NDcyODY2fQ.XyuTMc1pL_Airs3p71vAM6WUIO7JEjeOu5isx1X0Oj8
+
+###
