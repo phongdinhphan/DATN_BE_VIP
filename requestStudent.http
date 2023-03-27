@@ -81,3 +81,13 @@ Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTI4ODdmNjY3ZjVhNGVjMGZmZDI3YiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJ6eWc4MTI2OEBvbWVpZS5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3OTM4NjQ2NiwiZXhwIjoxNjc5NDcyODY2fQ.XyuTMc1pL_Airs3p71vAM6WUIO7JEjeOu5isx1X0Oj8
 
 ###
+
+
+GET http://localhost:5000/listmajor
+Content-Type: application/json
+### lisst major
+
+
+GET http://localhost:5000/listcompany
+Content-Type: application/json
+### lisst company

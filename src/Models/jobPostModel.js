@@ -49,6 +49,10 @@ const JobPostSchema = new mongoose.Schema({
     filename:{
         type: String,
         unique: true,
+    },  
+    major:{
+        type: String,
+        require: true,
     },
  
 }, { versionKey: false });

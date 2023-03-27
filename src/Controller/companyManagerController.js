@@ -83,9 +83,9 @@ const showDetails_cv = (req, res, next) => {
 const createPost = async (req, res, next) => {
     try {
         //get info user 
-        const { benefit, expdate, gender, location, namecompany, title, required, salary, skill, responsibility } = req.body;
+        const { benefit, expdate, gender, location, namecompany, title, required, salary, major, responsibility } = req.body;
         if (!benefit || !expdate || !gender || !location || !namecompany
-            || !title || !required || !salary || !responsibility || !skill) {
+            || !title || !required || !salary || !responsibility || !major) {
             cloudinary.uploader.destroy(req.file.filename)
             return res.status(400).json({
                 success: false,
@@ -116,6 +116,7 @@ const createPost = async (req, res, next) => {
             responsibility: req.body.responsibility,
             verify: false,
             filename: req.file.filename,
+            major: req.body.major,
         });
 
         await jobpost.save();

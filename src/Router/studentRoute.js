@@ -21,6 +21,8 @@ router.put('/details/:accId',verify,studentManagerController.add_favorite)
 router.put('/details/delete-fa/:accId',verify,studentManagerController.delete_favorite)
 router.post('/addcv',verify,uploadCloud.single("cv1"),studentManagerController.up_cv)    
 router.get('/a',verify,studentManagerController.get_favorite)    
+router.get('/listmajor',studentManagerController.listMajor)
+router.get('/listcompany',studentManagerController.listCompany)
 
 
 module.exports = router;

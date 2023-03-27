@@ -6,6 +6,7 @@ const studentModel = require('../Models/studentModel')
 const skillModel = require('../Models/skillModel')
 const companyModel = require('../Models/companyModel')
 const accountModel = require('../Models/accountModel')
+const majorModel = require('../Models/majorModel')
 
 
 
@@ -272,6 +273,31 @@ const up_cv = async ( req, res , next) => {
         .catch(next)
 }
 
+
+
+const listMajor = async (req, res, next) =>{
+    try {
+        majorModel.find({})
+            .then(listMajor => {
+            res.json(listMajor)
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
+
+
+  const listCompany = async (req, res, next) =>{
+      companyModel.find({})
+        .then(listCompany => {
+         res.json(listCompany)
+        })
+        .catch(next)
+    
+    }
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -286,5 +312,7 @@ module.exports = {
     delete_favorite: delete_favorite,
     up_cv: up_cv,
     get_favorite: get_favorite,
+    listMajor: listMajor,
+    listCompany: listCompany,
 }
 
