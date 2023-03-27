@@ -113,7 +113,6 @@ const createPost = async (req, res, next) => {
             required: req.body.required,
             salary: req.body.salary,
             logo: req.file.path,
-            skill: req.body.skill,
             responsibility: req.body.responsibility,
             verify: false,
             filename: req.file.filename,

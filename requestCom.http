@@ -15,8 +15,8 @@ POST http://localhost:5000/company/list-cv/details/641032306f6bccb934879139/send
 Content-Type: application/json
 
 {
-  "fromEmail": "phandinhphong258@gmail.com",
-  "toEmail": "uka56346@nezid.com",
+  "fromEmail": "hptservices.group@gmail.com",
+  "toEmail": "aop09434@zslsz.com",
   "subject": "mail confirm",
   "message": "you passed"
 }
