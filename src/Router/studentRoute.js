@@ -23,6 +23,7 @@ router.post('/addcv',verify,uploadCloud.single("cv1"),studentManagerController.u
 router.get('/a',verify,studentManagerController.get_favorite)    
 router.get('/listmajor',studentManagerController.listMajor)
 router.get('/listcompany',studentManagerController.listCompany)
+router.get('/listcompany/:accId',studentManagerController.showDetails)
 
 
 module.exports = router;

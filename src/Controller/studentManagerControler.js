@@ -290,11 +290,23 @@ const listMajor = async (req, res, next) =>{
 
 
   const listCompany = async (req, res, next) =>{
-      companyModel.find({})
-        .then(listCompany => {
-         res.json(listCompany)
-        })
-        .catch(next)
+    companyModel.find({})
+      .then(listCompany => {
+        res.json(listCompany);
+      })
+      .catch(next)
+  }
+  
+  const showDetails = (req, res, next) =>{
+        try {
+            companyModel.findOne({_id: req.params.accId})
+                .then(Company => 
+                    res.json(Company)
+                )
+                .catch(next)
+        } catch (error) {
+            console.log(error)
+        }
     
     }
 
@@ -314,5 +326,6 @@ module.exports = {
     get_favorite: get_favorite,
     listMajor: listMajor,
     listCompany: listCompany,
+    showDetails:showDetails,
 }
 
