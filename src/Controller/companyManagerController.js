@@ -11,6 +11,7 @@ const nodemailer = require('nodemailer')
 const moment = require('moment');
 const cloudinary = require('cloudinary').v2;
 const accountModel = require('../Models/accountModel')
+const majorModel = require('../Models/majorModel')
 
 
 // const date = new Date();
@@ -220,6 +221,7 @@ const update_profile = async(req, res, next) => {
          const b = await accountModel.findOneAndUpdate({email: req.email},{
                 username: req.body.namecompany,
                 phonenumber: req.body.phonecompany,
+               
         })
         res.json({
             success: true,
@@ -277,6 +279,44 @@ const listSkill = async (req, res, next) =>{
         console.log(error);
     }
   }
+
+
+  const listCompany = async (req, res, next) =>{
+    companyModel.find({})
+      .then(listCompany => {
+        res.json(listCompany);
+      })
+      .catch(next)
+  }
+
+  const listMajor = async (req, res, next) =>{
+    try {
+        majorModel.find({})
+            .then(listMajor => {
+            res.json(listMajor)
+            })
+            .catch(next)
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
+const upload_logo = async (req, res)=>{
+    if (!req.file) {
+        res.send({
+            status: false,
+            message: "No files"
+        })
+    }
+    const a = await  companyModel.findOneAndUpdate({emailcompany: req.email},{ logo: req.file.path }) 
+        .then(()=>{
+            res.json({
+                success: true,
+                message: "upload success"
+            })
+        })
+}
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -290,6 +330,9 @@ module.exports = {
     profile: profile,
     refuse_cv: refuse_cv,
     listSkill: listSkill,
+    listCompany: listCompany,
+    listMajor: listMajor,
+    upload_logo: upload_logo
     // Upload: Upload
 }
 

@@ -58,15 +58,25 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5OD
 
 PUT http://localhost:5000/company/update-profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFjZjYzOTkyMTc4YTcxOTdhOGQ4OCIsImVtYWlsIjoicGhvYTJAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2Nzk3MTQ4MTMsImV4cCI6MTY3OTgwMTIxM30.CpNxSHRPHviMVqBoGglALMpAM1edv0QbvTrWykSK8rc
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5ODAyZGFlM2VjYTcwYzQ4ZiIsImVtYWlsIjoiYWl0ZWNoQGdtYWlsLmNvbSIsInJvbGUiOiJDb21wYW55IiwiaWF0IjoxNjgwMDc5NDYxLCJleHAiOjE2ODAxNjU4NjF9.8oEKQc6715zbnjSEIvX63FwE-CT1CNTbe0iOtLmOgG0
 
 {
-  "websitecompany": "https://123456.com.vn"
+  "websitecompany": "https://aitech.com.vn",
+  "phonecompany": "0391012112"
 }
-
 ###
 
 
 GET http://localhost:5000/company/list-skill
 Content-Type: application/json
 ###
+
+
+GET http://localhost:5000/company/listcompany
+Content-Type: application/json
+### lisst company
+
+
+GET http://localhost:5000/company/listmajor
+Content-Type: application/json
+### lisst major
