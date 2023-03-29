@@ -308,7 +308,7 @@ const upload_logo = async (req, res)=>{
             message: "No files"
         })
     }
-    const a = await  companyModel.findOneAndUpdate({emailcompany: req.email},{ logo: req.file.path }) 
+     companyModel.findOneAndUpdate({emailcompany: req.email},{ logo: req.file.path }) 
         .then(()=>{
             res.json({
                 success: true,
