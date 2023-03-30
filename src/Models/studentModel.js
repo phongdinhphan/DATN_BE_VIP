@@ -14,10 +14,6 @@ const StudentSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    academicyear: {
-        type : String,
-        require: true,
-    },
     address: {
         type : String,
         require: true,

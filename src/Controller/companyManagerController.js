@@ -134,7 +134,7 @@ const createPost = async (req, res, next) => {
 /// [PUT] http://localhost:5000/company/details/:id
 const update = (req, res, next) => {
     try {
-        jobPostModel.updateOne({ _id: req.params.accId }, { $push: { skill: req.body.skill } }, req.body)
+        jobPostModel.updateOne({ _id: req.params.accId }, req.body)
             .then(() => {
                 if (!req.body.skill) {
                     list.push(req.body.skill)
@@ -302,19 +302,28 @@ const listSkill = async (req, res, next) =>{
   }
 
 const upload_logo = async (req, res)=>{
-    if (!req.file) {
-        res.send({
-            status: false,
-            message: "No files"
-        })
-    }
-     companyModel.findOneAndUpdate({emailcompany: req.email},{ logo: req.file.path }) 
-        .then(()=>{
-            res.json({
-                success: true,
-                message: "upload success"
+    try {
+        if (!req.file) {
+            res.send({
+                status: false,
+                message: "No files"
             })
+        }
+    
+        companyModel.findOne({emailcompany: req.email})
+            .then(user => {
+                cloudinary.uploader.destroy(user.logo)
+            })   
+        const b = await companyModel.findOneAndUpdate({emailcompany: req.email},{$set:{ logo: req.file.path }})   
+        await b.save()
+        res.json({
+            success: true,
+            message: "upload success"
         })
+    } catch (error) {
+        console.log(error);   
+    }
+   
 }
 
 module.exports = {

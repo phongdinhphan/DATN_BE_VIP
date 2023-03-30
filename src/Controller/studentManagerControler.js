@@ -124,8 +124,8 @@ const createCV = async (req, res, next) => {
 /// [PUT] http://localhost:5000/update-profile
 const update_profile = (req, res, next) => {
     try {
-        const {gender,studentname, academicyear, address, code, major, school } = req.body
-        if (!studentname || !academicyear || !address || !code  || !major || !school){
+        const {gender,studentname,  address, code, major, school } = req.body
+        if (!studentname || !address || !code  || !major || !school){
             return res.status(400).json({
                 success: false,
                 message: "missing"
