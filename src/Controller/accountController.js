@@ -133,7 +133,8 @@ const update = (req, res, next) =>{
    
   }
   /// [DELETE]  http://localhost:5000/admin/account/:id
-const Delete = (req, res, next) =>{ 
+const Delete = async (req, res, next) =>{ 
+
     try {
         accountModel.findByIdAndDelete({_id: req.params.accId }, req.body)
             .then(() => res.json({
@@ -144,8 +145,42 @@ const Delete = (req, res, next) =>{
     } catch (error) {
         console.log(error)
     }
+    
+    // try {
+    //     const a =   await accountModel.findById({_id: req.params.accId })    
+    //     console.log(a.role);
+    //     console.log(a.email);
+
+    //     accountModel.findByIdAndDelete({_id: req.params.accId})
+
+    //     if(a.role == "Company"){
+    //          companyModel.findOneAndDelete({emailcompany: a.email})
+            
+    //         return res.json({
+    //             success: true,
+    //             message: "delete company success",
+    //         })
+    //     }
+            
+    // } catch (error) {
+    //     console.log(error)
+    // }
    
 }
+
+
+// Đường dẫn API để xóa bài đăng
+const Delete_many = async (req, res, next) =>{ 
+    try {
+        const ids = req.params.id.split(','); // lấy danh sách id từ url và split ra thành mảng
+    
+        const result = await accountModel.deleteMany({ _id: { $in: ids } }); // tìm và xóa tất cả bài đăng có _id trong danh sách ids
+    
+        res.json(result);
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+  };
   
 module.exports = {
     listUser: listUser,
@@ -153,4 +188,5 @@ module.exports = {
     createAccount: createAccount,
     update: update,
     Delete: Delete,
+    Delete_many: Delete_many,
 }

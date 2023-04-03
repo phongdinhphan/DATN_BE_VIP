@@ -337,17 +337,14 @@ router.post("/forgot-password/:email", async  (req, res)=> {
                 message: "confirm password incorrect"
             }) 
         }
-        const user =  await accountModel.findOne({email: req.email})
+        const user =  await accountModel.findOne({email: req.params.email})
         if(!user){
             return res.status(404).send({ message: "User Not found." });
             
         }
-        else if(oldPass !=user.password){
-            return res.status(404).send({ message: "Old password incorrect." });
-        }
         user.password = cfmPass
         await user.save();
-        return res.status(400).json({
+        return res.status(200).json({
             success: false,
             message: "Change success"
         }) 
@@ -355,5 +352,10 @@ router.post("/forgot-password/:email", async  (req, res)=> {
         console.log(error)
     }
 })
+
+
+
+
+
 module.exports = router
 

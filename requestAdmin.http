@@ -29,11 +29,10 @@ Content-Type: application/json
     "role": "Admin"
 }
 ###
-DELETE  http://localhost:5000/admin/account/63eb4e0202044966c8ead7e0
+DELETE  http://localhost:5000/admin/account/64256feac88d292b41d736e5
 Content-Type: application/json
-
-
 ####
+
 
 
 
@@ -171,3 +170,28 @@ Content-Type: application/json
 DELETE  http://localhost:5000/admin/skill/640bf65018630e90e6fb1bd9
 Content-Type: application/json
 ###
+
+
+
+DELETE  http://localhost:5000/admin/posts/account/642559a2443d4e532fde640b,642643ad9a87b5af871a61ac
+Content-Type: application/json
+### delete many account
+
+
+DELETE  http://localhost:5000/admin/posts/school/6414325bbe0bee2e19c13f96,64142f23be0bee2e19c13f62
+Content-Type: application/json
+### delete many school
+
+
+
+DELETE  http://localhost:5000/admin/posts/major/6420442d735fef8cf637a645,64155728a1b55d3c45b19f2e
+Content-Type: application/json
+### delete many major
+
+
+
+DELETE  http://localhost:5000/admin/posts/company/642559a2443d4e532fde640b,642643ad9a87b5af871a61ac
+Content-Type: application/json
+### delete many company
+
+

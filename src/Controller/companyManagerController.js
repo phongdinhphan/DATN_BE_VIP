@@ -136,12 +136,7 @@ const update = (req, res, next) => {
     try {
         jobPostModel.updateOne({ _id: req.params.accId }, req.body)
             .then(() => {
-                if (!req.body.skill) {
-                    list.push(req.body.skill)
-                    jobPostModel.skill = list
-                }
                 res.json(req.body)
-
             })
             .catch(next)
     } catch (error) {
@@ -326,6 +321,18 @@ const upload_logo = async (req, res)=>{
    
 }
 
+const Delete_many = async (req, res, next) =>{ 
+    try {
+        const ids = req.params.id.split(','); // lấy danh sách id từ url và split ra thành mảng
+    
+        const result = await jobPostModel.deleteMany({ _id: { $in: ids } }); // tìm và xóa tất cả bài đăng có _id trong danh sách ids
+    
+        res.json(result);
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+  };
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -341,7 +348,8 @@ module.exports = {
     listSkill: listSkill,
     listCompany: listCompany,
     listMajor: listMajor,
-    upload_logo: upload_logo
+    upload_logo: upload_logo,
+    Delete_many: Delete_many,
     // Upload: Upload
 }
 

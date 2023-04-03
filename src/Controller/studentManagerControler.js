@@ -124,13 +124,7 @@ const createCV = async (req, res, next) => {
 /// [PUT] http://localhost:5000/update-profile
 const update_profile = (req, res, next) => {
     try {
-        const {gender,studentname,  address, code, major, school } = req.body
-        if (!studentname || !address || !code  || !major || !school){
-            return res.status(400).json({
-                success: false,
-                message: "missing"
-            })
-        }
+        //const {gender,studentname,  address, code, major, school } = req.body
         studentModel.findOneAndUpdate({ studentemail: req.email }, req.body)
             .then(() => {
                 res.json({

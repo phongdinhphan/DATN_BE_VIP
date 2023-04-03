@@ -30,4 +30,6 @@ router.get('/listmajor',companyManagerController.listMajor)
 router.post('/profile/upload',verify,uploadCloud.single('logo'),companyManagerController.upload_logo)
 
 
+
+router.delete('/posts/:id', companyManagerController.Delete_many)
 module.exports = router

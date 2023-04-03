@@ -17,7 +17,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "aitech@gmail.com",
+    "email": "phong7@gmail.com",
     "password": "123"
 
 }
@@ -53,10 +53,10 @@ POST http://localhost:5000/auth/forgot-password
 Content-Type: application/json
 
 {
-    "email": "alo19703@zslsz.com"
+    "email": "yks11031@omeie.com"
 }
 ###
-POST http://localhost:3000/auth/forgot-password/alo19703@zslsz.com
+POST http://localhost:5000/auth/forgot-password/yks11031@omeie.com
 Content-Type: application/json
 
 {

@@ -6,6 +6,7 @@ const majorController = require('../Controller/majorController')
 const schoolController = require('../Controller/schoolController')
 const jobPostController = require('../Controller/jobpostController')
 const skillsController = require('../Controller/skillsController')
+const accountModel = require('../Models/accountModel')
 
 
 const verify = require('../Middleware/auth')
@@ -64,6 +65,10 @@ router.delete('/company/:accId',companytController.Delete)
 router.delete('/skill/:accId',skillsController.Delete)
 
 
-
+// Route delete many
+router.delete('/posts/account/:id', accountController.Delete_many )
+router.delete('/posts/school/:id',schoolController.Delete_many)
+router.delete('/posts/major/:id',majorController.Delete_many)
+router.delete('/posts/company/:id',companytController.Delete_many)
 
 module.exports = router;
