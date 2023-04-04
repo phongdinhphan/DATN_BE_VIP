@@ -54,6 +54,10 @@ const JobPostSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    DateSubmitted:{
+        type: Date,
+        require: true,
+    },
  
 }, { versionKey: false });
 

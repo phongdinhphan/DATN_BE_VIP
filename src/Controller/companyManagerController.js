@@ -102,8 +102,7 @@ const createPost = async (req, res, next) => {
 
         // const {expdate2} = "23/04/20223"
         console.log(req.file);
-        // const filePath = req.file.path.replace(/\\/g, '/');
-        // const expdate2 = moment.utc("23/04/2023", "DD/MM/YYYY").local();
+        const now = new Date();
         const jobpost = await jobPostModel.create({
             benefit: req.body.benefit,
             expdate: req.body.expdate,
@@ -118,6 +117,7 @@ const createPost = async (req, res, next) => {
             verify: false,
             filename: req.file.filename,
             major: req.body.major,
+            DateSubmitted: now,
         });
 
         await jobpost.save();
