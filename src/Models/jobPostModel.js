@@ -58,6 +58,10 @@ const JobPostSchema = new mongoose.Schema({
         type: Date,
         require: true,
     },
+    workingform:{
+        type: String,
+        require: true,
+    },
  
 }, { versionKey: false });
 

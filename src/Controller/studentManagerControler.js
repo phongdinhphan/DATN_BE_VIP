@@ -7,6 +7,7 @@ const skillModel = require('../Models/skillModel')
 const companyModel = require('../Models/companyModel')
 const accountModel = require('../Models/accountModel')
 const majorModel = require('../Models/majorModel')
+const areasModel = require('../Models/areasModel')
 
 
 
@@ -304,6 +305,14 @@ const listMajor = async (req, res, next) =>{
     
     }
 
+const listAreas = async (req, res, next) =>{
+    areasModel.find({})
+        .then(listAreas => {
+        res.json(listAreas);
+        })
+        .catch(next)
+    }
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -321,5 +330,6 @@ module.exports = {
     listMajor: listMajor,
     listCompany: listCompany,
     showDetails:showDetails,
+    listAreas: listAreas
 }
 

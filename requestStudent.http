@@ -93,3 +93,7 @@ Content-Type: application/json
 GET http://localhost:5000/listcompany/63bd2242c383b2c7ba242c07
 Content-Type: application/json
 ### details company
+
+GET http://localhost:5000/listareas
+Content-Type: application/json
+### lisst tỉnh

@@ -86,3 +86,7 @@ Content-Type: application/json
 DELETE  http://localhost:5000/company/posts/6423fe3290a74b683f3babb0,64216d817c575669c610ac32
 Content-Type: application/json
 ### delete many company
+
+GET http://localhost:5000/company/listareas
+Content-Type: application/json
+### lisst areas

@@ -24,6 +24,7 @@ router.get('/a',verify,studentManagerController.get_favorite)
 router.get('/listmajor',studentManagerController.listMajor)
 router.get('/listcompany',studentManagerController.listCompany)
 router.get('/listcompany/:accId',studentManagerController.showDetails)
+router.get('/listareas',studentManagerController.listAreas)
 
 
 module.exports = router;

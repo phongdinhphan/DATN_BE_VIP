@@ -12,6 +12,7 @@ const moment = require('moment');
 const cloudinary = require('cloudinary').v2;
 const accountModel = require('../Models/accountModel')
 const majorModel = require('../Models/majorModel')
+const areasModel = require('../Models/areasModel')
 
 
 // const date = new Date();
@@ -84,9 +85,9 @@ const showDetails_cv = (req, res, next) => {
 const createPost = async (req, res, next) => {
     try {
         //get info user 
-        const { benefit, expdate, gender, location, namecompany, title, required, salary, major, responsibility } = req.body;
+        const { benefit, expdate, gender, location, namecompany, title, required, salary, major, responsibility, workingform } = req.body;
         if (!benefit || !expdate || !gender || !location || !namecompany
-            || !title || !required || !salary || !responsibility || !major) {
+            || !title || !required || !salary || !responsibility || !major || !workingform) {
             cloudinary.uploader.destroy(req.file.filename)
             return res.status(400).json({
                 success: false,
@@ -118,6 +119,7 @@ const createPost = async (req, res, next) => {
             filename: req.file.filename,
             major: req.body.major,
             DateSubmitted: now,
+            workingform: workingform
         });
 
         await jobpost.save();
@@ -333,6 +335,14 @@ const Delete_many = async (req, res, next) =>{
       }
   };
 
+  const listAreas = async (req, res, next) =>{
+    areasModel.find({})
+        .then(listAreas => {
+        res.json(listAreas);
+        })
+        .catch(next)
+    }
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -350,6 +360,7 @@ module.exports = {
     listMajor: listMajor,
     upload_logo: upload_logo,
     Delete_many: Delete_many,
+    listAreas:listAreas
     // Upload: Upload
 }
 
