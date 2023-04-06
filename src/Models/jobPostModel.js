@@ -62,6 +62,10 @@ const JobPostSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    place:{
+        type: String,
+        require: true,
+    },
  
 }, { versionKey: false });
 
