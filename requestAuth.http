@@ -17,8 +17,8 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "phong7@gmail.com",
-    "password": "123"
+    "email": "tuyendung@fujinet.net",
+    "password": "123456789De"
 
 }
 

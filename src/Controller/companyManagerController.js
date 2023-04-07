@@ -85,8 +85,8 @@ const showDetails_cv = (req, res, next) => {
 const createPost = async (req, res, next) => {
     try {
         //get info user 
-        const { benefit, expdate, gender, location, namecompany, title, required, salary, major, responsibility, workingform, place } = req.body;
-        if (!benefit || !expdate || !gender || !location || !namecompany
+        const { benefit, expdate, gender, location, namecompany, title, required, salary, major, responsibility, workingform, place, logo } = req.body;
+        if ( !expdate || !gender || !location || !namecompany
             || !title || !required || !salary || !responsibility || !major || !workingform || !place) {
             cloudinary.uploader.destroy(req.file.filename)
             return res.status(400).json({
@@ -95,16 +95,36 @@ const createPost = async (req, res, next) => {
             })
         }
         if (!req.file) {
-            res.send({
-                status: false,
-                message: "No files"
+            const now = new Date();
+            const jobpost = await jobPostModel.create({
+                benefit: req.body.benefit,
+                expdate: req.body.expdate,
+                gender: req.body.gender,
+                location: req.body.location,
+                namecompany: req.body.namecompany,
+                title: req.body.title,
+                required: req.body.required,
+                salary: req.body.salary,
+                logo: logo,
+                responsibility: req.body.responsibility,
+                verify: false,
+                filename: logo,
+                major: req.body.major,
+                DateSubmitted: now,
+                workingform: workingform,
+                place: place
+            });
+            await jobpost.save();
+            return res.json({
+                success: true,
+                message: "create jobpost success",
+                jobpost: jobpost
             })
         }
-
-        // const {expdate2} = "23/04/20223"
-        console.log(req.file);
-        const now = new Date();
-        const jobpost = await jobPostModel.create({
+        else{
+            console.log(req.file);
+            const now = new Date();
+            const jobpost = await jobPostModel.create({
             benefit: req.body.benefit,
             expdate: req.body.expdate,
             gender: req.body.gender,
@@ -122,13 +142,13 @@ const createPost = async (req, res, next) => {
             workingform: workingform,
             place: place
         });
-
         await jobpost.save();
         return res.json({
             success: true,
             message: "create jobpost success",
             jobpost: jobpost
         })
+        }      
     } catch (error) {
         console.log(error);
     }
