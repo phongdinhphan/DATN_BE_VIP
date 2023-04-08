@@ -1,25 +1,14 @@
 GET http://localhost:5000/uni/
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGYyODAyZGFlM2VjYTcwYzQ5NSIsInVzZXJuYW1lIjoiaHV0ZWNoIiwiZW1haWwiOiJwaG9uZzFAZ21haWwuY29tIiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2NzcyOTcwMzcsImV4cCI6MTY3NzM4MzQzN30._yWFKrY7ZocTumnehjy2s-3UREPtcPyxGXDBmj0z2bQ
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTZhYjBlNTIzMWQyZGQzMDdlYzUwMCIsInVzZXJuYW1lIjoiSHV0ZWNoIiwiZW1haWwiOiJGUFRAZ21haWwuY29tIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY4MDkyNDk1NiwiZXhwIjoxNjgxMDExMzU2fQ.fKD2UkS_6sQQDFEdfyUhBG_3416GUD1L7_JFvYT0DQM
 ####
-get http://localhost:5000/uni/details/63eb4d8102044966c8ead7da
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwiZW1haWwiOiJjY2NAZ21haWwuY29tIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjQ2MDU5NSwiZXhwIjoxNjc2NTQ2OTk1fQ.sy9CqzW7n3mx9skiqCfCSFK9Yc2o-YePHcBSLrIRlbg
-
+get http://localhost:5000/uni/details/6408456078554552c635890b
 ####
 
 PUT http://localhost:5000/uni/details/63eb4d8102044966c8ead7da
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlhYjMzMzU0ODBiNDllNWEwYmUwYiIsInVzZXJuYW1lIjoiaHV0ZWNoIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY3NjQ1ODgzNSwiZXhwIjoxNjc2NTQ1MjM1fQ.fjSNET1mrI5klp2hmwyIw9RB_-A-Qbz9-04HXJ19I_Q
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTZhYjBlNTIzMWQyZGQzMDdlYzUwMCIsInVzZXJuYW1lIjoiSHV0ZWNoIiwiZW1haWwiOiJGUFRAZ21haWwuY29tIiwicm9sZSI6IlNjaG9vbCIsImlhdCI6MTY4MDkyNTMwOCwiZXhwIjoxNjgxMDExNzA4fQ.MlSu6hzlaeF_kIliiiFY7Jt16z34oQ9u8ZLTy6J8qQI
 
 {
-  "studentname": "thaoabc",
-  "studentemail": "thaoabc@gmail.com",
-  "studentphone": "111",
-  "academicyear": "2018",
-  "address": "tphcm",
-  "code": 1911062239,
-  "gender": "nu",
-  "major": "cntt",
-  "school": "hutech",
   "verify": true
 }
 ###

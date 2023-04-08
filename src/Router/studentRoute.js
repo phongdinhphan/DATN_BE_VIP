@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const is_login = require('../Middleware/is_login');
+
 
 const studentManagerController = require('../Controller/studentManagerControler')
 const verify = require('../Middleware/auth')
@@ -25,7 +27,7 @@ router.get('/listmajor',studentManagerController.listMajor)
 router.get('/listcompany',studentManagerController.listCompany)
 router.get('/listcompany/:accId',studentManagerController.showDetails)
 router.get('/listareas',studentManagerController.listAreas)
-router.post('/report',studentManagerController.createReport)
+router.post('/report',verify,studentManagerController.createReport)
 
 
 module.exports = router;

@@ -6,9 +6,13 @@ const majorController = require('../Controller/majorController')
 const schoolController = require('../Controller/schoolController')
 const jobPostController = require('../Controller/jobpostController')
 const skillsController = require('../Controller/skillsController')
+const reportController = require('../Controller/reportController')
+
 const accountModel = require('../Models/accountModel')
 const reportModel = require('../Models/reportModel')
 
+const is_admin = require('../Middleware/is_admin');
+const is_login = require('../Middleware/is_login');
 
 const verify = require('../Middleware/auth')
 
@@ -22,18 +26,7 @@ router.get('/major',majorController.listMajor)
 router.get('/company',companytController.listCompany)
 router.get('/jobpost',jobPostController.listJobpost)
 router.get('/skill',skillsController.listSkill)
-router.get('/report', (req,res)=> {
-    try {
-        reportModel.find({})
-        .then(listReport => {
-            res.json(listReport)
-        })
-        .catch(next)
-    } catch (error) {
-        console.log(error)
-    }
-  }
-)
+router.get('/report',reportController.listReport)
 
 
 // //Route details
@@ -48,20 +41,20 @@ router.get('/skill/details/:accId',skillsController.showDetails)
 
 
 // //Route update
-router.put('/account/details/:accId',verify,accountController.update)
-router.put('/school/details/:accId',schoolController.update)
-router.put('/major/details/:accId',majorController.update)
-router.put('/company/details/:accId',companytController.update)
-router.put('/jobpost/details/:accId',jobPostController.update)
-router.put('/skill/details/:accId',skillsController.update)
+router.put('/account/details/:accId',is_login,is_admin,accountController.update)
+router.put('/school/details/:accId',is_login,is_admin,schoolController.update)
+router.put('/major/details/:accId',is_login,is_admin,majorController.update)
+router.put('/company/details/:accId',is_login,is_admin,companytController.update)
+router.put('/jobpost/details/:accId',is_login,is_admin,jobPostController.update)
+router.put('/skill/details/:accId',is_login,is_admin,skillsController.update)
 
 
 // //Route create
-router.post('/account/create',accountController.createAccount)
-router.post('/school/create',schoolController.createschool)
-router.post('/major/create',majorController.createMajor)
-router.post('/company/create',companytController.createCompany)
-router.post('/skill/create',skillsController.createSkill)
+router.post('/account/create',is_login,is_admin,accountController.createAccount)
+router.post('/school/create',is_login,is_admin,schoolController.createschool)
+router.post('/major/create',is_login,is_admin,majorController.createMajor)
+router.post('/company/create',is_login,is_admin,companytController.createCompany)
+router.post('/skill/create',is_login,is_admin,skillsController.createSkill)
 
 
 // // //Route save
@@ -71,19 +64,26 @@ router.post('/skill/create',skillsController.createSkill)
 // router.post('/company/save',companytController.save)
 
 // //Route delete
-router.delete('/account/:accId',accountController.Delete)
-router.delete('/school/:accId',schoolController.Delete)
-router.delete('/major/:accId',majorController.Delete)
-router.delete('/company/:accId',companytController.Delete)
-router.delete('/skill/:accId',skillsController.Delete)
-router.delete('/jobpost/:accId',jobPostController.Delete)
+router.delete('/account/:accId',is_login,is_admin,accountController.Delete)
+router.delete('/school/:accId',is_login,is_admin,schoolController.Delete)
+router.delete('/major/:accId',is_login,is_admin,majorController.Delete)
+router.delete('/company/:accId',is_login,is_admin,companytController.Delete)
+router.delete('/skill/:accId',is_login,is_admin,skillsController.Delete)
+router.delete('/jobpost/:accId',is_login,is_admin,jobPostController.Delete)
 
 
 // Route delete many
-router.delete('/posts/account/:id', accountController.Delete_many )
-router.delete('/posts/school/:id',schoolController.Delete_many)
-router.delete('/posts/major/:id',majorController.Delete_many)
-router.delete('/posts/company/:id',companytController.Delete_many)
-router.delete('/posts/jobpost/:accId',jobPostController.Delete_many)
+router.delete('/posts/account/:id',is_login,is_admin, accountController.Delete_many )
+router.delete('/posts/school/:id',is_login,is_admin,schoolController.Delete_many)
+router.delete('/posts/major/:id',is_login,is_admin,majorController.Delete_many)
+router.delete('/posts/company/:id',is_login,is_admin,companytController.Delete_many)
+router.delete('/posts/jobpost/:id',is_login,is_admin,jobPostController.Delete_many)
+
+
+//Send mail report
+router.post('/report/send_mail',is_login,is_admin,reportController.send_Email_Report)
+
+
+// router.get('/test',verify, is_admin,accountController.listUser)
 
 module.exports = router;

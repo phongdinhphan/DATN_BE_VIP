@@ -144,6 +144,13 @@ PUT  http://localhost:5000/admin/jobpost/details/6402bd265a9da47499ec6f78
 Content-Type: application/json
 ###
 
+DELETE  http://localhost:5000/admin/jobpost/642fca00c69d4fa6d6ef4366
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQzNGMwYmUwYmVlMmUxOWMxM2ZiYSIsInVzZXJuYW1lIjoiVGhhaVBoYW0iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY4MDkyNTgwMSwiZXhwIjoxNjgxMDEyMjAxfQ.JKfIq4G0Ef7MhMbYI6aqHzGaqwU5gCr3zN0tq4_jkL4
+
+### Delete Jobpost
+
+
 
 /// api skill
 
@@ -195,9 +202,31 @@ Content-Type: application/json
 ### delete many company
 
 
+DELETE  http://localhost:5000/admin/posts/jobpost/642fc9c4c69d4fa6d6ef4361,642fc9997e29e97154c6f870
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQzNGMwYmUwYmVlMmUxOWMxM2ZiYSIsInVzZXJuYW1lIjoiVGhhaVBoYW0iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY4MDkyNTgwMSwiZXhwIjoxNjgxMDEyMjAxfQ.JKfIq4G0Ef7MhMbYI6aqHzGaqwU5gCr3zN0tq4_jkL4
+
+### delete many jobpost
+
 
 GET http://localhost:5000/admin/report
 Content-Type: application/json
 ### list Report
 
+POST http://localhost:5000/admin/report/send_mail
+Content-Type: application/json
 
+{
+  "fromEmail": "hptservices.group@gmail.com",
+  "toEmail": "fbe13988@zslsz.com",
+  "subject": "mail confirm",
+  "message": "you passed"
+}
+### send mail report
+
+
+GET http://localhost:5000/admin/test
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQzNGMwYmUwYmVlMmUxOWMxM2ZiYSIsInVzZXJuYW1lIjoiVGhhaVBoYW0iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY4MDkyMzk0NiwiZXhwIjoxNjgxMDEwMzQ2fQ.XPno0ThWMkwyQWbKwLYObiy0Y1WU8ajuqyLkKNm7YbI
+
+### test
