@@ -225,8 +225,3 @@ Content-Type: application/json
 ### send mail report
 
 
-GET http://localhost:5000/admin/test
-Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQzNGMwYmUwYmVlMmUxOWMxM2ZiYSIsInVzZXJuYW1lIjoiVGhhaVBoYW0iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY4MDkyMzk0NiwiZXhwIjoxNjgxMDEwMzQ2fQ.XPno0ThWMkwyQWbKwLYObiy0Y1WU8ajuqyLkKNm7YbI
-
-### test
