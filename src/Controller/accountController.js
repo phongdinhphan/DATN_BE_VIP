@@ -146,26 +146,6 @@ const Delete = async (req, res, next) =>{
         console.log(error)
     }
     
-    // try {
-    //     const a =   await accountModel.findById({_id: req.params.accId })    
-    //     console.log(a.role);
-    //     console.log(a.email);
-
-    //     accountModel.findByIdAndDelete({_id: req.params.accId})
-
-    //     if(a.role == "Company"){
-    //          companyModel.findOneAndDelete({emailcompany: a.email})
-            
-    //         return res.json({
-    //             success: true,
-    //             message: "delete company success",
-    //         })
-    //     }
-            
-    // } catch (error) {
-    //     console.log(error)
-    // }
-   
 }
 
 

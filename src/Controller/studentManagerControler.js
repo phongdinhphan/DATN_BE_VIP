@@ -8,7 +8,7 @@ const companyModel = require('../Models/companyModel')
 const accountModel = require('../Models/accountModel')
 const majorModel = require('../Models/majorModel')
 const areasModel = require('../Models/areasModel')
-
+const reportModel = require('../Models/reportModel')
 
 
 
@@ -313,6 +313,31 @@ const listAreas = async (req, res, next) =>{
         .catch(next)
     }
 
+const createReport = async( req,res, next)=> {
+    const {email, content, emailcom, title} = req.body
+    const now = new Date();
+    if(!email || !content  || !emailcom || !title){
+        res.json({
+            message: "missing"
+        })
+    }
+    else{
+        const a = await reportModel.create({
+            email: email,
+            content: content,
+            DateCommit: now,
+            EmailCom: emailcom,
+            Title: title
+        })
+        await a.save()
+        res.json({
+            success: true,
+            message: "Success",
+            Report: a,
+        })
+    }
+}
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -330,6 +355,7 @@ module.exports = {
     listMajor: listMajor,
     listCompany: listCompany,
     showDetails:showDetails,
-    listAreas: listAreas
+    listAreas: listAreas,
+    createReport: createReport,
 }
 

@@ -195,3 +195,9 @@ Content-Type: application/json
 ### delete many company
 
 
+
+GET http://localhost:5000/admin/report
+Content-Type: application/json
+### list Report
+
+

@@ -7,6 +7,7 @@ const schoolController = require('../Controller/schoolController')
 const jobPostController = require('../Controller/jobpostController')
 const skillsController = require('../Controller/skillsController')
 const accountModel = require('../Models/accountModel')
+const reportModel = require('../Models/reportModel')
 
 
 const verify = require('../Middleware/auth')
@@ -21,6 +22,18 @@ router.get('/major',majorController.listMajor)
 router.get('/company',companytController.listCompany)
 router.get('/jobpost',jobPostController.listJobpost)
 router.get('/skill',skillsController.listSkill)
+router.get('/report', (req,res)=> {
+    try {
+        reportModel.find({})
+        .then(listReport => {
+            res.json(listReport)
+        })
+        .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
+  }
+)
 
 
 // //Route details
@@ -63,6 +76,7 @@ router.delete('/school/:accId',schoolController.Delete)
 router.delete('/major/:accId',majorController.Delete)
 router.delete('/company/:accId',companytController.Delete)
 router.delete('/skill/:accId',skillsController.Delete)
+router.delete('/jobpost/:accId',jobPostController.Delete)
 
 
 // Route delete many
@@ -70,5 +84,6 @@ router.delete('/posts/account/:id', accountController.Delete_many )
 router.delete('/posts/school/:id',schoolController.Delete_many)
 router.delete('/posts/major/:id',majorController.Delete_many)
 router.delete('/posts/company/:id',companytController.Delete_many)
+router.delete('/posts/jobpost/:accId',jobPostController.Delete_many)
 
 module.exports = router;

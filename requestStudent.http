@@ -97,3 +97,16 @@ Content-Type: application/json
 GET http://localhost:5000/listareas
 Content-Type: application/json
 ### lisst tỉnh
+
+
+
+POST http://localhost:5000/report
+Content-Type: application/json
+
+{
+   "email": "FPT@gmail.com",
+   "content": "lừa đảo",
+   "emailcom": "ab@gmail.com",
+   "title" : "lặp trình abc"
+}
+### report post

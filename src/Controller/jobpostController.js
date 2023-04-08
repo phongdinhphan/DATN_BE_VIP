@@ -44,6 +44,21 @@ const update = (req, res, next) =>{
    
   }
 
+  const Delete = async (req, res, next) =>{ 
+
+    try {
+        jobPostModel.findByIdAndDelete({_id: req.params.accId }, req.body)
+            .then(() => res.json({
+                success: true,
+                userDetele: req.body
+            }))
+            .catch(next)
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
 const Delete_many = async (req, res, next) =>{ 
     try {
         const ids = req.params.id.split(','); // lấy danh sách id từ url và split ra thành mảng
@@ -60,6 +75,7 @@ module.exports ={
     listJobpost:listJobpost,
     update, update,
     details: details,
+    Delete: Delete,
     Delete_many: Delete_many,
 
 }
