@@ -215,6 +215,7 @@ Content-Type: application/json
 
 POST http://localhost:5000/admin/report/send_mail
 Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQzNGMwYmUwYmVlMmUxOWMxM2ZiYSIsInVzZXJuYW1lIjoiVGhhaVBoYW0iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY4MDk0MjYxOCwiZXhwIjoxNjgxMDI5MDE4fQ.cDjCyBru4S9646VFdY8zi92YwcCtRFbdcHRrhvjpsiI
 
 {
   "fromEmail": "hptservices.group@gmail.com",

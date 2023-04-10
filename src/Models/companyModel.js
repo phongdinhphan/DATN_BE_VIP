@@ -30,6 +30,10 @@ const companySchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    location: {
+        type: String,
+        require: true,
+    },
 }, { versionKey: false });
 
 const companyModel = mongoose.model('company',companySchema)

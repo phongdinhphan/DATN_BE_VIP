@@ -58,12 +58,10 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5OD
 
 PUT http://localhost:5000/company/update-profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjYwOGZlYmE1NDNkNWE0MjBiYjg0MSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaGFtdGhhaTE4MEBnbWFpbC5jb20iLCJyb2xlIjoiQ29tcGFueSIsImlhdCI6MTY4MDkyNDYwOCwiZXhwIjoxNjgxMDExMDA4fQ.HA_ecxw12vtIusYZKovlgZQQoWtE9bWjrKyXyCEYGJs
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQ1YzFkYmNkYzNiZGQxZTQ4NWUwMiIsInVzZXJuYW1lIjoiRnVqaW5ldCIsImVtYWlsIjoidHV5ZW5kdW5nQGZ1amluZXQubmV0Iiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2ODEwOTI4MzMsImV4cCI6MTY4MTE3OTIzM30.JQQnTn-qi_6PWsELlIC0W0k1iSkcQAUrRmApbZ5DeJs
 
 {
-  "websitecompany": "https://abctech.com.vn",
-  "phonecompany": "0399123999",
-  "namecompany": "abc"
+  "location": "tphcm"
 }
 ###
 

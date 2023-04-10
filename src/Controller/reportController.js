@@ -29,7 +29,7 @@ const listReport = async (req, res, next) =>{
         const mailOptions = {
             from: req.body.fromEmail,
             to: req.body.toEmail,
-            subject: `Message from ${req.body.fromEmail}: ${req.body.subject} Report your post`,
+            subject: `[WARNING]: ${req.body.subject}`,
             text: req.body.message
         }
 
