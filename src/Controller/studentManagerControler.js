@@ -323,7 +323,7 @@ const createReport = async( req,res, next)=> {
     }
     else{
         const a = await reportModel.create({
-            email: email,
+            Email: email,
             content: content,
             DateCommit: now,
             EmailCom: emailcom,

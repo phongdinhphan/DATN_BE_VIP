@@ -220,6 +220,7 @@ const send_email = (req, res, next) => {
             toemail: req.body.toEmail,
             subject: req.body.subject,
             content: req.body.message,
+            type: "Mail Confirm",
         })
 
         jobApplicationModel.findOneAndUpdate({ _id: req.params.accId },{status: "Đã xác nhận qua Email"})

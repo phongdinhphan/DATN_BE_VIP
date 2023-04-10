@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const reportModel = require('../Models/reportModel')
 const nodemailer = require('nodemailer')
+const emailModel = require('../Models/emailModel')
 
 
 const listReport = async (req, res, next) =>{
@@ -43,12 +44,18 @@ const listReport = async (req, res, next) =>{
         })
         
 
-        // const emailsend = emailModel.create({
-        //     fromemail: req.body.fromEmail,
-        //     toemail: req.body.toEmail,
-        //     subject: req.body.subject,
-        //     content: req.body.message,
-        // })
+        const emailsend = emailModel.create({
+            fromemail: req.body.fromEmail,
+            toemail: req.body.toEmail,
+            subject: req.body.subject,
+            content: req.body.message,
+            type: "Mail Report",
+        })
+        res.status(200).json({
+            success: true,
+            message: "send mail success",
+            emailsend: emailsend
+        })
         .catch(next)
     } catch (error) {
     }
