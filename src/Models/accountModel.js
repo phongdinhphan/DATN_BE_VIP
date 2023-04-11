@@ -7,11 +7,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    password: String,
     phonenumber: {
         type: String,
         unique: true
     },
+    password: String,
+    
     role: String,
     verified: Boolean,
 }, { versionKey: false });

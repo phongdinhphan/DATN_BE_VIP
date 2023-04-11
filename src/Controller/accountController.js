@@ -72,9 +72,10 @@ const createAccount = async(req,res, next) => {
             const company = await companyModel.create({
                 namecompany: username,
                 emailcompany: email,
-                phonecompany: phonenumber
+                phonecompany: phonenumber,
             })
-            company.save()
+            await company.save()
+            await user.save()
             return res.json({
                 success: true,
                 message: "create company success",
@@ -89,6 +90,7 @@ const createAccount = async(req,res, next) => {
                 phoneschool: phonenumber
             })
             school.save()
+            user.save()
             return res.json({
                 success: true,
                 message: "create company success",
@@ -104,6 +106,7 @@ const createAccount = async(req,res, next) => {
                 studentphone: phonenumber
             })
             Student.save()
+            user.save()
             return res.json({
                 success: true,
                 message: "create company success",
@@ -112,7 +115,7 @@ const createAccount = async(req,res, next) => {
             })
         }
        
-        user.save()
+        
      
      } catch (error) {
          console.log(error)

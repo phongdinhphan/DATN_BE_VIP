@@ -7,11 +7,11 @@ POST http://localhost:5000/admin/account/create
 Content-Type: application/json
 
 {
-    "username": "thao1011111",
-    "email": "phoa1234@gmail.com",
+    "username": "phong3131",
+    "email": "phong3131@gmail.com",
     "password": "123",
-    "phonenumber": "1234562",
-    "role": "Student"
+    "phonenumber": "313131",
+    "role": "School"
 }
 ###
 GET http://localhost:5000/admin/account/details/63e4be71844ea261a211fbb5

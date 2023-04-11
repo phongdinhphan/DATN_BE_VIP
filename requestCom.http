@@ -58,10 +58,13 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5OD
 
 PUT http://localhost:5000/company/update-profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQ1YzFkYmNkYzNiZGQxZTQ4NWUwMiIsInVzZXJuYW1lIjoiRnVqaW5ldCIsImVtYWlsIjoidHV5ZW5kdW5nQGZ1amluZXQubmV0Iiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2ODEwOTI4MzMsImV4cCI6MTY4MTE3OTIzM30.JQQnTn-qi_6PWsELlIC0W0k1iSkcQAUrRmApbZ5DeJs
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU1NDIzY2FiMDYyZmI4YWMyZTM2MiIsInVzZXJuYW1lIjoicGhvbmc0MTQxNDEiLCJlbWFpbCI6InBob25nNDE0MTQxQGdtYWlsLmNvbSIsInJvbGUiOiJDb21wYW55IiwiaWF0IjoxNjgxMjE2NTYzLCJleHAiOjE2ODEzMDI5NjN9.NNz7Dpx8FoMpvofv7KhSthj7wSC1OpQsJmXteKwEBI8
 
 {
-  "location": "tphcm"
+  "websitecompany": "xinchao2.com.vn",
+  "slogan": "xinchao2",
+  "introduce": "xinchao2",
+  "location": "biên hoà"
 }
 ###
 

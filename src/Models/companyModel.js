@@ -9,13 +9,13 @@ const companySchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
-    websitecompany:  {
-        type: String,
-        unique: true,
-    },
     phonecompany: {
         type: String,
         unique: true,
+    },
+    websitecompany: {
+        type: String,
+        require: true,
     },
     introduce: {
         type: String,
