@@ -236,19 +236,27 @@ const send_email = (req, res, next) => {
 
 const update_profile = async(req, res, next) => {
     try {
-         const a = await  companyModel.findOneAndUpdate({ emailcompany: req.email },req.body)    
-         const b = await accountModel.findOneAndUpdate({email: req.email},{
-                username: req.body.namecompany,
-                phonenumber: req.body.phonecompany,
-               
-        })
+         const a = await  companyModel.findOneAndUpdate({ emailcompany: req.email },
+             {namecompany: req.body.namecompany,
+             phonecompany: req.body.phonecompany,
+             websitecompany: req.body.websitecompany,
+             slogan: req.body.slogan,
+             introduce: req.body.introduce,
+             location: req.body.location},
+        )
+        if(req.body.namecompany || req.body.phonecompany)
+        {
+            var b = await accountModel.findOneAndUpdate({email: req.email},
+                {phonenumber: req.body.phonecompany,
+                username: req.body.namecompany},       
+            )
+            await b.save()
+        }    
+        await a.save()  
         res.json({
             success: true,
             message:"update profile success",
         })
-        await a.save()
-        await b.save()
-     
     } catch (error) {
         console.log(error);
     }

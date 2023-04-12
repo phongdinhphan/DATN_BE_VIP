@@ -52,23 +52,26 @@ const updateStudent = (req, res, next) =>{
 
 const update_profile = async (req, res, next) => {
     try {
-         const b = await accountModel.findOneAndUpdate({email: req.email},{
-                username: req.body.nameschool,
-                phonenumber: req.body.phoneschool,
-        })
         const a = await schoolModel.findOneAndUpdate({ emailschool: req.email}, {
             nameschool: req.body.nameschool,
             phonenumber:req.body.phonenumber,
             websiteschool: req.body.websiteschool,
-            
-        })    
-        res.json({
-            success: true,
-            message:"update profile success",
-            profile: req.body
-        })
-        await a.save()
-        await b.save()
+        }) 
+        if( nameschool || phonenumber)
+        {
+            const b = await accountModel.findOneAndUpdate({email: req.email},{
+                username: req.body.nameschool,
+                phonenumber: req.body.phoneschool,
+        })        
+            await a.save()
+            await b.save()
+            res.json({
+                success: true,
+                message:"update profile success",
+                profile: req.body
+            })
+        }
+         
 
     } catch (error) {
         console.log(error);

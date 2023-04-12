@@ -7,11 +7,11 @@ POST http://localhost:5000/admin/account/create
 Content-Type: application/json
 
 {
-    "username": "phong3131",
-    "email": "phong3131@gmail.com",
+    "username": "DEK TECHNOLOGIES",
+    "email": "dek-vn-ta@dektech.com.au",
     "password": "123",
-    "phonenumber": "313131",
-    "role": "School"
+    "phonenumber": "028 3915 2424",
+    "role": "Company"
 }
 ###
 GET http://localhost:5000/admin/account/details/63e4be71844ea261a211fbb5

@@ -58,15 +58,18 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5OD
 
 PUT http://localhost:5000/company/update-profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU1NDIzY2FiMDYyZmI4YWMyZTM2MiIsInVzZXJuYW1lIjoicGhvbmc0MTQxNDEiLCJlbWFpbCI6InBob25nNDE0MTQxQGdtYWlsLmNvbSIsInJvbGUiOiJDb21wYW55IiwiaWF0IjoxNjgxMjE2NTYzLCJleHAiOjE2ODEzMDI5NjN9.NNz7Dpx8FoMpvofv7KhSthj7wSC1OpQsJmXteKwEBI8
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzY1ZTQ4ZWM5OThkOTc1ZWRjZWI4MiIsInVzZXJuYW1lIjoiREVLIFRFQ0hOT0xPR0lFUyIsImVtYWlsIjoiZGVrLXZuLXRhQGRla3RlY2guY29tLmF1Iiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2ODEyODUzMzEsImV4cCI6MTY4MTM3MTczMX0.O0lDmv31pfqVO3Y-SNhrxEfc8sgck8-FIiAgPetVvbY
 
 {
-  "websitecompany": "xinchao2.com.vn",
-  "slogan": "xinchao2",
-  "introduce": "xinchao2",
-  "location": "biên hoà"
+  "websitecompany": "https://www.dektech.com.au/vietnam/",
+  "slogan": "Developing Tomorrow's Technology",
+  "introduce": "Được thành lập tại Melbourne Australia vào năm 1999, DEK Technologies tự hào là một trong những công ty hàng đầu trong lĩnh vực cung cấp các giải pháp về phần cứng và phần mềm với đội ngũ kỹ sư có kinh nghiệm lên đến gần 700 người tại 5 quốc gia, trong đó có Việt Nam. DEK Technologies đã, đang và sẽ luôn cố gắng mang lại cho nhân viên quyền tự chủ và sự thoải mái nhất vì Công ty luôn tin sự cởi mở và công bằng trong môi trường làm việc là chìa khóa cho sự thành công bền vững.",
+  "location": "121/137 Lê Lợi, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh"
 }
+
 ###
+
+  
 
 
 GET http://localhost:5000/company/list-skill

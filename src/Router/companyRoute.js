@@ -31,6 +31,7 @@ router.get('/list-skill',companyManagerController.listSkill)
 router.get('/listcompany',companyManagerController.listCompany)
 router.get('/listmajor',companyManagerController.listMajor)
 router.post('/profile/upload',verify,uploadCloud.single('logo'),companyManagerController.upload_logo)
+
 router.get('/listareas',companyManagerController.listAreas)
 
 
