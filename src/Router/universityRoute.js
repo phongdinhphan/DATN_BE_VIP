@@ -14,4 +14,5 @@ router.put('/update-profile',verify,uniController.update_profile)
 router.get('/profile',verify,uniController.profile)
 
 
+
 module.exports = router

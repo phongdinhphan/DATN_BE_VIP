@@ -56,7 +56,7 @@ const update_profile = async (req, res, next) => {
             nameschool: req.body.nameschool,
             phoneschool:req.body.phonenumber,
             websiteschool: req.body.websiteschool,
-            
+            location: req.body.location,
         }) 
         if( req.body.nameschool || req.body.phonenumber)
         {
@@ -97,10 +97,21 @@ const profile = (req, res, next) => {
     }
 
 } 
+
+
+const listAreas = async (req, res, next) =>{
+    areasModel.find({})
+        .then(listAreas => {
+        res.json(listAreas);
+        })
+        .catch(next)
+    }
+
 module.exports = {
     listStudent: listStudent,
     detailsStudent: detailsStudent,
     updateStudent: updateStudent,
     update_profile: update_profile,
     profile: profile,
+    listAreas: listAreas,
 }
