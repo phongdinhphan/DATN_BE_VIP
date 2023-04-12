@@ -56,6 +56,7 @@ const update_profile = async (req, res, next) => {
             nameschool: req.body.nameschool,
             phonenumber:req.body.phonenumber,
             websiteschool: req.body.websiteschool,
+            await a.save()
         }) 
         if( nameschool || phonenumber)
         {
@@ -63,14 +64,14 @@ const update_profile = async (req, res, next) => {
                 username: req.body.nameschool,
                 phonenumber: req.body.phoneschool,
         })        
-            await a.save()
-            await b.save()
-            res.json({
-                success: true,
-                message:"update profile success",
-                profile: req.body
-            })
         }
+        await b.save()
+        res.json({
+            success: true,
+            message:"update profile success",
+            profile: req.body
+        })
+        
          
 
     } catch (error) {
