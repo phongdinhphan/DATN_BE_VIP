@@ -8,10 +8,10 @@ Content-Type: application/json
 
 {
     "username": "DEK TECHNOLOGIES",
-    "email": "abc@gmail.com",
+    "email": "abcd@gmail.com",
     "password": "123",
-    "phonenumber": "312312312",
-    "role": "Student"
+    "phonenumber": "3212312312",
+    "role": "School"
 }
 ###
 GET http://localhost:5000/admin/account/details/63e4be71844ea261a211fbb5

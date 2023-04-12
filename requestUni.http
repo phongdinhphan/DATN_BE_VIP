@@ -21,12 +21,13 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFkMDYyMD
 
 PUT http://localhost:5000/uni/update-profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzY2NzliYmI0ZmM4YzM2YjUyZGY4MyIsInVzZXJuYW1lIjoiREVLIFRFQ0hOT0xPR0lFUyIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInJvbGUiOiJTY2hvb2wiLCJpYXQiOjE2ODEyODcwOTgsImV4cCI6MTY4MTM3MzQ5OH0.5p_UBcmmamaP6mZvENTAqldTW7GJUPgWZuMnk_wbjDM
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzY3ODc5MDVhMjZjYmY2ZjZiYzEwZiIsInVzZXJuYW1lIjoiREVLIFRFQ0hOT0xPR0lFUyIsImVtYWlsIjoiYWJjZEBnbWFpbC5jb20iLCJyb2xlIjoiU2Nob29sIiwiaWF0IjoxNjgxMjkxNDA1LCJleHAiOjE2ODEzNzc4MDV9.sR04fVRrDgQ8B4C5wZPCIJ75NPb6nxAdowacnnqZB_8
 
 {
   "nameschool": "hutech",
-  "phoneschool": "999999990",
-  "websiteschool": "https://www.phongnumber2.edu.vn/"
+  "phoneschool": "9993131990",
+  "websiteschool": "https://www.phongnumber2.edu.vn/",
+  "location": "tphcm"
 
 }
 ###
