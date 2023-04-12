@@ -8,10 +8,10 @@ Content-Type: application/json
 
 {
     "username": "DEK TECHNOLOGIES",
-    "email": "dek-vn-ta@dektech.com.au",
+    "email": "abc@gmail.com",
     "password": "123",
-    "phonenumber": "028 3915 2424",
-    "role": "Company"
+    "phonenumber": "312312312",
+    "role": "Student"
 }
 ###
 GET http://localhost:5000/admin/account/details/63e4be71844ea261a211fbb5
@@ -29,7 +29,7 @@ Content-Type: application/json
     "role": "Admin"
 }
 ###
-DELETE  http://localhost:5000/admin/account/64256feac88d292b41d736e5
+DELETE  http://localhost:5000/admin/account/64366df6e7f85e1167078803
 Content-Type: application/json
 ####
 

@@ -139,12 +139,24 @@ const update = (req, res, next) =>{
 const Delete = async (req, res, next) =>{ 
 
     try {
-        accountModel.findByIdAndDelete({_id: req.params.accId }, req.body)
-            .then(() => res.json({
-                success: true,
-                userDetele: req.body
-            }))
-            .catch(next)
+       const a = await accountModel.findById({_id: req.params.accId })
+         await accountModel.deleteOne({email: a.email})
+        if(a.role == "Company")
+        {
+            await companyModel.deleteOne({emailcompany: a.email})
+        }
+        if(a.role == "School")
+        {
+             await schoolModel.deleteOne({emailschool: a.email})
+        }
+        if(a.role == "Student")
+        {
+             await studentModel.deleteOne({studentemail: a.email})
+        }
+        res.json({
+            success: true,
+            a:a
+        })
     } catch (error) {
         console.log(error)
     }

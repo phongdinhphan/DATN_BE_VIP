@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const schoolSchema = new mongoose.Schema({
     nameschool: {
         type: String,
-        unique: true,
+        require: true,
     },
     emailschool: {
         type:  String,
