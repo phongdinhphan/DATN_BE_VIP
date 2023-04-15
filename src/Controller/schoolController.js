@@ -38,7 +38,7 @@ const createschool = async(req,res) => {
     try {
           // get info user 
           const {nameschool, emailschool,websiteschool ,location ,  phoneschool} = req.body;
-          if(!nameschool || !emailschool || !websiteschool || !phoneschool || !location){
+          if(!nameschool || !emailschool || !websiteschool || !phoneschool ){
               return res.status(400).json({
                   success: false,
                   message: "missing"

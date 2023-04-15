@@ -54,7 +54,7 @@ const update_profile = async (req, res, next) => {
     try {
         const a = await schoolModel.findOneAndUpdate({ emailschool: req.email}, {
             nameschool: req.body.nameschool,
-            phoneschool:req.body.phonenumber,
+            phoneschool:req.body.phoneschool,
             websiteschool: req.body.websiteschool,
             location: req.body.location,
         }) 

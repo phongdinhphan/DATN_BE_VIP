@@ -6,7 +6,7 @@ const JobPostSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    expdate:{
+    expdate:{   
         type: Date,
         require: true,
     },
@@ -46,10 +46,6 @@ const JobPostSchema = new mongoose.Schema({
         type: Boolean,
         require: true,
     },
-    filename:{
-        type: String,
-        require: true,
-    },  
     major:{
         type: String,
         require: true,
