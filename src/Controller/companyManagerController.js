@@ -241,7 +241,8 @@ const update_profile = async(req, res, next) => {
              websitecompany: req.body.websitecompany,
              slogan: req.body.slogan,
              introduce: req.body.introduce,
-             location: req.body.location},
+             location: req.body.location,
+             place: req.body.place},
         )
         if(req.body.namecompany || req.body.phonecompany)
         {

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const companyModel = require('../Models/companyModel')
-
+const accountModel = require('../Models/accountModel')
 
 ///[GET] http://localhost:5000/admin/Company
 const listCompany = async (req, res, next) =>{
@@ -60,6 +60,7 @@ const createCompany = async(req,res) => {
                websitecompany: (websitecompany.startsWith('https://')? websitecompany : `https://${websitecompany}`) || '',  
                phonecompany: phonecompany
            })
+
            return res.json({
                success: true,
                message: "create user success",
