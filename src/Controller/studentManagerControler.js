@@ -123,17 +123,59 @@ const createCV = async (req, res, next) => {
 
 
 /// [PUT] http://localhost:5000/update-profile
-const update_profile = (req, res, next) => {
-    try {
-        //const {gender,studentname,  address, code, major, school } = req.body
-        studentModel.findOneAndUpdate({ studentemail: req.email }, req.body)
-            .then(() => {
-                res.json({
-                    success: true,
-                    profile: req.body
-                })
+const update_profile =  async(req, res, next) => {
+    try {     
+        const checkPhoneNumber = await accountModel.findOne({ studentphone: req.body.studentphone })
+        if (checkPhoneNumber) {
+            return res.status(400).json({
+                success: false,
+                message: "phone number already"
             })
-            .catch(next)
+        }
+
+        if(!req.file){
+          const a = await studentModel.findOneAndUpdate({ studentemail: req.email }, req.body)
+          if(req.body.studentname || req.body.studentphone)
+          {
+              var c = await accountModel.findOneAndUpdate({email: req.email},
+                  {phonenumber: req.body.studentphone,
+                  username: req.body.studentname})
+                  await c.save()
+          }  
+          await c.save()  
+          await a.save()  
+          res.json({
+              success: true,
+              message:"update profile success",
+          })
+        }
+        else{
+          const b = await studentModel.findOneAndUpdate({ studentemail: req.email },{
+             avatar: req.file.path,
+             address: req.body.address,
+             code: req.body.code,
+             major: req.body.major,
+             school: req.body.school,
+             studentname: req.body.studentname,
+             studentphone:req.body.studentphone,
+            })
+         
+          if(req.body.studentname || req.body.studentphone)
+            {
+                var c = await accountModel.findOneAndUpdate({email: req.email},
+                    {phonenumber: req.body.studentphone,
+                    username: req.body.studentname})
+                    await c.save()
+            }  
+            await c.save()  
+            await b.save()    
+            res.json({
+                success: true,
+                message:"update profile success",
+            })
+        }
+
+       
     } catch (error) {
         console.log(error);
     }

@@ -44,6 +44,10 @@ const StudentSchema = new mongoose.Schema({
     list_cv:{
         type : Array,
     },
+    avatar:{
+        type : String,
+        require: true,
+    },
     
 }, { versionKey: false });
 

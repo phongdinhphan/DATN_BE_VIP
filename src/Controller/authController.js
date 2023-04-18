@@ -80,6 +80,7 @@ router.post('/register', async (req, res) => {
         }
         // create collection
         //const hashPassword = bscrypt.hashSync(password, SALT_ROUNDS);
+        const avatar_url= "https://res.cloudinary.com/dg4ifdrn5/image/upload/v1681794120/my_folder/avatar_cfsd0l.webp"
         const user = await accountModel.create({
             username: username,
             password: password,
@@ -90,11 +91,12 @@ router.post('/register', async (req, res) => {
             verified: false
         })
         const student = await studentModel.create({
-            studentModel: username,
+            studentname: username,
             studentemail: email,
             studentphone: phonenumber,
             school: school,
             gender:gender,
+            avatar: avatar_url,
             verify: false
         })
 

@@ -235,6 +235,15 @@ const send_email = (req, res, next) => {
 
 const update_profile = async(req, res, next) => {
     try {
+
+        const checkPhoneNumber = await accountModel.findOne({ phonecompany: req.body.phonecompany })
+        if (checkPhoneNumber) {
+            return res.status(400).json({
+                success: false,
+                message: "phone number already"
+            })
+        }
+
          const a = await  companyModel.findOneAndUpdate({ emailcompany: req.email },
              {namecompany: req.body.namecompany,
              phonecompany: req.body.phonecompany,
