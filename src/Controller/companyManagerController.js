@@ -235,15 +235,6 @@ const send_email = (req, res, next) => {
 
 const update_profile = async(req, res, next) => {
     try {
-
-        const checkPhoneNumber = await accountModel.findOne({ phonecompany: req.body.phonecompany })
-        if (checkPhoneNumber) {
-            return res.status(400).json({
-                success: false,
-                message: "phone number already"
-            })
-        }
-
          const a = await  companyModel.findOneAndUpdate({ emailcompany: req.email },
              {namecompany: req.body.namecompany,
              phonecompany: req.body.phonecompany,
@@ -345,11 +336,7 @@ const upload_logo = async (req, res)=>{
                 message: "No files"
             })
         }
-    
-        companyModel.findOne({emailcompany: req.email})
-            .then(user => {
-                cloudinary.uploader.destroy(user.logo)
-            })   
+  
         const b = await companyModel.findOneAndUpdate({emailcompany: req.email},{$set:{ logo: req.file.path }})   
         await b.save()
         res.json({

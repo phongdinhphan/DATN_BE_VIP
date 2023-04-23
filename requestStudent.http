@@ -37,24 +37,21 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFkMWQxNT
 
 PUT http://localhost:5000/update-profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVjZDQ4OTY3N2UzMzUwOWQ1YTg0OSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZzdAZ21haWwuY29tIiwicm9sZSI6IlN0dWRlbnQiLCJpYXQiOjE2ODAxNzEyMTQsImV4cCI6MTY4MDI1NzYxNH0.XGUHvbZYFWi6bGFaj7Z-bQ-hBfAdkMXIUaMaIBlmAPE
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDRlNGZkNjc5ODBlOGNhYzlkMmJjNSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZ3BoYW4xMjNAenNsc3ouY29tIiwicm9sZSI6IlN0dWRlbnQiLCJpYXQiOjE2ODIyNDA3NjUsImV4cCI6MTY4MjMyNzE2NX0.blgZUjUCC7TJO8UokEMv-TmnUcKd5yMI53oZbqlwR6I
 
 {
-   "address": "hanoi",
-   "code": "159549595",
-   "major": "marketing", 
-   "school": "hutech"
+   "studentphone": "12512421433"
 }
 ###    
 
 POST http://localhost:5000/setting/change-password
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjg5NGU5ODAyZGFlM2VjYTcwYzQ4ZiIsImVtYWlsIjoiYWl0ZWNoQGdtYWlsLmNvbSIsInJvbGUiOiJDb21wYW55IiwiaWF0IjoxNjgwMTcwMDMxLCJleHAiOjE2ODAyNTY0MzF9.nLqcQWUbJ-rGV3RnPTLE6jTLTvghevzX8llQP4rykS8
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzY1ZTQ4ZWM5OThkOTc1ZWRjZWI4MiIsInVzZXJuYW1lIjoiREVLIFRFQ0hOT0xPR0lFUyIsImVtYWlsIjoiZGVrLXZuLXRhQGRla3RlY2guY29tLmF1Iiwicm9sZSI6IkNvbXBhbnkiLCJpYXQiOjE2ODIyMzEwODIsImV4cCI6MTY4MjMxNzQ4Mn0.rAQLOFGREHihyRrUooTH7v5-5ZXdGr8Haa-cEiECNMQ
 
 {
-   "oldPass": "123",
-   "newPass": "1231",
-   "cfmPass": "1231"
+   "oldPass": "1231",
+   "newPass": "456",
+   "cfmPass": "456"
 }
 ###
 

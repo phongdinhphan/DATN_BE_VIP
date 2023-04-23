@@ -9,6 +9,7 @@ const accountModel = require('../Models/accountModel')
 const majorModel = require('../Models/majorModel')
 const areasModel = require('../Models/areasModel')
 const reportModel = require('../Models/reportModel')
+const cloudinary = require('cloudinary').v2;
 
 
 
@@ -124,58 +125,36 @@ const createCV = async (req, res, next) => {
 
 /// [PUT] http://localhost:5000/update-profile
 const update_profile =  async(req, res, next) => {
-    try {     
-        const checkPhoneNumber = await accountModel.findOne({ studentphone: req.body.studentphone })
-        if (checkPhoneNumber) {
-            return res.status(400).json({
-                success: false,
-                message: "phone number already"
-            })
-        }
-
-        if(!req.file){
-          const a = await studentModel.findOneAndUpdate({ studentemail: req.email }, req.body)
-          if(req.body.studentname || req.body.studentphone)
-          {
-              var c = await accountModel.findOneAndUpdate({email: req.email},
-                  {phonenumber: req.body.studentphone,
-                  username: req.body.studentname})
-                  await c.save()
-          }  
-          await c.save()  
-          await a.save()  
-          res.json({
-              success: true,
-              message:"update profile success",
-          })
-        }
-        else{
-          const b = await studentModel.findOneAndUpdate({ studentemail: req.email },{
-             avatar: req.file.path,
-             address: req.body.address,
-             code: req.body.code,
-             major: req.body.major,
-             school: req.body.school,
-             studentname: req.body.studentname,
-             studentphone:req.body.studentphone,
-            })
-         
-          if(req.body.studentname || req.body.studentphone)
-            {
-                var c = await accountModel.findOneAndUpdate({email: req.email},
-                    {phonenumber: req.body.studentphone,
-                    username: req.body.studentname})
-                    await c.save()
-            }  
-            await c.save()  
-            await b.save()    
-            res.json({
-                success: true,
-                message:"update profile success",
-            })
-        }
-
-       
+    try {   
+        
+        // const checkPhoneNumber = await accountModel.findOne({email: req.email })
+        // if (checkPhoneNumber == req.body.studentphone) {
+        //     return res.status(400).json({
+        //         success: false,
+        //         message: "phone number already"
+        //     })
+        // }
+        const b = await studentModel.findOneAndUpdate({ studentemail: req.email },{
+            address: req.body.address,
+            code: req.body.code,
+            major: req.body.major,
+            school: req.body.school,
+            studentname: req.body.studentname,
+            studentphone:req.body.studentphone,
+        })
+        
+        if(req.body.studentname || req.body.studentphone)
+        {
+            var c = await accountModel.findOneAndUpdate({email: req.email},
+                {phonenumber: req.body.studentphone,
+                username: req.body.studentname})
+                await c.save()
+        }  
+        await b.save()    
+        res.json({
+            success: true,
+            message:"update profile success",
+        })
     } catch (error) {
         console.log(error);
     }
@@ -380,6 +359,27 @@ const createReport = async( req,res, next)=> {
     }
 }
 
+const upload_avatar = async (req, res)=>{
+    try {
+        if (!req.file) {
+            res.send({
+                status: false,
+                message: "No files"
+            })
+        }
+     
+        const b = await studentModel.findOneAndUpdate({studentemail: req.email},{$set:{ avatar: req.file.path }})   
+        await b.save()
+        res.json({
+            success: true,
+            message: "upload success"
+        })
+    } catch (error) {
+        console.log(error);   
+    }
+   
+}
+
 module.exports = {
     listPost: listPost,
     listCV: listCV,
@@ -399,5 +399,6 @@ module.exports = {
     showDetails:showDetails,
     listAreas: listAreas,
     createReport: createReport,
+    upload_avatar: upload_avatar,
 }
 

@@ -39,14 +39,7 @@ router.post('/register', async (req, res) => {
                 </div>` ,
         }
       
-        tranforter.sendMail(mailOptions,(error,info)=> {
-            if(error){
-                console.log(error);
-            }
-            else{
-                console.log("email sent " + info.response)
-            }
-        })
+       
 
         if (!email || !password || !username || !phonenumber) {
             return res.status(400).json({
@@ -81,7 +74,7 @@ router.post('/register', async (req, res) => {
         // create collection
         //const hashPassword = bscrypt.hashSync(password, SALT_ROUNDS);
         const avatar_url= "https://res.cloudinary.com/dg4ifdrn5/image/upload/v1681794120/my_folder/avatar_cfsd0l.webp"
-        const user = await accountModel.create({
+        await accountModel.create({
             username: username,
             password: password,
             email: email,
@@ -89,25 +82,40 @@ router.post('/register', async (req, res) => {
             gender:gender,
             role: 'Student',
             verified: false
+        }, async function(err, user) {
+            if (err) {
+                console.error(err);
+                // xử lý lỗi
+            } else {
+                 await studentModel.create({
+                    studentname: username,
+                    studentemail: email,
+                    studentphone: phonenumber,
+                    school: school,
+                    gender:gender,
+                    avatar: avatar_url,
+                    verify: false
+                },function(err, user) {
+                    if (err) {
+                        console.error(err);
+                        // xử lý lỗi
+                    } else {
+                        tranforter.sendMail(mailOptions,(error,info)=> {
+                            if(error){
+                                console.log(error);
+                            }
+                            else{
+                                console.log("email sent " + info.response)
+                            }
+                        })
+                        return res.status(200).json({
+                            success: true,
+                            message: "register success",
+                        })
+                    }
+                })
+            }
         })
-        const student = await studentModel.create({
-            studentname: username,
-            studentemail: email,
-            studentphone: phonenumber,
-            school: school,
-            gender:gender,
-            avatar: avatar_url,
-            verify: false
-        })
-
-        return res.status(200).json({
-            success: true,
-            message: "register success",
-            user: user,
-            student: student
-        })
-        
-
     } catch (error) {
         console.log("error", error)
     }

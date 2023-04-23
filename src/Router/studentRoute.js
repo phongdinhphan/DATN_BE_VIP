@@ -16,7 +16,7 @@ router.get('/cv',verify,studentManagerController.listCV)
 router.get('/cv/details/:accId',verify,studentManagerController.detailsCV)
 router.post('/create',uploadCloud.single("cv"),studentManagerController.createCV)    
 
-router.put('/update-profile',uploadCloud.single("avatar"),verify,studentManagerController.update_profile)
+router.put('/update-profile',verify,studentManagerController.update_profile)
 router.get('/profile',verify,studentManagerController.profile)
 router.post('/setting/change-password',verify,studentManagerController.change_pass)
 router.put('/details/:accId',verify,studentManagerController.add_favorite)
@@ -28,6 +28,8 @@ router.get('/listcompany',studentManagerController.listCompany)
 router.get('/listcompany/:accId',studentManagerController.showDetails)
 router.get('/listareas',studentManagerController.listAreas)
 router.post('/report',verify,studentManagerController.createReport)
+
+router.post('/profile/upload',verify,uploadCloud.single('avatar'),studentManagerController.upload_avatar)
 
 
 module.exports = router;
