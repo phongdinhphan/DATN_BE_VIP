@@ -37,10 +37,13 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFkMWQxNT
 
 PUT http://localhost:5000/update-profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDRlNGZkNjc5ODBlOGNhYzlkMmJjNSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZ3BoYW4xMjNAenNsc3ouY29tIiwicm9sZSI6IlN0dWRlbnQiLCJpYXQiOjE2ODIyNDA3NjUsImV4cCI6MTY4MjMyNzE2NX0.blgZUjUCC7TJO8UokEMv-TmnUcKd5yMI53oZbqlwR6I
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDRlNGZkNjc5ODBlOGNhYzlkMmJjNSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZ3BoYW4xMjNAenNsc3ouY29tIiwicm9sZSI6IlN0dWRlbnQiLCJpYXQiOjE2ODIzNTMzMDcsImV4cCI6MTY4MjQzOTcwN30.oGgouMdkgTsHoqUlqhmmIwfdPke_srdIiAdM61mdN-8
 
 {
-   "studentphone": "12512421433"
+   "major": "CNTT",
+   "nameschool": "hutech",
+   "namecompany": "FPT",
+   "url": "abc"
 }
 ###    
 
@@ -70,9 +73,9 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTI4ODdmNj
 
 ###
 
-GET  http://localhost:5000/a
+GET  http://localhost:5000/list-favorite
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTI4ODdmNjY3ZjVhNGVjMGZmZDI3YiIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJ6eWc4MTI2OEBvbWVpZS5jb20iLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTY3OTM4NjQ2NiwiZXhwIjoxNjc5NDcyODY2fQ.XyuTMc1pL_Airs3p71vAM6WUIO7JEjeOu5isx1X0Oj8
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDRlNGZkNjc5ODBlOGNhYzlkMmJjNSIsInVzZXJuYW1lIjoiYWl0ZWNoIiwiZW1haWwiOiJwaG9uZ3BoYW4xMjNAenNsc3ouY29tIiwicm9sZSI6IlN0dWRlbnQiLCJpYXQiOjE2ODIzNTMzMDcsImV4cCI6MTY4MjQzOTcwN30.oGgouMdkgTsHoqUlqhmmIwfdPke_srdIiAdM61mdN-8
 
 ###
 

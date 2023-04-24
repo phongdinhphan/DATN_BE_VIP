@@ -154,6 +154,7 @@ const update_profile =  async(req, res, next) => {
         res.json({
             success: true,
             message:"update profile success",
+            data: b
         })
     } catch (error) {
         console.log(error);
@@ -260,7 +261,10 @@ const get_favorite = async (req, res, next) => {
     try {
         studentModel.findOne({ studentemail: req.email } )
             .then((profile) => {
-                console.log(profile.favorite[0]); // lấy phần tử đầu tiên trong mảng
+                res.json({
+                    success: true,
+                    profile: profile.favorite
+                })
             })
             .catch(next)
     } catch (error) {
@@ -372,7 +376,8 @@ const upload_avatar = async (req, res)=>{
         await b.save()
         res.json({
             success: true,
-            message: "upload success"
+            message: "upload success",
+            path: req.file.path,
         })
     } catch (error) {
         console.log(error);   
