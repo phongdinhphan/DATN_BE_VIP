@@ -26,7 +26,7 @@ GET http://localhost:5000/company/list-cv/details/63f33dbea2af566a3ee58cd3
 Content-Type: application/json
 ###
 
-PUT http://localhost:5000/company/list-cv/details/641570c46e6f9d283bb0acfa
+PUT http://localhost:5000/company/list-cv/details/6447ebb0c6053d1194b85462
 Content-Type: application/json
 ###
 

@@ -256,6 +256,7 @@ const update_profile = async(req, res, next) => {
         res.json({
             success: true,
             message:"update profile success",
+            data: a,
         })
     } catch (error) {
         console.log(error);
@@ -341,7 +342,8 @@ const upload_logo = async (req, res)=>{
         await b.save()
         res.json({
             success: true,
-            message: "upload success"
+            message: "upload success",
+            path: req.file.path,
         })
     } catch (error) {
         console.log(error);   
