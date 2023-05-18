@@ -17,7 +17,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "phongphan123@zslsz.com",
+    "email": "recruit@tma.com.vn",
     "password": "123"
 
 }

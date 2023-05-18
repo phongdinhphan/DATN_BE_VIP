@@ -107,7 +107,7 @@ const createCV = async (req, res, next) => {
             nameschool: nameschool,
             status: "Đang chờ xác nhận",
             url: req.file.path,
-            verify: false,
+            verify: req.body.verify,
             title: title,
             logo: logo,
             id_post: id_post,
@@ -159,7 +159,6 @@ const update_profile =  async(req, res, next) => {
     } catch (error) {
         console.log(error);
     }
-
 }
 
 const profile = (req, res, next) => {
