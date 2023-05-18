@@ -18,6 +18,7 @@ const verifyToken = (req, res, next) => {
             req.id= decoded.id
             req.role= decoded.role
             req.email = decoded.email
+            req.verified = decoded.verified
             next()
         }
         else{

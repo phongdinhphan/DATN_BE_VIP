@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
     "username": "aitech",
-    "email": "phongphan123@zslsz.com",
+    "email": "tly02959@nezid.com",
     "password": "123",
     "confpassword": "123",
-    "phonenumber": "31251231222",
+    "phonenumber": "12312321312",
     "academicyear": "2019",
     "gender": "nam",
     "school": "hutech"
@@ -17,7 +17,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "recruit@tma.com.vn",
+    "email": "hutech@gmail.com",
     "password": "123"
 
 }
@@ -64,3 +64,7 @@ Content-Type: application/json
     "cfmPass": "333"
 
 }
+
+###
+POST http://localhost:5000/auth/confirm/nzf44891@nezid.com
+Content-Type: application/json

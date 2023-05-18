@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
                     <h2>Hello ${username}! Thanks for register on our site </h2>
                     <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
                     <h4>Please verify your email to contine</h4>
-                    <a href=http://localhost:3000/auth/confirm/${email}> Click here</a>
+                    <a href=http://localhost:5000/auth/confirm/${email}> Click here</a>
                 </div>` ,
         }
       
@@ -95,7 +95,7 @@ router.post('/register', async (req, res) => {
                     gender:gender,
                     avatar: avatar_url,
                     verify: false
-                },function(err, user) {
+                },async function(err, user) {
                     if (err) {
                         console.error(err);
                         // xử lý lỗi
@@ -155,7 +155,8 @@ router.post('/login', async (req, res) => {
                 id: check.id,
                 username: check.username,
                 email: check.email,
-                role: check.role
+                role: check.role,
+                verified: check.verified
             }, process.env.SecretJwt, {
                 expiresIn: "1d"
             })
@@ -232,7 +233,7 @@ router.post('/reset-password', async (req, res) => {
 
 })
 
-router.get("/confirm/:email", async  (req, res)=> {
+router.get("/signup/:email", async  (req, res)=> {
     try {
         accountModel.findOneAndUpdate({email: req.params.email},{verified: true})
             .then(account => {
